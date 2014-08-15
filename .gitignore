@@ -36,6 +36,7 @@ Icon
 .Trashes
 
 # Portal 2 stuff
-.vmx
-.log
-.prt
+*.vmx
+*.log
+*.prt
+*.filelist.txt
