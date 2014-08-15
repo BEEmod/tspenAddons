@@ -1,5 +1,5 @@
-tspenAddons
-===========
+TeamSpen210's BEE 2 Addons
+==========================
 
 My collection of Items and Styles for the BEE2. All non-logic items are fully styled for all the default styles. It is compatible with Radelite's addons, providing styled versions for the Ratman Style. 
 
