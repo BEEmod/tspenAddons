@@ -1,0 +1,5 @@
+VertexLitGeneric
+{
+$baseTexture "models/props_map_editor/tSpen/stairs_ghost_white"
+$selfillum 1
+}

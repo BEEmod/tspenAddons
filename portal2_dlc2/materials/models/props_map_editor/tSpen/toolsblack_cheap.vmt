@@ -1,0 +1,6 @@
+unlitgeneric
+{
+$model 1 
+$basetexture "tools/toolsblack"
+$alpha 0 // this will be totally invisible.
+}

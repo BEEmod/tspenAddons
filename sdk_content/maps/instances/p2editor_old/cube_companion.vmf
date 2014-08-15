@@ -1,0 +1,150 @@
+versioninfo
+{
+	"editorversion" "400"
+	"editorbuild" "5685"
+	"mapversion" "64"
+	"formatversion" "100"
+	"prefab" "0"
+}
+visgroups
+{
+}
+viewsettings
+{
+	"bSnapToGrid" "1"
+	"bShowGrid" "1"
+	"bShowLogicalGrid" "0"
+	"nGridSpacing" "8"
+	"bShow3DGrid" "0"
+}
+world
+{
+	"id" "1"
+	"mapversion" "64"
+	"classname" "worldspawn"
+	"detailmaterial" "detail/detailsprites"
+	"detailvbsp" "detail.vbsp"
+	"maxblobcount" "250"
+	"maxpropscreenwidth" "-1"
+	"skyname" "sky_black_nofog"
+}
+entity
+{
+	"id" "166"
+	"classname" "point_template"
+	"spawnflags" "2"
+	"targetname" "t_f"
+	"Template01" "c_fall"
+	"origin" "8 0 24"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "61"
+	"classname" "logic_branch"
+	"InitialValue" "0"
+	"targetname" "@relay_spawn_3_branch"
+	"thinkfunction" "cmp_choose"
+	"vscripts" "pti_companion_cube.nut"
+	connections
+	{
+		"OnTrue" "t_nForceSpawn0-1"
+		"OnTrue" "c_newRunScriptCodeunder_ccube()0.01-1"
+		"OnFalse" "t_fForceSpawn0-1"
+	}
+	"origin" "0 0 40"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 500]"
+	}
+}
+entity
+{
+	"id" "73"
+	"classname" "prop_weighted_cube"
+	"allowfunnel" "1"
+	"angles" "0 0 0"
+	"CubeType" "4"
+	"model" "models/props_underground/underground_weighted_cube.mdl"
+	"NewSkins" "1"
+	"PaintPower" "4"
+	"renderamt" "255"
+	"rendercolor" "255 255 255"
+	"skin" "0"
+	"SkinType" "0"
+	"targetname" "c_new"
+	"vscripts" "pti_companion_cube.nut"
+	connections
+	{
+		"OnFizzled" "@respawn_companionTrigger0-1"
+	}
+	"origin" "0 0 -24"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "32"
+	"classname" "point_template"
+	"spawnflags" "2"
+	"targetname" "t_n"
+	"Template01" "c_new"
+	"origin" "-8 0 24"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "2"
+	"classname" "prop_weighted_cube"
+	"allowfunnel" "1"
+	"angles" "0 0 0"
+	"CubeType" "1"
+	"model" "models/props/metal_box.mdl"
+	"NewSkins" "1"
+	"PaintPower" "4"
+	"renderamt" "255"
+	"rendercolor" "255 255 255"
+	"skin" "1"
+	"SkinType" "0"
+	"targetname" "c_fall"
+	connections
+	{
+		"OnFizzled" "@respawn_companionTrigger0-1"
+	}
+	"origin" "0 0 -24"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+cameras
+{
+	"activecamera" "-1"
+}
+cordons
+{
+	"active" "0"
+}

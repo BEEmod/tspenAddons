@@ -1,0 +1,9 @@
+patch
+{
+include "materials/models/props_map_editor/item_lighting_common.vmt"
+insert
+{
+$basetexture "lights/light_recessedcool002"
+$selfillum 1
+}
+}

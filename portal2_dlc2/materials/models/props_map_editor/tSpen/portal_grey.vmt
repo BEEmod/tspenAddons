@@ -1,0 +1,8 @@
+unlitgeneric
+{
+$baseTexture "models/props_map_editor/tspen/portal_grey"
+$selfillum 1
+$translucent 1
+$nocull 1
+$model 1
+}

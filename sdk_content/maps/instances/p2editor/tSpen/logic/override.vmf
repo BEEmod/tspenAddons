@@ -1,0 +1,201 @@
+versioninfo
+{
+	"editorversion" "400"
+	"editorbuild" "5685"
+	"mapversion" "19"
+	"formatversion" "100"
+	"prefab" "0"
+}
+visgroups
+{
+}
+viewsettings
+{
+	"bSnapToGrid" "1"
+	"bShowGrid" "1"
+	"bShowLogicalGrid" "0"
+	"nGridSpacing" "16"
+	"bShow3DGrid" "0"
+}
+world
+{
+	"id" "1"
+	"mapversion" "19"
+	"classname" "worldspawn"
+	"detailmaterial" "detail/detailsprites"
+	"detailvbsp" "detail.vbsp"
+	"maxblobcount" "250"
+	"maxpropscreenwidth" "-1"
+	"skyname" "sky_black_nofog"
+}
+entity
+{
+	"id" "171"
+	"classname" "logic_branch"
+	"InitialValue" "$start_enabled"
+	"targetname" "toggle_norm"
+	connections
+	{
+		"OnTrue" "managerSetStateATrue0-1"
+		"OnFalse" "managerSetStateAFalse0-1"
+	}
+	"origin" "0 16 16"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "203"
+	"classname" "logic_coop_manager"
+	"DefaultPlayerStateA" "$start_enabled"
+	"DefaultPlayerStateB" "$start_enabled"
+	"targetname" "manager"
+	connections
+	{
+		"OnChangeToAllTrue" "rl_outFireUser20-1"
+		"OnChangeToAllFalse" "rl_outFireUser10-1"
+		"OnChangeToAllTrue" "managerSetStateBFalse0-1"
+		"OnChangeToAllFalse" "managerSetStateBTrue0-1"
+	}
+	"origin" "0 0 16"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"comments" "A=wanted state, B=inverted current state. When both match (In wrong state and needing to switch), manager outputs and changes B to the other state to allow it to trigger that way. This prevents double-outputs."
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "263"
+	"classname" "logic_branch"
+	"InitialValue" "1"
+	"targetname" "rl_in"
+	connections
+	{
+		"OnTrue" "toggle_normToggleTest0-1"
+		"OnFalse" "toggle_normToggle0-1"
+	}
+	"origin" "0 16 1"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 1000]"
+	}
+}
+entity
+{
+	"id" "367"
+	"classname" "logic_branch"
+	"InitialValue" "0"
+	"targetname" "toggle_special"
+	connections
+	{
+		"OnTrue" "branchTest0.01-1"
+		"OnTrue" "rl_inSetValue00-1"
+		"OnFalse" "rl_inSetValue10-1"
+		"OnFalse" "toggle_normTest0.01-1"
+	}
+	"origin" "0 -16 17"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 1000]"
+	}
+}
+entity
+{
+	"id" "67"
+	"classname" "logic_branch"
+	"InitialValue" "$start_reversed"
+	"targetname" "branch"
+	connections
+	{
+		"OnFalse" "managerSetStateAFalse0-1"
+		"OnTrue" "managerSetStateATrue0-1"
+	}
+	"origin" "0 0 32"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "69"
+	"classname" "func_instance_io_proxy"
+	"targetname" "proxy"
+	connections
+	{
+		"OnProxyRelay" "rl_inTest0-1"
+		"OnProxyRelay" "toggle_specialToggleTest0-1"
+	}
+	"origin" "0 -16 32"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 9000]"
+	}
+}
+entity
+{
+	"id" "73"
+	"classname" "func_instance_parms"
+	"parm1" "$connectioncount integer"
+	"parm2" "$start_enabled integer"
+	"parm3" "$start_reversed string"
+	"origin" "0 16 32"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "117"
+	"classname" "logic_relay"
+	"spawnflags" "0"
+	"StartDisabled" "0"
+	"targetname" "rl_out"
+	connections
+	{
+		"OnUser1" "proxyProxyRelay0-1"
+		"OnUser2" "proxyProxyRelay0-1"
+		"OnSpawn" "managerToggleStateB0-1"
+	}
+	"origin" "0 -16 1"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 1000]"
+	}
+}
+cameras
+{
+	"activecamera" "-1"
+}
+cordons
+{
+	"active" "0"
+}

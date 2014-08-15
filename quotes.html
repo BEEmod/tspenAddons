@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>BEE 2 Level Quote Sequences</title>
+		<style>
+		h1 {
+		font-size: 32pt;
+		text-decoration: underline;
+		text-align: center;
+		}
+		h2 {
+		font-size: 24pt;
+		text-align: center;
+		
+		position: relative;
+		width: 95%;
+		left: 2.5%;
+		right: 2.5%;
+		border-top: 2pt solid black; /* add a dividing line above the h2 headings */
+		padding-top: 15pt;
+		margin-bottom: 4pt;
+		margin-top: 4pt;
+		}
+		
+		li.divider {
+		list-style-type: none;
+		position: relative;
+		right: 10pt;
+		}
+		
+		
+		table {
+		width: 100%;
+		background: #EEE;
+		border: 2pt solid black;
+		}
+		
+		td {
+		background: white;
+		font-weight: bold;
+		border: 1pt solid black;
+		}
+		
+		th {
+		font-weight: bold;
+		color: white;
+		background: black;
+		text-align: center;
+		border: 2pt solid black;
+		}
+		
+		td:first-child {
+		text-align: center; /* center first column */
+		}
+		
+		td:first-child dl {
+		text-align: left; /* but not the lists */
+		}
+		
+		td a {
+		font-weight: normal;
+		color: black;
+		text-decoration: none;
+		}
+		
+		td.blank { /* empty table cell, rendered without border to shunt a cell over if sp column is empty. */
+		border: none;
+		background: none;
+		}
+		
+		td.mon {
+		border: none;
+		width: 100pt;
+		height: 50pt;
+		background-color: inherit;
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
+		}
+		
+		td.mon a img {
+		display: block;
+		width: 100pt;
+		height: 50pt;
+		}
+		
+		dl {
+		margin: 0pt;
+		font-weight: normal;
+		}
+		
+		dt {
+		display: list-item;
+		list-style-type: circle;
+		list-style-position: inside;
+		font-weight: bold; /* first text should be bold*/
+		position: relative;
+		margin-left: 10pt;
+		}
+		
+		dd a:before, dd a:before {
+		color: black;
+		font-weight: bold;
+		content: " - ";
+		}
+		
+		td a:hover, td a:focus {
+		text-decoration: underline;
+		font-weight: 600; /* bold and underline selected text */
+		}
+
+		dd a:hover:before, dd a:focus:before { 
+		content: " > ";
+		text-decoration: none !important;
+		font-weight: lighter;
+		}
+		
+		td a:hover:after, td a:focus:after { /* add hover tooltip */
+		display:block;
+		content: '"' attr(data-quote) '"';
+		position:absolute;
+		float:right;
+		font-weight:normal;
+		border: 2pt outset #999;
+		background-color: rgb(255,255,255); /* will be overridden by next if transparency is supported */
+		background-color: rgba(255,255,255,0.9);
+		z-index: 3;
+		padding:5pt;
+		width:50%;
+		left:25%;
+		right:25%;
+		}
+		
+		td a.ann:hover:after, td a.ann:focus:after {
+		content: 'Announcer: ' open-quote attr(data-quote) close-quote;
+		}
+		
+		td a.gla:hover:after, td a.gla:focus:after {
+		content: 'GLaDOS: ' open-quote attr(data-quote) close-quote;
+		}
+		
+		td a.wht:hover:after, td a.wht:focus:after  {
+		content: 'Wheatley: ' open-quote attr(data-quote) close-quote;
+		}
+		
+		td a.car:hover:after, td a.car:focus:after  {
+		content: 'Caroline: ' open-quote attr(data-quote) close-quote;
+		}
+				
+		td a.cav:hover:after, td a.cav:focus:after  {
+		content: 'Cave Johnson: ' open-quote attr(data-quote) close-quote;
+		}
+		
+		td a.tur:hover:after, td a.tur:focus:after  {
+		content: 'Turret: ' open-quote attr(data-quote) close-quote;
+		}
+		
+		td a.sfx:hover:after, td a.sfx:focus:after  {
+		content: '[' attr(data-quote) ']';
+		}
+		
+		td a.none:hover:after, td a.none:focus:after  {
+		content: '';
+		display:none !important;
+		}
+		
+		#char {
+		font-weight: bold;
+		}
+		
+		.gla { /* GLaDOS */
+		color: #C86400;
+		}
+		.wht { /* Wheatley */
+		color: #1DACD6;
+		}
+		.ann { /* Annoncer */
+		color: #FFAF22;
+		}
+		.cav { /* Cave Johnson */
+		color: #EE1111;
+		}
+		.car{ /* Caroline */
+		color: #00BBAa;
+		}
+		.tur { /* Turret */
+		color: #990100;
+		}
+		.sfx{ /*Sound Effects, eg sparks */
+		color:gray;
+		}
+		.none{
+		color:black;
+		}
+		</style>
+	</head>
+	<body>
+	<h1 style="text-align:center">BEE2 Quote Selection System</h1>
+	<p>This document explains how exactly quotes are chosen in the various styles. Use it to help you pick an appropriate style, or find out what items play a certain line.</p>
+	<h2>Table of Contents:</h2>
+	<ul>
+		<li><a href="#method">Selection method</a></li>
+		<li><a href="#cat">Categories</a></li>
+		<li><a href="#char">Characters</a></li>
+		<li><a href="#char">FGEmod Choreo</a></li>
+		<li>Styles: <ul>
+		<li><a href="#50s">1950s Style</a></li>
+		<li><a href="#60s">1960s Style</a></li>
+		<li><a href="#70s">1970s Style</a></li>
+		<li><a href="#80s">1980s Style</a></li>
+		<li><a href="#p1">Portal 1 Style</a></li>
+		<li><a href="#clean">Clean Style</a></li>
+		<li><a href="#art">Art Therapy</a></li>
+		<li class="divider">&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;</li>
+		<li><a href="#rebuild">Refurbished Style (TS addons)</a></li>
+		<li><a href="#over">Overgrown Style (TS addons)</a></li>
+		<li><a href="#wheat">Wheatley Style (TS addons, just plans)</a></li>
+		</ul></li>
+	</ul>
+	<h2><a id="method">Selection method</a></h2>
+	<p>Quotes are chosen using a priority system based on items in the map. Most items have a category, and some apply to two categories - for example, laserfields apply to the Deadly category as well as the Laser category. The categories have a specific priority sequence. The first category found that has an item that exists in the map will have its lines chosen, stopping other categories from playing. Some additional lines are played outside of this, based on other events occurring (usually only the first time). </p>
+	<p>Sometimes there are multiple line sequences to choose from in one category, which are selected based upon which entry/exit corridor is selected (7 SP entry, 4 exits, 1 Coop entry). This is chosen randomly by the PTI whenever a map is created, and doesn't change after that making it useful for this purpose. </p> 
+	<p>In each table, the categories are ordered from highest to lowest. Click on a voice line to hear it (via the <a href="http://theportalwiki.com/wiki/Voice_lines">Portal Wiki</a>), or hover over to get a transcript. The heading before the colon says when it is triggered, and each indented line after plays as a group. if there are two or more colon-headings the same but ending with numbers, one will be randomly chosen to play.</p>
+	<h2 id="cat">Categories:</h2>
+	<ul>
+		<li>Generic (lowest priority, played if nothing else is found)</li>
+		<li>Always plays (not on priority list, plays at special times regardless what items are in the map)</li>
+		<li>Forced (overrides with a different voice line if a certain entry/exit room is chosen)</li>
+		------<br>
+		<li>Deadly (Turrets, Crushers, HEP emitters, LaserFields, Laser Emitters)</li>
+		<li>Blue Gel (Repulsion, includes Faith Plates in 1950s,1960s,1970s and 1980s styles)</li>
+		<li>Orange Gel (Propulsion)</li>
+		<li>White Gel (Conversion)</li>
+		<li>Grey Gel (Reflection, from the Stylechanger)</li>
+		<li>Light Bridge</li>
+		<li>Funnel</li>
+		<li>Pellet (Emitter only)</li>
+		<li>Sendificator (made by HMW but included in the BEE2)</li>
+		<li>Laser (Laser Emitter, LaserField)</li>
+		<li>Fizzler (Emancipation Grid, Paint Fizzler from the Stylechanger if no separate category exists)</li>
+		<li>Crushers - BEEMOD</li>
+		<li>Turret</li>
+		<li>Paint Fizzler - Stylechanger</li>
+		<li>Glass (walls, or clear panels)</li>
+	</ul>
+	<h2>Character Code:</h2>
+	<ul id="char">
+		<li class=ann>Announcer</li>
+		<li class=car>Caroline</li>
+		<li class=cav>Cave Johnson</li>
+		<li class=gla>GLaDOS</li>
+		<li class=wht>Wheatley</li>
+		<li class=tur>Turret</li>
+		<li class=sfx>Sound Effects</li>
+	</ul>
+	
+	<h2>FGEmod Choreo Box</h2>
+	<p>This item allows the playing of some chosen voicelines when triggered by other logic. The lines are chosen via a timer selector. Most styles will probably use the Clean version, if the item is available but some will use other lines.</p>
+	<table style="width:auto;">
+	<tr><th>Timer</th><th>Clean</th><th>Overgrown</th><th>1950s</th><th>1960s</th><th>1970s</th><th>1980s</th></tr>
+	<tr><td>00:03</td>
+		<td><a href="http://i1.theportalwiki.net/img/5/50/GLaDOS_coop_laugh01.wav"
+				data-quote="[Laughs]" class=gla>coop_laugh01</a></td>
+		<td><a href="http://i1.theportalwiki.net/img/e/e4/Announcer_good01.wav"
+				data-quote="Good!" class=ann>good01</a></td>
+		<td colspan=4><a href="http://i1.theportalwiki.net/img/1/17/Cave_Johnson_cave_laugh04.wav"
+				data-quote="[Laugh]" class=cav>cave_laugh04</a></td>
+	</tr>
+	<tr><td>00:04</td>
+		<td><a href="http://i1.theportalwiki.net/img/0/07/GLaDOS_sp_unassisted_angle_fling_entry01.wav"
+				data-quote="This next test... [boom!] ..is... [BOOM!] dangerous. I'll be right back." class=gla>sp_unassisted_angle_fling_entry01</a></td>
+		<td><a href="http://i1.theportalwiki.net/img/a/a7/Announcer_prehub42.wav"
+				data-quote="This next test is very dangerous. To help you remain tranquil in the face of almost certain death, smooth jazz will be deployed in three. Two. One. [SMOOTH JAZZ]" class=ann>prehub42</a></td>
+		<td colspan=2><a href="http://i1.theportalwiki.net/img/a/a5/Cave_Johnson_fifties_fifth_test_complete09.wav"
+				data-quote="Science isn't about WHY. It's about WHY NOT. Why is so much of our science dangerous? Why not marry safe science if you love it so much. In fact, why not invent a special safety door that won't hit you on the butt on the way out, because you are fired." class=cav>fifties_fifth_test_complete09</a>
+		<td><a href="http://i1.theportalwiki.net/img/c/c5/Cave_Johnson_seventies_intro02.wav"
+				data-quote="Right. Now, you might be asking yourself, 'Cave, just how difficult are these tests? What was in that phone book of a contract I signed? Am I in danger?'" class=cav>seventies_intro02</a></td>
+		<td><a href="http://i1.theportalwiki.net/img/9/92/Cave_Johnson_eighties_intro08.wav" 
+				data-quote="And guess what? Ground up moon rocks are pure poison. I am deathly ill." class=cav>eighties_intro08</a></td>
+	</tr>
+	<tr><td>00:05</td>
+		<td><a href="http://i1.theportalwiki.net/img/f/fa/GLaDOS_testchambermisc41.wav"
+			data-quote="Surprise!" class=gla>testchambermisc41</a></td>
+		<td><a href="http://i1.theportalwiki.net/img/f/f7/Announcer_good02.wav"
+				data-quote="Good!" class=ann>good02</a></td>
+		<td colspan=4><a href="http://i1.theportalwiki.net/img/1/17/Cave_Johnson_cave_laugh04.wav"
+				data-quote="[Laugh]" class=cav>cave_laugh04</a></td>
+	</tr>
+	<tr><td>00:06</td>
+		<td><a href="http://i1.theportalwiki.net/img/0/05/GLaDOS_potatos_pickups08.wav"
+			data-quote="I'd love to help you solve the tests. But I can't." class=gla>potatos_pickups08</a></td>
+		<td><a href="http://i1.theportalwiki.net/img/6/67/Announcer_prehub08.wav"
+				data-quote="We are currently experiencing technical difficulties due to circumstances of potentially apocalyptic significance beyond our control." class=ann>prehub08</a></td>
+		<td colspan=2><a href="http://i1.theportalwiki.net/img/9/97/Cave_Johnson_fifties_into_middle_of_test01.wav"
+				data-quote="Ha! I like your style. You make up your own rules, just like me." class=cav>fifties_into_middle_of_test01</a></td>	
+		<td><a href="http://i1.theportalwiki.net/img/f/f1/Cave_Johnson_seventies_test_a_intro01.wav"
+					data-quote="The testing area's just up ahead. The quicker you get through, the quicker you'll get your sixty bucks." class=cav>seventies_test_a_intro01</a></td>
+		<td><a href="http://i1.theportalwiki.net/img/7/75/Cave_Johnson_eighties_intro12.wav"
+					data-quote="That said, I would really appreciate it if you could test as fast as possible. Caroline, please bring me more pain pills." class=cav>eighties_intro12</a></td>
+	</tr>
+	<tr><td>00:07</td>
+		<td><a href="http://i1.theportalwiki.net/img/0/0b/GLaDOS_anti_taunt15.wav"
+			data-quote="Just stop flailing around like an incompetent." class=gla>anti_taunt15</a></td>
+		<td><a href="http://i1.theportalwiki.net/img/d/d4/Announcer_prehub18.wav"
+				data-quote="Good work getting this far, future-starter! That said, if you are simple-minded, old, or irradiated in such a way that the future should not start with you, please return to your primitive tribe and send back someone better-qualified for testing." class=ann>prehub18</a></td>
+		<td rowspan=3 colspan=2><a href="http://i1.theportalwiki.net/img/8/8f/Cave_Johnson_fifties_fifth_test_complete08.wav"
+				data-quote="Yes, you. Box. Your stuff. Out the front door. Parking lot. Car. Goodbye." class=cav>fifties_fifth_test_complete08</a></td>
+		<td rowspan=3><a href="http://i1.theportalwiki.net/img/1/1b/Cave_Johnson_seventies_test_a_complete05.wav"
+				data-quote="This on? [thump thump] Hey. Listen up down there. That thing's called an elevator. Not a bathroom." class=cav>seventies_test_a_complete05</a></td>
+		<td rowspan=3><dl>
+			<a href="http://i1.theportalwiki.net/img/1/17/Cave_Johnson_cave_laugh04.wav"
+				data-quote="[Laugh]" class=cav>cave_laugh04</a><br>
+			<a href="http://i1.theportalwiki.net/img/e/e4/Cave_Johnson_eighties_outro08.wav"
+				data-quote="Allright, test's over. You can head on back to your desk." class=cav>eighties_outro08</a></td>
+	</tr>
+	<tr><td>00:08</td>
+		<td><a href="http://i1.theportalwiki.net/img/3/3f/GLaDOS_mp_coop_catapult_wall_introdeath01.wav"
+			data-quote="Your failure brings back such wonderful memories." class=gla>mp_coop_catapult_wall_introdeath01</a></td>
+		<td><a href="http://i1.theportalwiki.net/img/5/50/Announcer_testchamber09.wav" 
+		 		data-quote="Great work! Because this message is prerecorded, any observations related to your performance are speculation on our part. Please disregard any undeserved compliments." class=ann>testchamber09</a></td>
+	</tr>
+	<tr><td>00:09</td>
+		<td><a href="http://i1.theportalwiki.net/img/c/ce/GLaDOS_mp_coop_catapult_wall_intro04.wav"
+			data-quote="That isn't science." class=gla>mp_coop_catapult_wall_intro04</a></td>
+		<td><a href="http://i1.theportalwiki.net/img/b/b9/Announcer_a4_recapture04.wav"
+			data-quote="Warning: Core overheating. Nuclear meltdown imminent." class=ann>a4_recapture04</a></td>
+
+	</tr>
+	</table>
+
+	<h2><a id="50s">1950s Style</a></h2>
+	<table>
+	<tr><th>Category (high to low)</th><th>Lines (SP)</th><th>Lines (Coop)</th></tr>
+	<tr><td rowspan=2>Always Plays</td>
+		<td colspan=2><dl>
+		<dt>Waiting on exit catwalks: </dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/aa/Cave_Johnson_fifties_fifth_test_intro01.wav"
+				data-quote="If you're hearing this, it means you're taking a long time on the catwalks between tests. The lab boys say that might be a fear reaction." class=cav>fifties_fifth_test_intro01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/53/Cave_Johnson_fifties_fifth_test_intro03.wav"
+				data-quote="I'm no psychiatrist, but coming from a bunch of eggheads who wouldn't recognize the thrill of danger if it walked up and snapped their little pink bras, that sounds like 'projection'." class=cav>fifties_fifth_test_intro03</a></dd>
+		</dl></td>
+	</tr><tr>
+		<td class="blank"></td>
+		<td><dl>
+		<dt>Before Entry quote:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/4d/Cave_Johnson_fifties_intro03.wav"
+			data-quote="Now, you already met one another on the limo ride over, so let me introduce myself." class=cav>fifties_intro03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/e/e2/Cave_Johnson_fifties_intro04.wav"
+				data-quote="I'm Cave Johnson. I own the place." class=cav>fifties_intro04</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Forced</td>
+		<td><dl>
+		<dt>Exit: </dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/43/Cave_Johnson_misc_tests02.wav"
+				data-quote="For this next test, we put nanoparticles in the gel. In layman's terms, that's a billion little gizmos that are gonna travel into your bloodstream and pump experimental genes and RNA molecules and so forth into your tumors." class=cav>misc_tests02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7c/Cave_Johnson_misc_tests03.wav" 
+				data-quote="Now, maybe you don't have any tumors. Well, don't worry. If you sat on a folding chair in the lobby and weren't wearing lead underpants, we took care of that too." class=cav>misc_tests03</a></dd>
+		</dl></td>
+		<td class="blank"></td>
+	</tr>
+	<tr><td>Funnel</td>
+		<td><dl>
+		<dt>Entry: </dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/Cave_Johnson_misc_tests08.wav"
+				data-quote="All these science spheres are made of asbestos, by the way. Keeps out the rats. Let us know if you feel a shortness of breath, a persistent dry cough or your heart stopping. Because that's not part of the test. That's asbestos." class=cav>misc_tests08</a></dd>
+		<dt>Exit: </dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d6/Cave_Johnson_misc_tests10.wav" 
+				data-quote="Good news is, the lab boys say the symptoms of asbestos poisoning show a median latency of forty-four point six years, so if you're thirty or older, you're laughing. Worst case scenario, you miss out on a few rounds of canasta, plus you forwarded the cause of science by three centuries. I punch those numbers into my calculator, it makes a happy face." class=cav>misc_tests10</a></dd>
+		</dl></td>
+		<td><dl>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/Cave_Johnson_misc_tests08.wav"
+				data-quote="All these science spheres are made of asbestos, by the way. Keeps out the rats. Let us know if you feel a shortness of breath, a persistent dry cough or your heart stopping. Because that's not part of the test. That's asbestos." class=cav>misc_tests08</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9c/Cave_Johnson_eighties_intro04.wav"
+				data-quote="[cough] As a result, you may have heard we're gonna phase out human testing. There's still a few things left to wrap up, though." class=cav>eighties_intro04</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d6/Cave_Johnson_misc_tests10.wav" 
+				data-quote="Good news is, the lab boys say the symptoms of asbestos poisoning show a median latency of forty-four point six years, so if you're thirty or older, you're laughing. Worst case scenario, you miss out on a few rounds of canasta, plus you forwarded the cause of science by three centuries. I punch those numbers into my calculator, it makes a happy face." class=cav>misc_tests10</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>White Gel</td>
+		<td><dl>
+		<dt>Entry: </dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c2/Cave_Johnson_eighties_intro06.wav" 
+				data-quote="First up, Conversion Gel. [Cough]" class=cav>eighties_intro06</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/70/Cave_Johnson_fifties_outro07.wav" 
+				data-quote="We're not gonna release this stuff into the wild until it's good and damn ready, so as long as you keep yourself in top physical form, there'll always be a limo waiting for you." class=cav>fifties_outro07</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry: </dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c2/Cave_Johnson_eighties_intro06.wav" 
+				data-quote="First up, Conversion Gel. [Cough]" class=cav>eighties_intro06</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/92/Cave_Johnson_eighties_intro08.wav" 
+				data-quote="And guess what? Ground up moon rocks are pure poison. I am deathly ill." class=cav>eighties_intro08</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9c/Cave_Johnson_eighties_intro04.wav"
+				data-quote="[cough] As a result, you may have heard we're gonna phase out human testing. There's still a few things left to wrap up, though." class=cav>eighties_intro04</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Laser</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/9/94/Cave_Johnson_misc_tests06.wav" q
+				data-quote="If you've cut yourself at all in the course of these tests, you might have noticed that your blood is pure gasoline. That's normal. We've been shooting you with an invisible laser that's supposed to turn blood into gasoline, so all that means is, it's working." class=cav>misc_tests06</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Blue Gel</td>
+		<td><dl>
+		<dt>Entry 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7b/Cave_Johnson_fifties_repulsion_intro02.wav"
+				data-quote="Alright, let's get started. This first test involves something the lab boys call 'repulsion gel'." class=cav>fifties_repulsion_intro02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5c/Cave_Johnson_fifties_repulsion_intro03.wav"
+				data-quote="You're not part of the control group, by the way. You get the gel. Last poor son of a gun got blue paint. Hahaha. All joking aside, that did happen - broke every bone in his legs. Tragic. But informative. Or so I'm told." class=cav>fifties_repulsion_intro03</a></dd>
+		<dt>Entry 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/3d/Cave_Johnson_fifties_waiting05.wav"
+				data-quote="Those of you helping us test the repulsion gel today, just follow the blue line on the floor." class=cav>fifties_waiting05</a></dd>
+		<dt>Exit 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/3f/Cave_Johnson_fifties_second_test_complete03.wav" 
+				data-quote="Oh, in case you got covered in that repulsion gel, here's some advice the lab boys gave me: DO NOT get covered in the repulsion gel." class=cav>fifties_second_test_complete03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/0/06/Cave_Johnson_fifties_second_test_complete02.wav" 
+				data-quote="We haven't entirely nailed down what element it is yet, but I'll tell you this: It's a lively one, and it does NOT like the human skeleton." class=cav>fifties_second_test_complete02</a></dd>
+		<dt>Exit 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/6/6a/Cave_Johnson_fifties_second_test_intro01.wav"
+				data-quote="The lab boys just informed me that I should not have mentioned the control group. They're telling me I oughtta stop making these pre-recorded messages. That gave me an idea: Make more pre-recorded messages. I pay the bills here, I can talk about the control group all damn day." class=cav>fifties_second_test_intro01</a>
+		<dt>Exit 3:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/9/97/Cave_Johnson_fifties_into_middle_of_test01.wav"
+				data-quote="Ha! I like your style. You make up your own rules, just like me." class=cav>fifties_into_middle_of_test01</a></dd>
+		<dt>Exit 4:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c4/Cave_Johnson_fifties_outro02.wav"
+				data-quote="Congratulations! The simple fact that you're standing here listening to me means you've made a glorious contribution to science." class=cav>fifties_outro02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/6/6c/Cave_Johnson_fifties_outro05.wav"
+				data-quote="As founder and CEO of Aperture Science, I thank you for your participation and hope we can count on you for another round of tests."  class=cav>fifties_outro05</a></dd>
+		<dt>Exit 5:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a2/Cave_Johnson_seventies_test_a_complete06.wav"
+				data-quote="Great job, astronaut, war hero, and/or Olympian! With your help, we're gonna (tape sped up) change the world!" class=cav>seventies_test_a_complete06</a></dd>
+		<dt>Exit 6:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/ae/Cave_Johnson_fifties_fourth_test_complete02.wav" 
+				data-quote="Alright, this next test may involve trace amounts of time travel. So, word of advice: If you meet yourself on the testing track, don't make eye contact. Lab boys tell me that'll wipe out time. Entirely. Forward and backward! So do both of yourselves a favor and just let that handsome devil go about his business." class=cav>fifties_fourth_test_complete02</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7b/Cave_Johnson_fifties_repulsion_intro02.wav"
+				data-quote="Alright, let's get started. This first test involves something the lab boys call 'repulsion gel'." class=cav>fifties_repulsion_intro02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/0/06/Cave_Johnson_fifties_second_test_complete02.wav" 
+				data-quote="We haven't entirely nailed down what element it is yet, but I'll tell you this: It's a lively one, and it does NOT like the human skeleton." class=cav>fifties_second_test_complete02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9c/Cave_Johnson_eighties_intro04.wav"
+				data-quote="[cough] As a result, you may have heard we're gonna phase out human testing. There's still a few things left to wrap up, though." class=cav>eighties_intro04</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Deadly</td>
+		<td colspan=2><dl>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a5/Cave_Johnson_fifties_fifth_test_complete09.wav"
+				data-quote="Science isn't about WHY. It's about WHY NOT. Why is so much of our science dangerous? Why not marry safe science if you love it so much. In fact, why not invent a special safety door that won't hit you on the butt on the way out, because you are fired." class=cav>fifties_fifth_test_complete09</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/4/45/Cave_Johnson_fifties_fifth_test_complete03.wav"
+				data-quote="Not you, test subject, you're doing fine." class=cav>fifties_fifth_test_complete03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/8/8f/Cave_Johnson_fifties_fifth_test_complete08.wav"
+				data-quote="Yes, you. Box. Your stuff. Out the front door. Parking lot. Car. Goodbye." class=cav>fifties_fifth_test_complete08</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Orange Gel</td>
+		<td><dl>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/70/Cave_Johnson_fifties_outro07.wav"
+				data-quote="We're not gonna release this stuff into the wild until it's good and damn ready, so as long as you keep yourself in top physical form, there'll always be a limo waiting for you." class=cav>fifties_outro07</a></dd>
+		</dl></td>
+		<td class="blank"></td>
+	</tr>
+	<tr><td>Generic</td>
+		<td><dl>
+		<dt>Entry 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/b/b4/Cave_Johnson_fifties_intro01.wav"
+			data-quote="Welcome, gentlemen, to Aperture Science. Astronauts, war heroes, Olympians--you're here because we want the best, and you are it. So: Who is ready to make some science?" class=cav>fifties_intro01</a></dd>
+		<dt>Entry 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/1/16/Cave_Johnson_fifties_elevator_out_a01.wav"
+				data-quote="They say great science is built on the shoulders of giants. Not here. At Aperture, we do all our science from scratch. No hand holding." class=cav>fifties_elevator_out_a01</a></dd>
+		<dt>Entry 3:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/6/6b/Cave_Johnson_fifties_waiting01.wav"
+				data-quote="There's a thousand tests performed every day here in our enrichment spheres. I can't personally oversee every one of them, so these pre-recorded messages will cover any questions you might have, and respond to any incidents that may occur in the course of your science adventure." class=cav>fifties_waiting01</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/9/97/Cave_Johnson_fifties_into_middle_of_test01.wav"
+				data-quote="Ha! I like your style. You make up your own rules, just like me." class=cav>fifties_into_middle_of_test01</a></dd>
+		</dl></td>
+	</tr>
+	</table>
+	
+	<h2><a id="60s">1960s Style</a></h2>
+	<table>
+	<tr><th>Category (high to low)</th><th>Lines (SP)</th><th>Lines (Coop)</th></tr>
+	<tr><td>Forced</td>
+		<td><dl>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a2/Cave_Johnson_seventies_test_a_complete06.wav"
+				data-quote="Great job, astronaut, war hero, and/or Olympian! With your help, we're gonna (tape sped up) change the world!" class=cav>seventies_test_a_complete06</a></dd>
+		</dl></td>
+		<td class="blank"></td>
+	</tr>
+	<tr><td>Funnel</td>
+		<td><dl>
+		<dt>Entry: </dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/Cave_Johnson_misc_tests08.wav"
+				data-quote="All these science spheres are made of asbestos, by the way. Keeps out the rats. Let us know if you feel a shortness of breath, a persistent dry cough or your heart stopping. Because that's not part of the test. That's asbestos." class=cav>misc_tests08</a></dd>
+		<dt>Exit: </dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d6/Cave_Johnson_misc_tests10.wav" 
+				data-quote="Good news is, the lab boys say the symptoms of asbestos poisoning show a median latency of forty-four point six years, so if you're thirty or older, you're laughing. Worst case scenario, you miss out on a few rounds of canasta, plus you forwarded the cause of science by three centuries. I punch those numbers into my calculator, it makes a happy face." class=cav>misc_tests10</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/ad/Cave_Johnson_misc_tests24.wav"
+				data-quote="Just a heads up: We're gonna have a superconductor turned up full blast and pointed at you for the duration of this next test. I'll be honest, we're throwing science at the wall here to see what sticks. No idea what it'll do. Probably nothing. Best-case scenario, you might get some superpowers. Worst case, some tumors, which we'll cut out." class=cav>misc_tests24</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>White Gel</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c2/Cave_Johnson_eighties_intro06.wav"
+				data-quote="First up, Conversion Gel. [Cough]" class=cav>eighties_intro_06</a></dd>
+		<dt>Exit:</dt>
+		<dd><a href="http://i1.theportalwiki.net/img/7/70/Cave_Johnson_fifties_outro07.wav"
+				data-quote="We're not gonna release this stuff into the wild until it's good and damn ready, so as long as you keep yourself in top physical form, there'll always be a limo waiting for you." class=cav>fifties_outro07</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c2/Cave_Johnson_eighties_intro06.wav"
+				data-quote="First up, Conversion Gel. [Cough]" class=cav>eighties_intro_06</a></dd>
+		<dd><a href="http://i1.theportalwiki.net/img/9/92/Cave_Johnson_eighties_intro08.wav" 
+				data-quote="And guess what? Ground up moon rocks are pure poison. I am deathly ill." class=cav>eighties_intro08</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9c/Cave_Johnson_eighties_intro04.wav"
+				data-quote="[cough] As a result, you may have heard we're gonna phase out human testing. There's still a few things left to wrap up, though." class=cav>eighties_intro04</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/30/Cave_Johnson_misc_tests26.wav"
+				data-quote="Now, if you're part of Control Group Kepler-Seven, we implanted a tiny microchip about the size of a postcard into your skull. Most likely you've forgotten it's even there, but if it starts vibrating and beeping during this next test, let us know, because that means it's about to hit five hundred degrees, so we're gonna need to go ahead and get that out of you pretty fast." class=cav>misc_tests26</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Laser</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/9/94/Cave_Johnson_misc_tests06.wav"
+				data-quote="If you've cut yourself at all in the course of these tests, you might have noticed that your blood is pure gasoline. That's normal. We've been shooting you with an invisible laser that's supposed to turn blood into gasoline, so all that means is, it's working." class=cav>misc_tests06</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/8/89/Cave_Johnson_misc_tests25.wav"
+				data-quote="If you're allergic to peanuts, you might want to tell somebody now, because this next test may turn your blood into peanut water for a few minutes. On the bright side, if we can make this happen, they're gonna have to invent a new type of Nobel Prize to give us, so hang in there." class=cav>misc_tests25</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Blue Gel</td>
+		<td class="blank"></td>
+		<td><dl>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/3f/Cave_Johnson_fifties_second_test_complete03.wav"
+				data-quote="Oh, in case you got covered in that repulsion gel, here's some advice the lab boys gave me: DO NOT get covered in the repulsion gel." class=cav>fifties_second_test_complete03</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Deadly</td>
+		<td><dl>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a5/Cave_Johnson_fifties_fifth_test_complete09.wav"
+				data-quote="Science isn't about WHY. It's about WHY NOT. Why is so much of our science dangerous? Why not marry safe science if you love it so much. In fact, why not invent a special safety door that won't hit you on the butt on the way out, because you are fired." class=cav>fifties_fifth_test_complete09</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/4/45/Cave_Johnson_fifties_fifth_test_complete03.wav"
+				data-quote="Not you, test subject, you're doing fine." class=cav>fifties_fifth_test_complete03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/8/8f/Cave_Johnson_fifties_fifth_test_complete08.wav"
+				data-quote="Yes, you. Box. Your stuff. Out the front door. Parking lot. Car. Goodbye." class=cav>fifties_fifth_test_complete08</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/2/27/Cave_Johnson_misc_tests01.wav"
+				data-quote="The average human male is about sixty percent water. Far as we're concerned, that's a little extravagant. So if you feel a bit dehydrated in this next test, that's normal. We're gonna hit you with some jet engines, and see if we can't get you down to twenty or thirty percent." class=cav>misc_tests01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Orange Gel</td>
+		<td><dl>
+		<dt>Exit:</dt>
+		<dd><a href="http://i1.theportalwiki.net/img/7/70/Cave_Johnson_fifties_outro07.wav"
+				data-quote="We're not gonna release this stuff into the wild until it's good and damn ready, so as long as you keep yourself in top physical form, there'll always be a limo waiting for you." class=cav>fifties_outro07</a></dd>
+		</dl></td>
+		<td class="blank"></td>
+	</tr>
+	<tr><td>Grey Gel (Stylechanger)</td>
+		<td class="blank"></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/43/Cave_Johnson_misc_tests02.wav"
+				data-quote="For this next test, we put nanoparticles in the gel. In layman's terms, that's a billion little gizmos that are gonna travel into your bloodstream and pump experimental genes and RNA molecules and so forth into your tumors." class=cav>misc_tests02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7c/Cave_Johnson_misc_tests03.wav" 
+				data-quote="Now, maybe you don't have any tumors. Well, don't worry. If you sat on a folding chair in the lobby and weren't wearing lead underpants, we took care of that too." class=cav>misc_tests03</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/30/Cave_Johnson_misc_tests26.wav"
+				data-quote="Now, if you're part of Control Group Kepler-Seven, we implanted a tiny microchip about the size of a postcard into your skull. Most likely you've forgotten it's even there, but if it starts vibrating and beeping during this next test, let us know, because that means it's about to hit five hundred degrees, so we're gonna need to go ahead and get that out of you pretty fast." class=cav>misc_tests26</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Generic</td>
+		<td><dl>
+		<dt>Exit 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/2/27/Cave_Johnson_misc_tests01.wav"
+				data-quote="The average human male is about sixty percent water. Far as we're concerned, that's a little extravagant. So if you feel a bit dehydrated in this next test, that's normal. We're gonna hit you with some jet engines, and see if we can't get you down to twenty or thirty percent." class=cav>misc_tests01</a></dd>
+		<dt>Exit 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/1/19/Cave_Johnson_misc_tests07.wav"
+				data-quote="Just a heads-up: That coffee we gave you earlier had fluorescent calcium in it so we can track the neuronal activity in your brain. There's a slight chance the calcium could harden and vitrify your frontal lobe. Anyway, don't stress yourself thinking about it. I'm serious. Visualizing the scenario while under stress actually triggers the reaction." class=cav>misc_tests07</a></dd>
+		<dt>Exit 3:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/cf/Cave_Johnson_misc_tests14.wav"
+				data-quote="If you need to go to the bathroom after this next series of tests, please let a test associate know, because in all likelihood, whatever comes out of you is going to be coal. Only temporary, so do not worry. If it persists for a week, though, start worrying and come see us, because that's not supposed to happen." class=cav>misc_tests14</a></dd>
+		<dt>Exit 4:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/ad/Cave_Johnson_misc_tests24.wav"
+				data-quote="Just a heads up: We're gonna have a superconductor turned up full blast and pointed at you for the duration of this next test. I'll be honest, we're throwing science at the wall here to see what sticks. No idea what it'll do. Probably nothing. Best-case scenario, you might get some superpowers. Worst case, some tumors, which we'll cut out." class=cav>misc_tests24</a></dd>
+		<dt>Exit 5:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/8/89/Cave_Johnson_misc_tests25.wav"
+				data-quote="If you're allergic to peanuts, you might want to tell somebody now, because this next test may turn your blood into peanut water for a few minutes. On the bright side, if we can make this happen, they're gonna have to invent a new type of Nobel Prize to give us, so hang in there." class=cav>misc_tests25</a></dd>
+		<dt>Exit 6:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/30/Cave_Johnson_misc_tests26.wav"
+				data-quote="Now, if you're part of Control Group Kepler-Seven, we implanted a tiny microchip about the size of a postcard into your skull. Most likely you've forgotten it's even there, but if it starts vibrating and beeping during this next test, let us know, because that means it's about to hit five hundred degrees, so we're gonna need to go ahead and get that out of you pretty fast." class=cav>misc_tests26</a></dd>
+		<dt>Exit 7:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/2/28/Cave_Johnson_misc_tests28.wav"
+				data-quote="All right. We're working on a little teleportation experiment. Now, this doesn't work with all skin types, so try to remember which skin is yours, and if it doesn't teleport along with you, we'll do what we can to sew you right back into it." class=cav>misc_tests28</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/6/6b/Cave_Johnson_fifties_waiting01.wav"
+				data-quote="There's a thousand tests performed every day here in our enrichment spheres. I can't personally oversee every one of them, so these pre-recorded messages will cover any questions you might have, and respond to any incidents that may occur in the course of your science adventure." class=cav>fifties_waiting01</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/cf/Cave_Johnson_misc_tests14.wav"
+				data-quote="If you need to go to the bathroom after this next series of tests, please let a test associate know, because in all likelihood, whatever comes out of you is going to be coal. Only temporary, so do not worry. If it persists for a week, though, start worrying and come see us, because that's not supposed to happen." class=cav>misc_tests14</a></dd>
+		</dl></td>
+	</tr>	
+	</table>
+	
+	<h2><a id="70s">1970s Style</a></h2>
+	<table>
+	<tr><th>Category (high to low)</th><th>Lines (SP)</th><th>Lines (Coop)</th></tr>
+	<tr><td rowspan=2>Always Plays</td>
+		<td colspan=2><dl>
+		<dt>Waiting on exit catwalks: </dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/aa/Cave_Johnson_fifties_fifth_test_intro01.wav"
+				data-quote="If you're hearing this, it means you're taking a long time on the catwalks between tests. The lab boys say that might be a fear reaction." class=cav>fifties_fifth_test_intro01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/53/Cave_Johnson_fifties_fifth_test_intro03.wav"
+				data-quote="I'm no psychiatrist, but coming from a bunch of eggheads who wouldn't recognize the thrill of danger if it walked up and snapped their little pink bras, that sounds like 'projection'." 
+						class=cav>fifties_fifth_test_intro03</a></dd>
+		</dl></td>
+	</tr><tr>
+		<td class="blank"></td>
+		<td><dl>
+		<dt>Before Entry quote 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/2/2c/Cave_Johnson_dlc2_0560_altcave_hobo_king01.wav"
+				data-quote="Welcome, gentlemen, to the Aperture Hollow Science Jungle. Tramps, hillbillies, drifters: you're here because you followed the hobo signs. So, who is ready to scrounge around for some science? Now, you already met one another on the boxcar over here, so grab a bowl of slumgullion and a glass of sterno, and let me introduce myself. I'm Michigan Slim Cave Johnson. I'm the hobo king."‎ class=cav>dlc2_0560_altcave_hobo_king01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/2/2b/Cave_Johnson_seventies_intro14.wav"
+					data-quote="So. Welcome to Aperture. You're here because we want the best, and you're it. Nope. Couldn't keep a straight face." class=cav>seventies_intro14</a></dd>
+		<dt>Before Entry quote 2 <br>(if chosen, only first white gel line will play):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/58/Cave_Johnson_seventies_intro16.wav"
+					data-quote="Greetings, friend. I'm Cave Johnson, CEO of Aperture Science - you might know us as a vital participant in the 1968 Senate Hearings on missing astronauts. And you've most likely used one of the many products we invented. But that other people have somehow managed to steal from us. Black Mesa can eat my bankrupt--" class=cav>seventies_intro16</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9c/Cave_Johnson_eighties_intro04.wav"
+				data-quote="[cough] As a result, you may have heard we're gonna phase out human testing. There's still a few things left to wrap up, though." class=cav>eighties_intro04</a></dd>
+		<dt>Before Entry quote 4:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/2/2b/Cave_Johnson_seventies_intro14.wav"
+					data-quote="So. Welcome to Aperture. You're here because we want the best, and you're it. Nope. Couldn't keep a straight face." class=cav>seventies_intro14</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Funnel</td>
+		<td><dl>
+		<dt>Exit (50% chance):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/Cave_Johnson_misc_tests08.wav"
+				data-quote="All these science spheres are made of asbestos, by the way. Keeps out the rats. Let us know if you feel a shortness of breath, a persistent dry cough or your heart stopping. Because that's not part of the test. That's asbestos." class=cav>misc_tests08</a></dd>
+		<dt>Exit (50% chance):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d6/Cave_Johnson_misc_tests10.wav" 
+				data-quote="Good news is, the lab boys say the symptoms of asbestos poisoning show a median latency of forty-four point six years, so if you're thirty or older, you're laughing. Worst case scenario, you miss out on a few rounds of canasta, plus you forwarded the cause of science by three centuries. I punch those numbers into my calculator, it makes a happy face." class=cav>misc_tests10</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/Cave_Johnson_misc_tests08.wav"
+				data-quote="All these science spheres are made of asbestos, by the way. Keeps out the rats. Let us know if you feel a shortness of breath, a persistent dry cough or your heart stopping. Because that's not part of the test. That's asbestos." class=cav>misc_tests08</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9c/Cave_Johnson_eighties_intro04.wav"
+				data-quote="[cough] As a result, you may have heard we're gonna phase out human testing. There's still a few things left to wrap up, though." class=cav>eighties_intro04</a></dd>
+		<dt>Exit (50% chance):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d6/Cave_Johnson_misc_tests10.wav" 
+				data-quote="Good news is, the lab boys say the symptoms of asbestos poisoning show a median latency of forty-four point six years, so if you're thirty or older, you're laughing. Worst case scenario, you miss out on a few rounds of canasta, plus you forwarded the cause of science by three centuries. I punch those numbers into my calculator, it makes a happy face." class=cav>misc_tests10</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>White Gel</td>
+		<td><dl>
+		<dt>Entry:</dt>
+				<dd><a href="http://i1.theportalwiki.net/img/c/c2/Cave_Johnson_eighties_intro06.wav"
+				data-quote="First up, Conversion Gel. [Cough]" class=cav>eighties_intro06</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c2/Cave_Johnson_eighties_intro06.wav"
+				data-quote="First up, Conversion Gel. [Cough]" class=cav>eighties_intro_06</a></dd>
+		<dd><a href="http://i1.theportalwiki.net/img/9/92/Cave_Johnson_eighties_intro08.wav" 
+				data-quote="And guess what? Ground up moon rocks are pure poison. I am deathly ill." class=cav>eighties_intro08</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9c/Cave_Johnson_eighties_intro04.wav"
+				data-quote="[cough] As a result, you may have heard we're gonna phase out human testing. There's still a few things left to wrap up, though." class=cav>eighties_intro04</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Laser</td>
+		<td><dl>
+		<dt>Entry (2/7 chance):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/9/94/Cave_Johnson_misc_tests06.wav"
+				data-quote="If you've cut yourself at all in the course of these tests, you might have noticed that your blood is pure gasoline. That's normal. We've been shooting you with an invisible laser that's supposed to turn blood into gasoline, so all that means is, it's working." class=cav>misc_tests06</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/9/94/Cave_Johnson_misc_tests06.wav"
+				data-quote="If you've cut yourself at all in the course of these tests, you might have noticed that your blood is pure gasoline. That's normal. We've been shooting you with an invisible laser that's supposed to turn blood into gasoline, so all that means is, it's working." class=cav>misc_tests06</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Glass</td>
+		<td colspan=2><dl>
+			<dt>Entry:</dt>
+				<dd><a href="http://i1.theportalwiki.net/img/d/d7/Cave_Johnson_seventies_intro15.wav"
+					data-quote="Anyway, don't smudge up the glass down there. In fact, why don't you just go ahead and not touch anything unless it's test related." class=cav>seventies_intro15</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Deadly</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c5/Cave_Johnson_seventies_intro02.wav"
+				data-quote="Right. Now, you might be asking yourself, 'Cave, just how difficult are these tests? What was in that phone book of a contract I signed? Am I in danger?'" class=cav>seventies_intro02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/b/bd/Cave_Johnson_seventies_intro04.wav"
+				data-quote="Let me answer those questions with a question: Who wants to make sixty dollars? Cash." class=cav>seventies_intro04</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c2/Cave_Johnson_seventies_intro06.wav"
+				data-quote="You can also feel free to relax for up to 20 minutes in the waiting room, which is a damn sight more comfortable than the park benches most of you were sleeping on when we found you." class=cav>seventies_intro06</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a5/Cave_Johnson_fifties_fifth_test_complete09.wav"
+				data-quote="Science isn't about WHY. It's about WHY NOT. Why is so much of our science dangerous? Why not marry safe science if you love it so much. In fact, why not invent a special safety door that won't hit you on the butt on the way out, because you are fired." class=cav>fifties_fifth_test_complete09</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/4/45/Cave_Johnson_fifties_fifth_test_complete03.wav"
+				data-quote="Not you, test subject, you're doing fine." class=cav>fifties_fifth_test_complete03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/8/8f/Cave_Johnson_fifties_fifth_test_complete08.wav"
+				data-quote="Yes, you. Box. Your stuff. Out the front door. Parking lot. Car. Goodbye." class=cav>fifties_fifth_test_complete08</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Orange Gel</td>
+		<td colspan=2><dl>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d9/Cave_Johnson_seventies_outro01.wav"
+					data-quote="Thank you - I can't believe I'm thanking these people - for staggering your way through Aperture Science's propulsion gel testing. You've made some real contributions to society for a change, and for that, humanity is grateful." class=cav>seventies_outro01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Generic</td>
+		<td><dl>
+		<dt>Entry 1 or 6:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/2/2b/Cave_Johnson_seventies_intro14.wav"
+					data-quote="So. Welcome to Aperture. You're here because we want the best, and you're it. Nope. Couldn't keep a straight face." class=cav>seventies_intro14</a></dd>
+		<dt>Entry 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/58/Cave_Johnson_seventies_intro16.wav"
+					data-quote="Greetings, friend. I'm Cave Johnson, CEO of Aperture Science - you might know us as a vital participant in the 1968 Senate Hearings on missing astronauts. And you've most likely used one of the many products we invented. But that other people have somehow managed to steal from us. Black Mesa can eat my bankrupt--" class=cav>seventies_intro16</a></dd>
+		<dt>Entry 3 or 7:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f1/Cave_Johnson_seventies_test_a_intro01.wav"
+					data-quote="The testing area's just up ahead. The quicker you get through, the quicker you'll get your sixty bucks." class=cav>seventies_test_a_intro01</a></dd>
+		<dt>Entry 4:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c5/Cave_Johnson_seventies_intro02.wav"
+				data-quote="Right. Now, you might be asking yourself, 'Cave, just how difficult are these tests? What was in that phone book of a contract I signed? Am I in danger?'" class=cav>seventies_intro02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/b/bd/Cave_Johnson_seventies_intro04.wav"
+				data-quote="Let me answer those questions with a question: Who wants to make sixty dollars? Cash." class=cav>seventies_intro04</a></dd>
+		<dt>Entry 5:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9f/Cave_Johnson_seventies_test_b_complete01.wav"
+					data-quote="If you're interested in an additional sixty dollars, flag down a test associate and let 'em know. You could walk out of here with a hundred and twenty weighing down your bindle if you let us take you apart, put some science stuff in you, then put you back together good as new." class=cav>seventies_test_b_complete01</a></dd>
+		<dt>Exit 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c9/Cave_Johnson_seventies_outro02.wav"
+					data-quote="If you had any belongings, please pick them up now. We don't want old newspapers and sticks cluttering up the building." class=cav>seventies_outro02</a></dd>
+		<dt>Exit 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a2/Cave_Johnson_seventies_test_a_complete06.wav"
+					data-quote="Great job, astronaut, war hero, and/or Olympian! With your help, we're gonna (tape sped up) change the world!" class=cav>seventies_test_a_complete06</a></dd>
+		<dt>Exit 3:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/Cave_Johnson_seventies_test_a_intro02.wav"
+					data-quote="Caroline, are the compensation vouchers ready?" class=cav>seventies_test_a_intro02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/Caroline_cave_responses27.wav"
+					data-quote="Yes sir Mr Johnson." class=car>caroline_cave_responses27</a></dd>
+		<dt>Exit 4 or 7:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/2/29/Cave_Johnson_seventies_intro07.wav"
+					data-quote="For many of you, I realize 60 dollars is an unprecedented windfall, so don't go spending it all on... I don't know. Caroline, what do these people buy? Tattered hats? Beard dirt?" class=cav>seventies_intro07</a></dd>
+		<dt>Exit 5:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/6/65/Cave_Johnson_seventies_test_b_complete03.wav"
+					data-quote="In case you're interested, there's still some positions available for that bonus opportunity I mentioned earlier. Again: All you gotta do is let us disassemble you. We're not banging rocks together here. We know how to put a man back together." class=cav>seventies_test_b_complete03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d8/Cave_Johnson_seventies_test_b_complete04.wav"
+					data-quote="So that's a complete reassembly. New vitals. Spit-shine on the old ones. Plus we're scooping out tumors. Frankly, you oughtta be paying us." class=cav>seventies_test_b_complete04</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f1/Cave_Johnson_seventies_test_a_intro01.wav"
+					data-quote="The testing area's just up ahead. The quicker you get through, the quicker you'll get your sixty bucks." class=cav>seventies_test_a_intro01</a></dd>
+		<dt>Exit 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c9/Cave_Johnson_seventies_outro02.wav"
+					data-quote="If you had any belongings, please pick them up now. We don't want old newspapers and sticks cluttering up the building." class=cav>seventies_outro02</a></dd>
+		<dt>Exit 4:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/2/29/Cave_Johnson_seventies_intro07.wav"
+					data-quote="For many of you, I realize 60 dollars is an unprecedented windfall, so don't go spending it all on... I don't know. Caroline, what do these people buy? Tattered hats? Beard dirt?" class=cav>seventies_intro07</a></dd>
+		</dl></td>
+	</tr>
+	</table>
+	
+	<h2><a id="80s">1980s Style</a></h2>
+	<p>In the 1980s style, Caroline will sometimes explain tests instead of Cave. This overrides a bunch of voice lines in favor of some Caroline lines, and changes the Cave portraits found in various entry/exit corridors (or in the 80s TS Addons Monitor) to the secret painting of Cave and Caroline. (See the <a href="http://theportalwiki.com/wiki/Portal_2_Chapter_7_Enrichment_Sphere_4">Portrait Of A Lady</a> achievement.)
+	<table>
+	<tr><th>Category (high to low)</th><th>Lines (SP)</th><th>Lines (Coop)</th></tr>
+	<tr><td rowspan=2>Always Plays</td>
+		<td><dl>
+		<dt>Waiting on exit catwalks (without Caroline): </dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/aa/Cave_Johnson_fifties_fifth_test_intro01.wav"
+				data-quote="If you're hearing this, it means you're taking a long time on the catwalks between tests. The lab boys say that might be a fear reaction." class=cav>fifties_fifth_test_intro01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/53/Cave_Johnson_fifties_fifth_test_intro03.wav"
+				data-quote="I'm no psychiatrist, but coming from a bunch of eggheads who wouldn't recognize the thrill of danger if it walked up and snapped their little pink bras, that sounds like 'projection'." 
+						class=cav>fifties_fifth_test_intro03</a></dd>
+		<dt>Waiting on exit catwalks (with Caroline):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/34/Caroline_cave_responses36.wav" 
+				data-quote="Sir, the testing." class=car>caroline_cave_responses36</a></dd>
+		</dl></td>
+		<td><dl>
+			<dt>Waiting on exit catwalks: </dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/aa/Cave_Johnson_fifties_fifth_test_intro01.wav"
+				data-quote="If you're hearing this, it means you're taking a long time on the catwalks between tests. The lab boys say that might be a fear reaction." class=cav>fifties_fifth_test_intro01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/53/Cave_Johnson_fifties_fifth_test_intro03.wav"
+				data-quote="I'm no psychiatrist, but coming from a bunch of eggheads who wouldn't recognize the thrill of danger if it walked up and snapped their little pink bras, that sounds like 'projection'." 
+						class=cav>fifties_fifth_test_intro03</a></dd>
+			<dt>Before Entry quote:</dt>
+				<dd><a href="http://i1.theportalwiki.net/img/f/f7/Cave_Johnson_eighties_intro01.wav" 
+					data-quote="Welcome to the enrichment center. [cough]" class=cav>eighties_intro01</a></dd>
+		</td>
+	</tr><tr>
+		<td colspan=2><dl>
+		<dt>Walk near turret 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/8/82/Turret_different_turret02.wav" 
+				data-quote="Get mad." class=tur>different_turret02</a></dd>
+		<dt>Walk near turret 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/36/Turret_different_turret03.wav" 
+				data-quote="Don't make lemonade." class=tur>different_turret03</a></dd>
+		<dt>Walk near turret 3:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/ae/Turret_different_turret04.wav" 
+				data-quote="Prometheus was punished by the gods for giving the gift of knowledge to man. He was cast into the bowels of the earth and pecked by birds." class=tur>different_turret04</a></dd>
+		<dt>Walk near turret 4:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/35/Turret_different_turret09.wav" 
+				data-quote="The answer is beneath us." class=tur>different_turret09</a></dd>
+		<dt>Walk near turret (much more likely, only if Caroline is present):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5a/Turret_different_turret10.wav" 
+				data-quote="Her name is Caroline." class=tur>different_turret10</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Caroline</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/43/Caroline_cave_responses41.wav" 
+				data-quote="We're still doing science sir." class=car>caroline_cave_responses41</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/77/Caroline_cave_responses31.wav" 
+				data-quote="Goodbye Caroline." class=car>caroline_cave_responses31</a></dd>
+	</tr>
+	<tr><td>Funnel (50% chance)</td>
+		<td colspan=2><dl>
+		<dt>Entry: </dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/Cave_Johnson_misc_tests08.wav"
+				data-quote="All these science spheres are made of asbestos, by the way. Keeps out the rats. Let us know if you feel a shortness of breath, a persistent dry cough or your heart stopping. Because that's not part of the test. That's asbestos." class=cav>misc_tests08</a></dd>
+		<dt>Exit: </dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d6/Cave_Johnson_misc_tests10.wav" 
+				data-quote="Good news is, the lab boys say the symptoms of asbestos poisoning show a median latency of forty-four point six years, so if you're thirty or older, you're laughing. Worst case scenario, you miss out on a few rounds of canasta, plus you forwarded the cause of science by three centuries. I punch those numbers into my calculator, it makes a happy face." class=cav>misc_tests10</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>White Gel</td>
+		<td><dl>
+		<dt>Entry:</dt>
+				<dd><a href="http://i1.theportalwiki.net/img/c/c2/Cave_Johnson_eighties_intro06.wav"
+					data-quote="First up, Conversion Gel. [Cough]" class=cav>eighties_intro06</a></dd>	
+				<dd><a href="http://i1.theportalwiki.net/img/a/a8/Cave_Johnson_eighties_intro07.wav"
+					data-quote="The bean counters told me we literally could not afford to buy seven dollars worth of moon rocks, much less seventy million. Bought 'em anyway. Ground 'em up, mixed em into a gel." class=cav>eighties_intro07</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c2/Cave_Johnson_eighties_intro06.wav" 
+				data-quote="First up, Conversion Gel. [Cough]" class=cav>eighties_intro06</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/92/Cave_Johnson_eighties_intro08.wav" 
+				data-quote="And guess what? Ground up moon rocks are pure poison. I am deathly ill." class=cav>eighties_intro08</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9c/Cave_Johnson_eighties_intro04.wav"
+				data-quote="[cough] As a result, you may have heard we're gonna phase out human testing. There's still a few things left to wrap up, though." class=cav>eighties_intro04</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Laser</td>
+		<td colspan=2><dl>
+		<dt>Entry (rarely):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/9/94/Cave_Johnson_misc_tests06.wav"
+				data-quote="If you've cut yourself at all in the course of these tests, you might have noticed that your blood is pure gasoline. That's normal. We've been shooting you with an invisible laser that's supposed to turn blood into gasoline, so all that means is, it's working." class=cav>misc_tests06</a></dd>
+			
+		</dl></td>
+	</tr>
+	<tr><td>Blue Gel</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7b/Cave_Johnson_fifties_repulsion_intro02.wav"
+				data-quote="Alright, let's get started. This first test involves something the lab boys call 'repulsion gel'." class=cav>fifties_repulsion_intro02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5c/Cave_Johnson_fifties_repulsion_intro03.wav"
+				data-quote="You're not part of the control group, by the way. You get the gel. Last poor son of a gun got blue paint. Hahaha. All joking aside, that did happen - broke every bone in his legs. Tragic. But informative. Or so I'm told." class=cav>fifties_repulsion_intro03</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/3f/Cave_Johnson_fifties_second_test_complete03.wav"
+				data-quote="Oh, in case you got covered in that repulsion gel, here's some advice the lab boys gave me: DO NOT get covered in the repulsion gel." class=cav>fifties_second_test_complete03</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7b/Cave_Johnson_fifties_repulsion_intro02.wav" 
+				data-quote="Alright, let's get started. This first test involves something the lab boys call 'repulsion gel.'" class=cav>fifties_repulsion_intro02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/0/06/Cave_Johnson_fifties_second_test_complete02.wav" 
+				data-quote="We haven't entirely nailed down what element it is yet, but I'll tell you this: It's a lively one, and it does NOT like the human skeleton." class=cav>fifties_second_test_complete02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9c/Cave_Johnson_eighties_intro04.wav"
+				data-quote="[cough] As a result, you may have heard we're gonna phase out human testing. There's still a few things left to wrap up, though." class=cav>eighties_intro04</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Deadly</td>
+		<td colspan=2><dl>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a5/Cave_Johnson_fifties_fifth_test_complete09.wav"
+				data-quote="Science isn't about WHY. It's about WHY NOT. Why is so much of our science dangerous? Why not marry safe science if you love it so much. In fact, why not invent a special safety door that won't hit you on the butt on the way out, because you are fired." class=cav>fifties_fifth_test_complete09</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/4/45/Cave_Johnson_fifties_fifth_test_complete03.wav"
+				data-quote="Not you, test subject, you're doing fine." class=cav>fifties_fifth_test_complete03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/8/8f/Cave_Johnson_fifties_fifth_test_complete08.wav"
+				data-quote="Yes, you. Box. Your stuff. Out the front door. Parking lot. Car. Goodbye." class=cav>fifties_fifth_test_complete08</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td rowspan=2>Generic</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f7/Cave_Johnson_eighties_intro01.wav" 
+				data-quote="Welcome to the enrichment center. [cough]" class=cav>eighties_intro01</a></dd>
+		<dt>Exit 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/e/e4/Cave_Johnson_eighties_outro08.wav" 
+				data-quote="Allright, test's over. You can head on back to your desk." class=cav>eighties_outro08</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/0/0d/Cave_Johnson_eighties_intro03.wav"
+				data-quote="Since making test participation mandatory for all employees, the quality of our test subjects has risen dramatically. Employee retention, however, has not." class=cav>eighties_intro03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9c/Cave_Johnson_eighties_intro04.wav"
+				data-quote="[cough] As a result, you may have heard we're gonna phase out human testing. There's still a few things left to wrap up, though." class=cav>eighties_intro04</a></dd>
+		<dt>Exit 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c9/Cave_Johnson_seventies_outro02.wav"
+					data-quote="If you had any belongings, please pick them up now. We don't want old newspapers and sticks cluttering up the building." class=cav>seventies_outro02</a></dd>
+		</dl></td>
+	</tr><tr>
+		<td colspan=2><dl>
+		<dt>Exit 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/2/27/Cave_Johnson_eighties_outro05.wav"
+				data-quote="Brain Mapping. Artificial Intelligence. We should have been working on it thirty years ago. I will say this - and I'm gonna say it on tape so everybody hears it a hundred times a day: If I die before you people can pour me into a computer, I want Caroline to run this place." class=cav>eighties_outro05</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/d/dc/Cave_Johnson_eighties_outro06.wav" 
+				data-quote="Now she'll argue. She'll say she can't. She's modest like that. But you make her." class=cav>eighties_outro06</a></dd>
+		<dt>Exit 3:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/af/Cave_Johnson_eighties_outro09.wav" 
+				data-quote="All right, I've been thinking. When life gives you lemons? Don't make lemonade. Make life take the lemons back! Get mad! 'I don't want your damn lemons! What am I supposed to do with these?'" class=cav>eighties_outro09</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d1/Cave_Johnson_eighties_outro11.wav" 
+				data-quote="Demand to see life's manager! Make life rue the day it thought it could give Cave Johnson lemons! Do you know who I am? I'm the man who's going to burn your house down! With the lemons! I'm going to get my engineers to invent a combustible lemon that burns your house down! [cough]" class=cav>eighties_outro11</a></dd>
+		</dl></td>
+	</tr>
+	</table>
+	
+	<h2><a id="p1">Portal 1 Style</a></h2>
+	<table>
+	<tr><th>Category (high to low)</th><th>Lines (SP)</th><th>Lines (Coop)</th></tr>
+	<tr><td rowspan=2>Always Plays</td>
+		<td colspan=2><dl>
+			<dt>Before Entry quote:</dt>
+				<dd><a href="http://i1.theportalwiki.net/img/9/9c/GLaDOS_coop_vault_intro01.wav"
+					data-quote="Hello and, again, welcome to the Aperture Science Computer-Aided Enrichment Center." class=gla>coop_vault_intro01</a></dd>
+			<dt>Camera dismounted (Large Observation Room):</dt> <!--@glados_cam3-->
+				<dd><a href="http://i1.theportalwiki.net/img/8/8f/GLaDOS_taunt_highfive01.wav"
+					data-quote="That is not part of the test." class=gla>taunt_highfive01</a></dd>
+			<dt>Camera dismounted (Entry Door):</dt> <!--@glados-cam1-->
+				<dd><a href="http://i1.theportalwiki.net/img/4/4f/GLaDOS_taunt_small_wave01.wav"
+					data-quote="Yes, I see you, and no, I don't care." class=gla>taunt_small_wave01</a></dd>
+			<dt>Camera dismounted (Exit Door):</dt> <!--@glados_cam2-->
+				<dd><a href="http://i1.theportalwiki.net/img/2/2b/GLaDOS_taunt_robot_arm_ripple05.wav"
+					data-quote="If you were wondering how could you annoy me without failing a test. Now you know." class=gla>taunt_robot_arm_ripple05</a></dd>
+			<dt>Entry Door Camera fizzled in Exit Door fizzler:</dt> <!-- @glados_cam4 -->
+				<dd><a href="http://i1.theportalwiki.net/img/2/23/GLaDOS_mp_humanresources01.wav"
+					data-quote="Did you know we originally used these cameras to capture moments of intense pain and agony in test subjects?" class=gla>humanresources01</a></dd>
+				<dd><a href="http://i1.theportalwiki.net/img/f/fc/GLaDOS_mp_humanresources03.wav"
+					data-quote="If the subject survived the test, we let them purchase the pictures for $5. If the subject died, we gave the photo to their next of kin free of charge." class=gla>humanresources03</a></dd>
+				<dd><a href="http://i1.theportalwiki.net/img/8/89/GLaDOS_mp_humanresources04.wav"
+					data-quote="The photos weren't as popular as we had hoped, so we repurposed the cameras." class=gla>humanresources04</a></dd>
+			<dt>Faith Plate triggered:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d3/GLaDOS_sp_trust_fling_entry01.wav"
+				data-quote="Well. Have fun soaring through the air without a care in the world." class=gla>sp_trust_fling_entry01</a></dd>
+		</dl></td>
+		</tr><tr>
+		<td><dl>
+		<dt>Ball placed on Ball Button:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/33/GLaDOS_mp_coop_fling_3end01.wav"
+				data-quote="You did an excellent job placing the edgeless safety cube in the receptacle, you should be very - oh wait." class=gla>mp_coop_fling_3end01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5a/GLaDOS_mp_coop_fling_3end04.wav"
+				data-quote="You have no idea how tiring it is to praise someone for placing an edgeless safety cube into a receptacle designed to exactly fit an edgeless safety cube." class=gla>mp_coop_fling_3end03</a></dd>
+		<dt>Cube placed on Cube Button:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d2/GLaDOS_mp_coop_calibration03.wav"
+				data-quote="Weighted Cubes calibrated." class=gla>mp_coop_calibration03</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Ball placed on Ball Button:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/33/GLaDOS_mp_coop_fling_3end01.wav"
+				data-quote="You did an excellent job placing the edgeless safety cube in the receptacle, you should be very - oh wait." class=gla>mp_coop_fling_3end01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/3/3b/GLaDOS_mp_coop_fling_3end02.wav"
+				data-quote="That’s right. You're not humans." class=gla>mp_coop_fling_3end02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/50/GLaDOS_mp_coop_fling_3end03.wav"
+				data-quote="I can drop the fake praise." class=gla>mp_coop_fling_3end03</a></dd>
+		<dt>Turret killed (knocked over, painted blue, burned, etc):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/0/05/GLaDOS_mp_coop_laser_201.wav"
+				data-quote="What are you doing? YOU MONSTER! They're one of us." class=gla>mp_coop_laser_201</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/53/GLaDOS_mp_coop_laser_202.wav"
+				data-quote="I'm kidding." class=gla>mp_coop_laser_202</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/0/00/GLaDOS_mp_coop_laser_203.wav"
+				data-quote="Destroying them is part of the test. They are no more important to you than you are to me." class=gla>mp_coop_laser_203</a></dd>
+			</dl></td>
+	</tr>
+	<tr><td>Sendificator (BEE2)</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a8/GLaDOS_coop_test_chamber_both15.wav"
+				data-quote="Please proceed into the next test chamber." class=gla>coop_testchamber_both15</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/7/72/GLaDOS_sp_laser_redirect_intro_entry03.wav"
+				data-quote="Which involves deadly lasers and how test subjects react when locked in a room with deadly lasers." class=gla>sp_laser_redirect_intro_entry03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/GLaDOS_sp_paint_jump_trampoline_entry01.wav"
+				data-quote="While I was out investigating, I found a fascinating new test element. It's never been used for human testing because, apparently, contact with it causes heart failure. The literature doesn't mention anything about lump-of-coal failure, though, so you should be fine." class=gla>sp_paint_jump_trampoline_entry01</a></dd>
+		</dl></td>
+		<td class="blank"></td>
+	<tr><td>Grey Gel (Stylechanger)</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/GLaDOS_sp_paint_jump_trampoline_entry01.wav"
+				data-quote="While I was out investigating, I found a fascinating new test element. It's never been used for human testing because, apparently, contact with it causes heart failure. The literature doesn't mention anything about lump-of-coal failure, though, so you should be fine." class=gla>sp_paint_jump_trampoline_entry01</a></dd>	
+		</dl></td>
+	</tr>
+	<tr><td>White Gel</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/8/83/GLaDOS_potatos_sp_a4_finale01_deathtrap01.wav"
+				data-quote="Hold on. Couldn't we just use that conversion gel?" class=gla>potatos_sp_a4_finale01_deathtrap01</a></dd>	
+		</dl></td>
+	</tr>
+	<tr><td>Orange Gel</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/43/GLaDOS_prehub34.wav"
+				data-quote="This next test applies the principles of momentum to movement through portals. If the laws of physics no longer apply in the future, God help you." class=gla>prehub34</a></dd>	
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/0/04/GLaDOS_dlc1_mp_coop_separation_1_intro03.wav"
+				data-quote="Welcome. To the future." class=gla>dlc1_mp_coop_separation_1_intro03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/4/43/GLaDOS_prehub34.wav"
+				data-quote="This next test applies the principles of momentum to movement through portals. If the laws of physics no longer apply in the future, God help you." class=gla>prehub34</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Blue Gel</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/GLaDOS_sp_paint_jump_trampoline_entry01.wav"
+				data-quote="While I was out investigating, I found a fascinating new test element. It's never been used for human testing because, apparently, contact with it causes heart failure. The literature doesn't mention anything about lump-of-coal failure, though, so you should be fine." class=gla>sp_paint_jump_trampoline_entry01</a></dd>	
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7a/GLaDOS_sp_hole_in_the_sky_completion02.wav"
+				data-quote="But now, looking around, seeing Aperture restored to its former glory? You don't have to worry about leaving EVER again. I mean that." class=gla>sp_hole_in_the_sky_competion02</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Light Bridge</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/72/GLaDOS_sp_a2_bridge_intro01.wav"
+				data-quote="These bridges are made from natural light that I pump in from the surface. If you rubbed your cheek on one, it would be like standing outside with the sun shining on your face. It would also set your hair on fire, so don't actually do it." class=gla>sp_a2_bridge_intro</a></dd>	
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a1/GLaDOS_mp_coop_catapult_2.wav"
+				data-quote="This is a bridge-building exercise. The humans were miserable at this, mostly because you can't build bridges out of tears." class=gla>mp_coop_catapult_2</a></dd>	
+		</dl></td>
+	</tr>
+	<tr><td rowspan=2>Faith Plate</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5c/GLaDOS_faith_plate_intro01.wav"
+				data-quote="This next test involves the Aperture Science Aerial Faith Plate. It was part of an initiative to investigate how well test subjects could solve problems when they were catapulted into space. Results were highly informative: They could not. Good luck!" class=gla>faith_plate_intro01</a></dd>
+		</dl></td>
+		<td class="blank"></td>
+		</tr><tr>
+		<td colspan=2><dl>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/aa/GLaDOS_sp_catapult_fling_sphere_peek_completion01.wav"
+				data-quote="Look at you. Sailing through the air majestically. Like an eagle. Piloting a blimp." class=gla>sp_catapult_fling_sphere_peek_completion01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Crusher</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/53/GLaDOS_mp_coop_fling_crushers01.wav"
+				data-quote="In case you were wondering, you do not need to be crushed to solve this test." class=gla>mp_coop_fling_crushers01</a></dd>	
+		</dl></td>
+	</tr>
+	<tr><td>Laser</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a8/GLaDOS_coop_test_chamber_both15.wav"
+				data-quote="Please proceed into the next test chamber." class=gla>coop_testchamber_both15</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/7/72/GLaDOS_sp_laser_redirect_intro_entry03.wav"
+				data-quote="Which involves deadly lasers and how test subjects react when locked in a room with deadly lasers." class=gla>sp_laser_redirect_intro_entry03</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Funnel</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/GLaDOS_sp_paint_jump_trampoline_entry01.wav"
+				data-quote="While I was out investigating, I found a fascinating new test element. It's never been used for human testing because, apparently, contact with it causes heart failure. The literature doesn't mention anything about lump-of-coal failure, though, so you should be fine." class=gla>sp_paint_jump_trampoline_entry01</a></dd>	
+		</dl></td>
+		<td class="blank"></td>
+	</tr>
+	<tr><td>Turret</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5c/GLaDOS_mp_coop_tbeam_end12.wav"
+				data-quote="You may want to try and avoid those turrets." class=gla>mp_coop_tbeam_end12</a></dd>	
+		</dl></td>
+	</tr>
+	<tr><td>Deadly</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/2/20/GLaDOS_mp_coop_paint_redirect07.wav"
+				data-quote="To start preparing for human testing again, I checked an old suggestion box. The number one request? Less deadly tests." class=gla>mp_coop_paint_redirect_07</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/2/29/GLaDOS_mp_coop_paint_redirect08.wav"
+				data-quote="That's ridiculous, how do they know for sure the tests are deadly if they could still write the suggestion?" class=gla>mp_coop_paint_redirect08</a></dd>	
+		</dl></td>
+	</tr>
+	<tr><td>Paint Fizzler (Stylechanger)</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a9/GLaDOS_sp_a2_fizzler_intro01.wav"
+				data-quote="This next test involves emancipation grills. Remember? I told you about them in the last test area, that did not have one." class=gla>sp_a2_fizzler_intro01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/GLaDOS_sp_paint_jump_trampoline_entry01.wav"
+				data-quote="While I was out investigating, I found a fascinating new test element. It's never been used for human testing because, apparently, contact with it causes heart failure. The literature doesn't mention anything about lump-of-coal failure, though, so you should be fine." class=gla>sp_paint_jump_trampoline_entry01</a></dd>	
+		</dl></td>
+	</tr>
+	<tr><td>Fizzler</td>
+		<td class="blank"></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a9/GLaDOS_sp_a2_fizzler_intro01.wav"
+				data-quote="This next test involves emancipation grills. Remember? I told you about them in the last test area, that did not have one." class=gla>sp_a2_fizzler_intro01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Generic</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f0/GLaDOS_mp_coop_turret_ball01.wav"
+				data-quote="I thought going back to these old tests would satisfy me. But try as you might to fail this next test, I still won't be satisfied." class=gla>mp_coop_turret_ball01</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/8/86/GLaDOS_sp_laser_powered_lift_completion01.wav"
+				data-quote="I have the results of the last chamber: You are a horrible person. That's what it says: A horrible person. We weren't even testing for that." class=gla>sp_laser_powered_lift_completion01</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/42/GLaDOS_a2_triple_laser01.wav"
+				data-quote="Federal regulations require me to warn you that this next test chamber... is looking pretty good." class=gla>a2_triple_laser01</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f9/GLaDOS_botcoop_competition01.wav"
+				data-quote="Excellent. Although great science is always the result of collaboration, keep in mind that, like Albert Einstein and his cousin Terry, history will only remember one of you." class=gla>botcoop_competition01</a></dd>
+		</dl></td>
+	</tr>
+	</table>
+	
+	<h2><a id="clean">Clean Style</a></h2>
+	<table>
+	<tr><th>Category (high to low)</th><th>Lines (SP)</th><th>Lines (Coop)</th></tr>
+	<tr><td rowspan=2>Always Plays</td>
+		<td colspan=2><dl>
+		<dt>Faith Plate Triggered:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d3/GLaDOS_sp_trust_fling_entry01.wav"
+				data-quote="Well. Have fun soaring through the air without a care in the world." class=gla>sp_trust_fling_entry01</a></dd>
+		
+		<dt>Cube placed on Cube Button:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d2/GLaDOS_mp_coop_calibration03.wav"
+				data-quote="Weighted Cubes calibrated." class=gla>mp_coop_calibration03</a></dd>
+		
+		<dt>Cube destroyed:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/3f/GLaDOS_fizzlecube06.wav"
+				data-quote="Oh well. We have warehouses FULL of the things. Absolutely worthless. I'm happy to get rid of them." class=gla>fizzlecube06</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9c/GLaDOS_fizzlecube03.wav"
+				data-quote="Go ahead and grab another one." class=gla>fizzlecube03</a></dd>
+				
+		<dt>Companion Cube destroyed:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/3f/GLaDOS_fizzlecube06.wav"
+				data-quote="Oh well. We have warehouses FULL of the things. Absolutely worthless. I'm happy to get rid of them." class=gla>fizzlecube06</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9f/GLaDOS_sp_a2_pit_flings_future_starter02.wav"
+				data-quote="Anyway, here's a new cube for you to project your deranged loneliness onto." class=gla>sp_a2_pit_flings_future_starter02</a></dd>
+				
+		<dt>Companion Cube incinerated (BEE2 Incinerator):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/3d/GLaDOS_sp_a2_pit_flings06.wav"
+				data-quote="I think that one was about to say 'I love you.' They ARE sentient, of course. We just have a LOT of them." class=gla>sp_a2_pit_flings06</a></dd>
+				
+		<dt>Frankenturret picked up:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/da/GLaDOS_mp_subterfuge06.wav"
+				data-quote="What a horrible little machine." class=gla>mp_subterfuge06</a></dd>
+		</dl></td>
+	</tr><tr>
+		<td><dl>
+		<dt>During Cave's PTI speech:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/8/81/GLaDOS_potatos_sp_a3_speed_ramp_hearcave02.wav"
+				data-quote="Hold on, who-?" class=gla>potatos_sp_a3_speed_ramp_hearcave02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/4/47/GLaDOS_potatos_hearcave_b01.wav"
+				data-quote="I swear I know him..." class=gla>potatos_hearcave_b01</a></dd>
+				<dd><a href="http://i1.theportalwiki.net/img/b/bd/GLaDOS_potatos_cave_deathspeech_reactions09.wav"
+				data-quote="Oh, I like this guy." class=gla>potatos_cave_deathspeech_reactions09</a></dd>
+		<dt>Ball placed on Ball Button (sometimes plays, and second line sometimes plays after first):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/33/GLaDOS_mp_coop_fling_3end01.wav"
+				data-quote="You did an excellent job placing the edgeless safety cube in the receptacle, you should be very - oh wait." class=gla>mp_coop_fling_3end01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5a/GLaDOS_mp_coop_fling_3end04.wav"
+				data-quote="You have no idea how tiring it is to praise someone for placing an edgeless safety cube into a receptacle designed to exactly fit an edgeless safety cube." class=gla>mp_coop_fling_3end03</a></dd>
+		</dl></td>
+		
+		<td><dl>
+		<dt>Cube placed on Cube Button:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d2/GLaDOS_mp_coop_calibration03.wav"
+				data-quote="Weighted Cubes calibrated." class=gla>mp_coop_calibration03</a></dd>
+		<dt>Ball placed on Ball Button:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/33/GLaDOS_mp_coop_fling_3end01.wav"
+				data-quote="You did an excellent job placing the edgeless safety cube in the receptacle, you should be very - oh wait." class=gla>mp_coop_fling_3end01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/3/3b/GLaDOS_mp_coop_fling_3end02.wav"
+				data-quote="That’s right. You're not humans." class=gla>mp_coop_fling_3end02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/50/GLaDOS_mp_coop_fling_3end03.wav"
+				data-quote="I can drop the fake praise." class=gla>mp_coop_fling_3end03</a></dd>
+		<dt>Turret killed (knocked over, painted blue, burned, etc):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/0/05/GLaDOS_mp_coop_laser_201.wav"
+				data-quote="What are you doing? YOU MONSTER! They're one of us." class=gla>mp_coop_laser_201</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/53/GLaDOS_mp_coop_laser_202.wav"
+				data-quote="I'm kidding." class=gla>mp_coop_laser_202</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/0/00/GLaDOS_mp_coop_laser_203.wav"
+				data-quote="Destroying them is part of the test. They are no more important to you than you are to me." class=gla>mp_coop_laser_203</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Sendificator (BEE2)</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a8/GLaDOS_coop_test_chamber_both15.wav"
+				data-quote="Please proceed into the next test chamber." class=gla>coop_testchamber_both15</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/7/72/GLaDOS_sp_laser_redirect_intro_entry03.wav"
+				data-quote="Which involves deadly lasers and how test subjects react when locked in a room with deadly lasers." class=gla>sp_laser_redirect_intro_entry03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/GLaDOS_sp_paint_jump_trampoline_entry01.wav"
+				data-quote="While I was out investigating, I found a fascinating new test element. It's never been used for human testing because, apparently, contact with it causes heart failure. The literature doesn't mention anything about lump-of-coal failure, though, so you should be fine." class=gla>sp_paint_jump_trampoline_entry01</a></dd>
+		</dl></td>
+		<td class="blank"></td>
+	</tr>
+	<tr><td>Paint Fizzler (Stylechanger)</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a9/GLaDOS_sp_a2_fizzler_intro01.wav"
+				data-quote="This next test involves emancipation grills. Remember? I told you about them in the last test area, that did not have one." class=gla>sp_a2_fizzler_intro01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/GLaDOS_sp_paint_jump_trampoline_entry01.wav"
+				data-quote="While I was out investigating, I found a fascinating new test element. It's never been used for human testing because, apparently, contact with it causes heart failure. The literature doesn't mention anything about lump-of-coal failure, though, so you should be fine." class=gla>sp_paint_jump_trampoline_entry01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Grey Gel (Stylechanger) / Diversity Vent (BEEMOD)</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/GLaDOS_sp_paint_jump_trampoline_entry01.wav"
+				data-quote="While I was out investigating, I found a fascinating new test element. It's never been used for human testing because, apparently, contact with it causes heart failure. The literature doesn't mention anything about lump-of-coal failure, though, so you should be fine." class=gla>sp_paint_jump_trampoline_entry01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Pellet (BEEMOD)</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/2/20/GLaDOS_mp_coop_paint_redirect07.wav"
+				data-quote="To start preparing for human testing again, I checked an old suggestion box. The number one request? Less deadly tests." class=gla>mp_coop_paint_redirect_07</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/2/29/GLaDOS_mp_coop_paint_redirect08.wav"
+				data-quote="That's ridiculous, how do they know for sure the tests are deadly if they could still write the suggestion?" class=gla>mp_coop_paint_redirect08</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Crusher (BEEMOD)</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/53/GLaDOS_mp_coop_fling_crushers01.wav"
+				data-quote="In case you were wondering, you do not need to be crushed to solve this test." class=gla>mp_coop_fling_crushers01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Orange Gel</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/0/04/GLaDOS_dlc1_mp_coop_separation_1_intro03.wav"
+				data-quote="Welcome. To the future." class=gla>dlc1_mp_coop_separation_1_intro03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/4/43/GLaDOS_prehub34.wav"
+				data-quote="This next test applies the principles of momentum to movement through portals. If the laws of physics no longer apply in the future, God help you." class=gla>prehub34</a></dd>
+				
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/33/GLaDOS_prehub35.wav"
+				data-quote="Congratulations! This pre-recorded congratulations assumes you have mastered the principles of portal momentum." class=gla>prehub35</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f3/GLaDOS_prehub36.wav"
+				data-quote="If you have, in fact, not, you are encouraged to take a moment to reflect on your failure before proceeding into the next chamber." class=gla>prehub36</a></dd>
+		</dl></td>
+		
+	</tr>
+	<tr><td>Blue Gel</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7a/GLaDOS_sp_hole_in_the_sky_completion02.wav"
+				data-quote="But now, looking around, seeing Aperture restored to its former glory? You don't have to worry about leaving EVER again. I mean that." class=gla>sp_hole_in_the_sky_competion02</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Light Bridge</td>
+		<td><dl>
+		<dt>Entry 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/72/GLaDOS_sp_a2_bridge_intro01.wav"
+				data-quote="These bridges are made from natural light that I pump in from the surface. If you rubbed your cheek on one, it would be like standing outside with the sun shining on your face. It would also set your hair on fire, so don't actually do it." class=gla>sp_a2_bridge_intro</a></dd>
+				
+		<dt>Entry 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c2/GLaDOS_sp_a2_ricochet01.wav"
+				data-quote="Enjoy this next test. I'm going to go to the surface. It's a beautiful day out. Yesterday I saw a deer. If you solve this next test, maybe I'll let you ride an elevator all the way up to the break room, and I'll tell you about the time I saw a deer again." class=gla>sp_a2_ricochet01</a></dd>
+		</dl></td>
+		
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a1/GLaDOS_mp_coop_catapult_2.wav"
+				data-quote="This is a bridge-building exercise. The humans were miserable at this, mostly because you can't build bridges out of tears." class=gla>mp_coop_catapult_2</a></dd>
+		</td></dl>
+	</tr>
+	<tr><td>Faith Plate</td>
+		<td><dl>
+		<dt>Entry 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5c/GLaDOS_faith_plate_intro01.wav"
+				data-quote="This next test involves the Aperture Science Aerial Faith Plate. It was part of an initiative to investigate how well test subjects could solve problems when they were catapulted into space. Results were highly informative: They could not. Good luck!" class=gla>faith_plate_intro01</a></dd>
+		<dt>Entry 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/e/ee/GLaDOS_sp_catapult_intro_completion01.wav"
+				data-quote="Let's see what the next test is. Oh. Advanced Aerial Faith Plates." class=gla>sp_catapult_intro_completion01</a></dd>
+				
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/aa/GLaDOS_sp_catapult_fling_sphere_peek_completion01.wav"
+				data-quote="Look at you. Sailing through the air majestically. Like an eagle. Piloting a blimp." class=gla>sp_catapult_fling_sphere_peek_completion01</a></dd>
+		</dl></td>
+		<td class="blank"></td>
+	</tr>
+	<tr><td>White Gel</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/8/83/GLaDOS_potatos_sp_a4_finale01_deathtrap01.wav"
+				data-quote="Hold on. Couldn't we just use that conversion gel?" class=gla>potatos_sp_a4_finale01_deathtrap01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Laser</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a8/GLaDOS_coop_test_chamber_both15.wav"
+				data-quote="Please proceed into the next test chamber." class=gla>coop_testchamber_both15</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/7/72/GLaDOS_sp_laser_redirect_intro_entry03.wav"
+				data-quote="Which involves deadly lasers and how test subjects react when locked in a room with deadly lasers." class=gla>sp_laser_redirect_intro_entry03</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Turret</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5c/GLaDOS_mp_coop_tbeam_end12.wav"
+				data-quote="You may want to try and avoid those turrets." class=gla>mp_coop_tbeam_end12</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Deadly</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/2/20/GLaDOS_mp_coop_paint_redirect07.wav"
+				data-quote="To start preparing for human testing again, I checked an old suggestion box. The number one request? Less deadly tests." class=gla>mp_coop_paint_redirect_07</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/2/29/GLaDOS_mp_coop_paint_redirect08.wav"
+				data-quote="That's ridiculous, how do they know for sure the tests are deadly if they could still write the suggestion?" class=gla>mp_coop_paint_redirect08</a></dd>
+		
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7d/GLaDOS_mp_coop_wall_block03.wav"
+				data-quote="Congratulations. Your ability to complete this test proves the humans wrong. They described it as impossible, deadly, cruel, and one test subject even had the nerve to call it broken." class=gla>mp_coop_wall_block03</a></dd>
+		</dl></td>
+		
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/2/20/GLaDOS_mp_coop_paint_redirect07.wav"
+				data-quote="To start preparing for human testing again, I checked an old suggestion box. The number one request? Less deadly tests." class=gla>mp_coop_paint_redirect_07</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/2/29/GLaDOS_mp_coop_paint_redirect08.wav"
+				data-quote="That's ridiculous, how do they know for sure the tests are deadly if they could still write the suggestion?" class=gla>mp_coop_paint_redirect08</a></dd>
+		
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7d/GLaDOS_mp_coop_wall_block03.wav"
+				data-quote="Congratulations. Your ability to complete this test proves the humans wrong. They described it as impossible, deadly, cruel, and one test subject even had the nerve to call it broken." class=gla>mp_coop_wall_block03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/98/GLaDOS_mp_coop_wall_block04.wav"
+				data-quote="Of course the humans only had one try at it, you can just keep trying." class=gla>mp_coop_wall_block04</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Fizzler</td>
+		<td colspan=2><dl>
+		<dt>Entry</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a9/GLaDOS_sp_a2_fizzler_intro01.wav"
+				data-quote="This next test involves emancipation grills. Remember? I told you about them in the last test area, that did not have one." class=gla>sp_a2_fizzler_intro01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Generic</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/42/GLaDOS_a2_triple_laser01.wav"
+				data-quote="Federal regulations require me to warn you that this next test chamber... is looking pretty good." class=gla>a2_triple_laser01</a></dd>
+		<dt>Exit 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f8/GLaDOS_testchambermisc12.wav"
+				data-quote="Waddle over to the elevator and we'll continue the testing." class=gla>testchambermisc12</a></dd>
+		<dt>Exit 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/1/1d/GLaDOS_dlc1_leaderboard01.wav"
+				data-quote="That was genuinely mildly impressive." class=gla>dlc1_leaderboard01</a></dd>
+		<dt>Exit 3:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/ce/GLaDOS_dlc1_leaderboard20.wav"
+				data-quote="You are playing above the global average. Statistically speaking, there are actually people playing worse than you." class=gla>dlc1_leaderboard20</a></dd>
+		<dt>Exit 4:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/e/e6/GLaDOS_dlc1_leaderboard23.wav"
+				data-quote="Very not completely bad." class=gla>dlc1_leaderboard23</a></dd>
+		<dt>Exit 5:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/cd/GLaDOS_dlc1_leaderboard07.wav"
+				data-quote="[impressed] Maybe I was wrong about you." class=gla>dlc1_leaderboard07</a></dd>
+		<dt>Exit 6:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a6/GLaDOS_dlc1_leaderboard06.wav"
+				data-quote="Impressive." class=gla>dlc1_leaderboard06</a></dd>
+		<dt>Exit 7:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9f/GLaDOS_dlc1_leaderboard03.wav"
+				data-quote="Congratulations." class=gla>dlc1_leaderboard03</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/42/GLaDOS_a2_triple_laser01.wav"
+				data-quote="Federal regulations require me to warn you that this next test chamber... is looking pretty good." class=gla>a2_triple_laser01</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f9/GLaDOS_botcoop_competition01.wav"
+				data-quote="Excellent. Although great science is always the result of collaboration, keep in mind that, like Albert Einstein and his cousin Terry, history will only remember one of you." class=gla>botcoop_competition01</a></dd>
+	</tr>
+	</table>
+
+	<h2><a id="art">Art Therapy</a></h2>
+	<p> GLaDOS uses the intercom dings in Art Therapy style.</p>
+	<table>
+	<tr><th>Category (high to low)</th><th>Lines (SP)</th><th>Lines (Coop)</th></tr>
+	<tr><td rowspan=2>Always Plays</td>
+		<td colspan=2><dl>
+		<dt>Frankenturret picked up:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/da/GLaDOS_mp_subterfuge06.wav"
+				data-quote="What a horrible little machine." class=gla>mp_subterfuge06</a></dd>
+		<dt>Cube placed on Cube Button:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d2/GLaDOS_mp_coop_calibration03.wav"
+				data-quote="Weighted Cubes calibrated." class=gla>mp_coop_calibration03</a></dd>
+		<dt>Cube destroyed:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/3f/GLaDOS_fizzlecube06.wav"
+				data-quote="Oh well. We have warehouses FULL of the things. Absolutely worthless. I'm happy to get rid of them." class=gla>fizzlecube06</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9c/GLaDOS_fizzlecube03.wav"
+				data-quote="Go ahead and grab another one." class=gla>fizzlecube03</a></dd>
+				
+		<dt>Companion Cube destroyed:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/3f/GLaDOS_fizzlecube06.wav"
+				data-quote="Oh well. We have warehouses FULL of the things. Absolutely worthless. I'm happy to get rid of them." class=gla>fizzlecube06</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9f/GLaDOS_sp_a2_pit_flings_future_starter02.wav"
+				data-quote="Anyway, here's a new cube for you to project your deranged loneliness onto." class=gla>sp_a2_pit_flings_future_starter02</a></dd>
+		</dl></td>
+	</tr><tr>
+		<td><dl>
+		<dt>Ball placed on Ball Button 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/33/GLaDOS_mp_coop_fling_3end01.wav"
+				data-quote="You did an excellent job placing the edgeless safety cube in the receptacle, you should be very - oh wait." class=gla>mp_coop_fling_3end01</a></dd>
+		<dt>Ball placed on Ball Button 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5a/GLaDOS_mp_coop_fling_3end04.wav"
+				data-quote="You have no idea how tiring it is to praise someone for placing an edgeless safety cube into a receptacle designed to exactly fit an edgeless safety cube." class=gla>mp_coop_fling_3end03</a></dd>
+		<dt>Ball placed on Ball Button 3:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/33/GLaDOS_mp_coop_fling_3end01.wav"
+				data-quote="You did an excellent job placing the edgeless safety cube in the receptacle, you should be very - oh wait." class=gla>mp_coop_fling_3end01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5a/GLaDOS_mp_coop_fling_3end04.wav"
+				data-quote="You have no idea how tiring it is to praise someone for placing an edgeless safety cube into a receptacle designed to exactly fit an edgeless safety cube." class=gla>mp_coop_fling_3end03</a></dd>
+		<dt>Ball placed on Ball Button 4:</dt>
+			<dd><a href="" class=none>(1/4 of the time it won't play)</a></dd>
+		<dt>Single Portal Device collected (FGE Portalgun Pedestal):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/9/9e/GLaDOS_coop_get_gun04.wav"
+				data-quote="Blue now has a Portal Device. Finally." class=gla>coop_get_gun04</a></dd>
+		<dt>Dual/PoTaToS Portal Device collected (FGE Portalgun Pedestal, quote is paused before bracketed part plays):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c5/GLaDOS_sp_a2_intro1_found01.wav"
+				data-quote="Good. You have a dual portal device. [There should be a way back to the testing area up ahead]." class=gla>sp_a2_intro1_found01</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Ball placed on Ball Button:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/33/GLaDOS_mp_coop_fling_3end01.wav"
+				data-quote="You did an excellent job placing the edgeless safety cube in the receptacle, you should be very - oh wait." class=gla>mp_coop_fling_3end01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/3/3b/GLaDOS_mp_coop_fling_3end02.wav"
+				data-quote="That’s right. You're not humans." class=gla>mp_coop_fling_3end02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/50/GLaDOS_mp_coop_fling_3end03.wav"
+				data-quote="I can drop the fake praise." class=gla>mp_coop_fling_3end03</a></dd>
+		<dt>Turret killed (knocked over, painted blue, burned, etc):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/0/05/GLaDOS_mp_coop_laser_201.wav"
+				data-quote="What are you doing? YOU MONSTER! They're one of us." class=gla>mp_coop_laser_201</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/53/GLaDOS_mp_coop_laser_202.wav"
+				data-quote="I'm kidding." class=gla>mp_coop_laser_202</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/0/00/GLaDOS_mp_coop_laser_203.wav"
+				data-quote="Destroying them is part of the test. They are no more important to you than you are to me." class=gla>mp_coop_laser_203</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Paint Fizzler (Stylechanger)</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a9/GLaDOS_sp_a2_fizzler_intro01.wav"
+				data-quote="This next test involves emancipation grills. Remember? I told you about them in the last test area, that did not have one." class=gla>sp_a2_fizzler_intro01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/GLaDOS_sp_paint_jump_trampoline_entry01.wav"
+				data-quote="While I was out investigating, I found a fascinating new test element. It's never been used for human testing because, apparently, contact with it causes heart failure. The literature doesn't mention anything about lump-of-coal failure, though, so you should be fine." class=gla>sp_paint_jump_trampoline_entry01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Grey Gel (Stylechanger) / Diversity Vent (BEEMOD)</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/GLaDOS_sp_paint_jump_trampoline_entry01.wav"
+				data-quote="While I was out investigating, I found a fascinating new test element. It's never been used for human testing because, apparently, contact with it causes heart failure. The literature doesn't mention anything about lump-of-coal failure, though, so you should be fine." class=gla>sp_paint_jump_trampoline_entry01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Pellet (BEEMOD)</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/4b/GLaDOS_dlc1_mp_coop_catapult_catch_intro01.wav"
+				data-quote="This chamber represents the impossibility of discovery when bound by artificial ethical considerations for safety. You'll see what I mean." class=gla>dlc1_mp_coop_catapult_catch_intro01</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7d/GLaDOS_mp_coop_wall_block03.wav"
+				data-quote="Congratulations. Your ability to complete this test proves the humans wrong. They described it as impossible, deadly, cruel, and one test subject even had the nerve to call it broken." class=gla>mp_coop_wall_block03</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Crusher (BEEMOD)</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/0/05/GLaDOS_dlc1_mp_coop_tripleaxis_intro01.wav"
+				data-quote="I call this one 'Smash'. It's an early work of primitive expression. I'm a little embarrassed at how crude it is. Still, it will smash you." class=gla>dlc1_mp_coop_tripleaxis_intro01</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/53/GLaDOS_mp_coop_fling_crushers01.wav"
+				data-quote="In case you were wondering, you do not need to be crushed to solve this test." class=gla>mp_coop_fling_crushers01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td rowspan=2>Orange Gel</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/6/63/GLaDOS_dlc1_mp_coop_2paints_1bridge_introb01.wav"
+				data-quote="I call this piece--" class=gla>dlc1_mp_coop_2paints_1bridge_introb01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c5/GLaDOS_dlc1_mp_coop_2paints_1bridge_introb02.wav"
+				data-quote="--you know what, it doesn't matter what it's called. The important thing is you enjoy it. As fast as you can." class=gla>dlc1_mp_coop_2paints_1bridge_introb02</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/0/04/GLaDOS_dlc1_mp_coop_separation_1_intro03.wav"
+				data-quote="Welcome. To the future." class=gla>dlc1_mp_coop_separation_1_intro03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/4/43/GLaDOS_prehub34.wav"
+				data-quote="This next test applies the principles of momentum to movement through portals. If the laws of physics no longer apply in the future, God help you." class=gla>prehub34</a></dd>
+		</dl></td>
+	</tr><tr><td colspan=2><dl>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/33/GLaDOS_prehub35.wav"
+				data-quote="Congratulations! This pre-recorded congratulations assumes you have mastered the principles of portal momentum." class=gla>prehub35</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f3/GLaDOS_prehub36.wav"
+				data-quote="If you have, in fact, not, you are encouraged to take a moment to reflect on your failure before proceeding into the next chamber." class=gla>prehub36</a></dd>
+	</dl></td></tr>
+	<tr><td>Dual Portal Gun</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/8/8a/GLaDOS_sp_incinerator_01_18.wav"
+				data-quote="The dual portal device should be around here somewhere. Once you find it, we can start testing. Just like old times." class=gla>sp_incinerator_01_18</a></dd>
+		</dl></td>
+		<td class="blank"></td>
+	</tr>
+	<tr><td>Blue Gel</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7a/GLaDOS_sp_hole_in_the_sky_completion02.wav"
+				data-quote="But now, looking around, seeing Aperture restored to its former glory? You don't have to worry about leaving EVER again. I mean that." class=gla>sp_hole_in_the_sky_competion02</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Light Bridge</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/72/GLaDOS_sp_a2_bridge_intro01.wav"
+				data-quote="These bridges are made from natural light that I pump in from the surface. If you rubbed your cheek on one, it would be like standing outside with the sun shining on your face. It would also set your hair on fire, so don't actually do it." class=gla>sp_a2_bridge_intro</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c2/GLaDOS_sp_a2_ricochet01.wav"
+				data-quote="Enjoy this next test. I'm going to go to the surface. It's a beautiful day out. Yesterday I saw a deer. If you solve this next test, maybe I'll let you ride an elevator all the way up to the break room, and I'll tell you about the time I saw a deer again." class=gla>sp_a2_ricochet01</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a1/GLaDOS_mp_coop_catapult_2.wav"
+				data-quote="This is a bridge-building exercise. The humans were miserable at this, mostly because you can't build bridges out of tears." class=gla>mp_coop_catapult_2</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Faith Plate</td>
+		<td><dl>
+		<dt>Entry 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5c/GLaDOS_faith_plate_intro01.wav"
+				data-quote="This next test involves the Aperture Science Aerial Faith Plate. It was part of an initiative to investigate how well test subjects could solve problems when they were catapulted into space. Results were highly informative: They could not. Good luck!" class=gla>faith_plate_intro01</a></dd>
+		<dt>Entry 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/e/ee/GLaDOS_sp_catapult_intro_completion01.wav"
+				data-quote="Let's see what the next test is. Oh. Advanced Aerial Faith Plates." class=gla>sp_catapult_intro_completion01</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/aa/GLaDOS_sp_catapult_fling_sphere_peek_completion01.wav"
+				data-quote="Look at you. Sailing through the air majestically. Like an eagle. Piloting a blimp." class=gla>sp_catapult_fling_sphere_peek_completion01</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/aa/GLaDOS_sp_catapult_fling_sphere_peek_completion01.wav"
+				data-quote="Look at you. Sailing through the air majestically. Like an eagle. Piloting a blimp." class=gla>sp_catapult_fling_sphere_peek_completion01</a></dd>
+	</tr>
+	<tr><td>White Gel</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/8/83/GLaDOS_potatos_sp_a4_finale01_deathtrap01.wav"
+				data-quote="Hold on. Couldn't we just use that conversion gel?" class=gla>potatos_sp_a4_finale01_deathtrap01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Laser</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a8/GLaDOS_coop_test_chamber_both15.wav"
+				data-quote="Please proceed into the next test chamber." class=gla>coop_testchamber_both15</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/7/72/GLaDOS_sp_laser_redirect_intro_entry03.wav"
+				data-quote="Which involves deadly lasers and how test subjects react when locked in a room with deadly lasers." class=gla>sp_laser_redirect_intro_entry03</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Turret</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a8/GLaDOS_dlc1_mp_coop_separation_1_intro07.wav"
+				data-quote="I call this first piece 'Turrets'. It's an exploration of how we're all devices acting on simply-expressed directives, inflicting pain despite our own desires." class=gla>dlc1_mp_coop_separation_1_intro07</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d9/GLaDOS_dlc1_mp_coop_art_death_turret01.wav"
+				data-quote="Those bullets were a metaphor for something. Take your time." class=gla>dlc1_mp_coop_art_death_turret01</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5c/GLaDOS_mp_coop_tbeam_end12.wav"
+				data-quote="You may want to try and avoid those turrets." class=gla>mp_coop_tbeam_end12</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Deadly</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/4b/GLaDOS_dlc1_mp_coop_catapult_catch_intro01.wav"
+				data-quote="This chamber represents the impossibility of discovery when bound by artificial ethical considerations for safety. You'll see what I mean." class=gla>dlc1_mp_coop_catapult_catch_intro01</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7d/GLaDOS_mp_coop_wall_block03.wav"
+				data-quote="Congratulations. Your ability to complete this test proves the humans wrong. They described it as impossible, deadly, cruel, and one test subject even had the nerve to call it broken." class=gla>mp_coop_wall_block03</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/2/20/GLaDOS_mp_coop_paint_redirect07.wav"
+				data-quote="To start preparing for human testing again, I checked an old suggestion box. The number one request? Less deadly tests." class=gla>mp_coop_paint_redirect_07</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/2/29/GLaDOS_mp_coop_paint_redirect08.wav"
+				data-quote="That's ridiculous, how do they know for sure the tests are deadly if they could still write the suggestion?" class=gla>mp_coop_paint_redirect08</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7d/GLaDOS_mp_coop_wall_block03.wav"
+				data-quote="Congratulations. Your ability to complete this test proves the humans wrong. They described it as impossible, deadly, cruel, and one test subject even had the nerve to call it broken." class=gla>mp_coop_wall_block03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/98/GLaDOS_mp_coop_wall_block04.wav"
+				data-quote="Of course the humans only had one try at it, you can just keep trying." class=gla>mp_coop_wall_block04</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Fizzler</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a9/GLaDOS_sp_a2_fizzler_intro01.wav"
+				data-quote="This next test involves emancipation grills. Remember? I told you about them in the last test area, that did not have one." class=gla>sp_a2_fizzler_intro01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Generic</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/0/04/GLaDOS_dlc1_mp_coop_separation_1_intro03.wav"
+				data-quote="Welcome. To the future." class=gla>dlc1_mp_coop_separation_1_intro03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/1/14/GLaDOS_dlc1_mp_coop_separation_1_introb06.wav"
+				data-quote="Testing is simply an artistic indulgence now." class=gla>dlc1_mp_coop_separation_1_intro03</a></dd>
+		<dt>Exit 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/46/GLaDOS_dlc1_mp_coop_tripleaxis_outro01.wav"
+				data-quote="Good. Please proceed to the next test appreciation exhibit and interact with it in such a way that it might be called 'solving' if we still cared about solving things in the future, but we don't." class=gla>dlc1_mp_coop_tripleaxis_outro01</a></dd>
+		<dt>Exit 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/4a/GLaDOS_dlc1_mp_coop_2paints_1bridge_outrob01.wav"
+				data-quote="You know, some of the exhibits up ahead ARE topical. At the rate you're going, by the time you get to them, they'll be irrelevant." class=gla>dlc1_mp_coop_2paints_1bridge_outrob01</a></dd>
+		<dt>Exit 3:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/49/GLaDOS_dlc1_mp_coop_art_death_generic07.wav"
+				data-quote="As art appreciators go, you make excellent test subjects." class=gla>dlc1_mp_coop_art_death_generic07</a></dd>
+		<dt>Exit 3:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/e/e6/GLaDOS_dlc1_mp_coop_separation_1_outrob01.wav"
+				data-quote="I'm glad you enjoyed that piece. For as long as you did. Not that there's any rush." class=gla>dlc1_mp_coop_separation_1_outrob01</a></dd>
+		<dt>Exit 4:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a7/GLaDOS_dlc1_mp_coop_catapult_catch_outro02.wav"
+				data-quote="Well done. You navigated all of the exhibit's intended metaphors in record time. I'm marking this art 'appreciated.'" class=gla>dlc1_mp_coop_catapult_catch_outro02</a></dd>
+		<dt>Exit 5:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/e/e6/GLaDOS_dlc1_leaderboard23.wav"
+				data-quote="Very not completely bad." class=gla>dlc1_leaderboard23</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/90/GLaDOS_dlc1_mp_coop_finalgantry_morale04.wav"
+				data-quote="Well. That concludes the motivational speech." class=gla>dlc1_mp_coop_finalgantry_morale04</a></dd>
+		<dt>Exit 6:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/1/1d/GLaDOS_dlc1_leaderboard01.wav"
+				data-quote="That was genuinely mildly impressive." class=gla>dlc1_leaderboard01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/90/GLaDOS_dlc1_mp_coop_finalgantry_morale04.wav"
+				data-quote="Well. That concludes the motivational speech." class=gla>dlc1_mp_coop_finalgantry_morale04</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/42/GLaDOS_a2_triple_laser01.wav"
+				data-quote="Federal regulations require me to warn you that this next test chamber... is looking pretty good." class=gla>a2_triple_laser01</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f9/GLaDOS_botcoop_competition01.wav"
+				data-quote="Excellent. Although great science is always the result of collaboration, keep in mind that, like Albert Einstein and his cousin Terry, history will only remember one of you." class=gla>botcoop_competition01</a></dd>
+		</dl></td>
+	</tr>
+	</table>
+
+	<h2><a id="rebuild">Refurbished Style (TS Addons)</a></dl></h2>
+	<p>Refurbished style is unique in that it has two quote characters, <span class=cav>Cave</span> and <span class=gla>GLaDOS</span> (plus the PTI dialogue). GLaDOS's line plays as you drop into the enrichment sphere, PTI dialogue starts once you touch the ground and Cave plays lines when you enter the chamber. In Coop they play in the same order, but GLaDOS and the PTI dialogue plays after the map starts. GLaDOS and Cave's lines do not obstruct each other, unless there is a sequence with both (IE. they only speak once on entry, excluding PTI dialogue and GLaDOS's intro dialogue.) GLaDOS uses the intercom dings to distinguish her lines more.
+	</p>
+	<p> The pictures in the monitor column show the order videos are chosen to be displayed on the two screens at the SP entry &quot;elevator&quot;. Follow the list down on the left/right.
+	</p>
+	<table>
+	<tr><th>Category (high to low)</th><th>Lines (SP)</th><th>Lines (Coop)</th><th colspan=2 style="width: 200pt;">SP Monitors</th></tr>
+	<tr><td>Always Plays</td>
+		<td colspan=2><dl>
+		<dt>When map starts:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/b/b9/GLaDOS_mp_coop_teambtsstart01.wav"
+				data-quote="Sometimes testing has to occur outside the confines of the lab." class=gla>mp_coop_teambtsstart01</a></dd>
+		<dt>Waiting on exit catwalks:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/aa/Cave_Johnson_fifties_fifth_test_intro01.wav"
+				data-quote="If you're hearing this, it means you're taking a long time on the catwalks between tests. The lab boys say that might be a fear reaction." class=cav>fifties_fifth_test_intro01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/53/Cave_Johnson_fifties_fifth_test_intro03.wav"
+				data-quote="I'm no psychiatrist, but coming from a bunch of eggheads who wouldn't recognize the thrill of danger if it walked up and snapped their little pink bras, that sounds like 'projection'." class=cav>fifties_fifth_test_intro03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d0/GLaDOS_epilogue25.wav"
+				data-quote="Just go." class=gla>epilogue25</a></dd>
+		<dt>Leave map with Sphere Cannon (TS Addons):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/6/6b/GLaDOS_gladosbattle_xfer14.wav"
+				data-quote="Not so fast!" class=gla>gladosbattle_xfer14</a></dd>
+		<dt>Neurotoxin Timer enabled (TS Addons):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/8/85/GLaDOS_jailbreak06.wav"
+				data-quote="Do you hear that? That's the sound of the neurotoxin emitters emitting neurotoxin." class=gla>jailbreak06</a></dd>
+		</dl></td>
+		<td class="blank" colspan=2></td>
+	<tr><td>Grey Gel (Stylechanger)</td>
+		<td colspan=2><dl>
+		<dd><a href="http://i1.theportalwiki.net/img/a/a8/GLaDOS_coop_test_chamber_both15.wav"
+				data-quote="Please proceed into the next test chamber." class=gla>coop_testchamber_both15</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/7/72/GLaDOS_sp_laser_redirect_intro_entry03.wav"
+				data-quote="Which involves deadly lasers and how test subjects react when locked in a room with deadly lasers." class=gla>sp_laser_redirect_intro_entry03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/GLaDOS_sp_paint_jump_trampoline_entry01.wav"
+				data-quote="While I was out investigating, I found a fascinating new test element. It's never been used for human testing because, apparently, contact with it causes heart failure. The literature doesn't mention anything about lump-of-coal failure, though, so you should be fine." class=gla>sp_paint_jump_trampoline_entry01</a></dd>
+		</dl></td>
+		<td class="blank" colspan=2></td>
+	</tr>
+	<tr><td>Laser</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a8/GLaDOS_coop_test_chamber_both15.wav"
+				data-quote="Please proceed into the next test chamber." class=gla>coop_testchamber_both15</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/7/72/GLaDOS_sp_laser_redirect_intro_entry03.wav"
+				data-quote="Which involves deadly lasers and how test subjects react when locked in a room with deadly lasers." class=gla>sp_laser_redirect_intro_entry03</a></dd>
+		</dl></td>
+		<td class="mon">
+			<a href="http://www.youtube.com/watch?v=I6i9yj_x_XY">
+			<img src="https://developer.valvesoftware.com/w/images/b/bb/Laser_danger_horiz.jpg" alt="Laser">
+		</a></td>
+		<td class="blank"></td>
+	</tr>
+	<tr><td>Light Bridge</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/72/GLaDOS_sp_a2_bridge_intro01.wav"
+				data-quote="These bridges are made from natural light that I pump in from the surface. If you rubbed your cheek on one, it would be like standing outside with the sun shining on your face. It would also set your hair on fire, so don't actually do it." class=gla>sp_a2_bridge_intro</a></dd>
+		</dl></td>
+		<td class="mon">
+			<a href="http://www.youtube.com/watch?v=zekZRMfQozw">
+			<img src="http://developer.valvesoftware.com/w/images/1/1a/Hard_light.jpg" alt="Light Bridge">
+		</a></td>
+		<td class="blank"></td>
+	</tr>
+	<tr><td>White Gel</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c2/Cave_Johnson_eighties_intro06.wav"
+				data-quote="First up, Conversion Gel. [Cough]" class=cav>eighties_intro_06</a></dd>
+		</dl></td>
+		<td class="blank" colspan=2></td>
+	</tr>
+	<tr><td>Faith Plate</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5c/GLaDOS_faith_plate_intro01.wav"
+				data-quote="This next test involves the Aperture Science Aerial Faith Plate. It was part of an initiative to investigate how well test subjects could solve problems when they were catapulted into space. Results were highly informative: They could not. Good luck!" class=gla>faith_plate_intro01</a></dd>
+		</dl></td>
+		<td class="mon">
+			<a href="http://www.youtube.com/watch?v=wUe4RMlplrc">
+			<img src="http://developer.valvesoftware.com/w/images/b/be/Faithplate.jpg" alt="Faith Plate">
+		</a></td>
+		<td class="blank"></td>
+	</tr>
+	<tr><td>Paint Fizzler (Stylechanger)</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/ad/Cave_Johnson_misc_tests24.wav"
+				data-quote="Just a heads up: We're gonna have a superconductor turned up full blast and pointed at you for the duration of this next test. I'll be honest, we're throwing science at the wall here to see what sticks. No idea what it'll do. Probably nothing. Best-case scenario, you might get some superpowers. Worst case, some tumors, which we'll cut out." class=cav>misc_tests24</a></dd>
+		</dl></td>
+		<td class="blank" colspan=2></td>
+	</tr>
+	<tr><td>Turret</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5c/GLaDOS_mp_coop_tbeam_end12.wav"
+				data-quote="You may want to try and avoid those turrets." class=gla>mp_coop_tbeam_end12</a></dd>
+		</dl></td>
+		<td class="blank"></td>
+		<td class="mon">
+			<a href="http://www.youtube.com/watch?v=zsxAlL9WAbk">
+			<img src="http://developer.valvesoftware.com/w/images/1/1c/Turret_exploded_grey.jpg" alt="Turret">
+			</a></td>
+	</tr>
+	<tr><td>Blue Gel</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7b/Cave_Johnson_fifties_repulsion_intro02.wav"
+				data-quote="Alright, let's get started. This first test involves something the lab boys call 'repulsion gel.'" class=cav>fifties_repulsion_intro02</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/3f/Cave_Johnson_fifties_second_test_complete03.wav"
+				data-quote="Oh, in case you got covered in that repulsion gel, here's some advice the lab boys gave me: DO NOT get covered in the repulsion gel." class=cav>fifties_second_test_complete03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/0/06/Cave_Johnson_fifties_second_test_complete02.wav"
+				data-quote="We haven't entirely nailed down what element it is yet, but I'll tell you this: It's a lively one, and it does NOT like the human skeleton." class=cav>fifties_second_test_complete02</a></dd>
+		</td>
+		<td class="blank" colspan=2></td>
+	</tr>
+	<tr><td>Funnel</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/GLaDOS_sp_paint_jump_trampoline_entry01.wav"
+				data-quote="While I was out investigating, I found a fascinating new test element. It's never been used for human testing because, apparently, contact with it causes heart failure. The literature doesn't mention anything about lump-of-coal failure, though, so you should be fine." class=gla>sp_paint_jump_trampoline_entry01</a></dd>
+		</dl></td>
+		<td class="blank" colspan=2></td>
+	</tr>
+	<tr><td>Pellet (BEEMOD)</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c8/GLaDOS_sp_paint_jump_trampoline_entry01.wav"
+				data-quote="While I was out investigating, I found a fascinating new test element. It's never been used for human testing because, apparently, contact with it causes heart failure. The literature doesn't mention anything about lump-of-coal failure, though, so you should be fine." class=gla>sp_paint_jump_trampoline_entry01</a></dd>
+		</dl></td>
+		<td class="blank" colspan=2></td>
+	</tr>
+	<tr><td>Orange Gel</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/43/Cave_Johnson_misc_tests02.wav"
+				data-quote="For this next test, we put nanoparticles in the gel. In layman's terms, that's a billion little gizmos that are gonna travel into your bloodstream and pump experimental genes and RNA molecules and so forth into your tumors." class=cav>misc_tests02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d7/GLaDOS_coop_vault_interruption05.wav"
+				data-quote="I'll just save the safety information about the dangerous experiment you're about to do for AFTER the experiment." class=gla>coop_vault_interruption05</a>
+		</td>
+		<td class="blank" colspan=2></td>
+	</tr>
+	<tr><td>Fizzler</td>
+		<td class="blank" colspan=3></td>
+		<td class="mon">
+			<a href="http://www.youtube.com/watch?v=95Qo_6HbSwE">
+			<img src="http://developer.valvesoftware.com/w/images/9/95/Fizzler.jpg" alt="Fizzler">
+		</a></td>
+	</tr>
+	<tr><td>Deadly</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/2/20/GLaDOS_mp_coop_paint_redirect07.wav"
+				data-quote="To start preparing for human testing again, I checked an old suggestion box. The number one request? Less deadly tests." class=gla>mp_coop_paint_redirect_07</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/2/29/GLaDOS_mp_coop_paint_redirect08.wav"
+				data-quote="That's ridiculous, how do they know for sure the tests are deadly if they could still write the suggestion?" class=gla>mp_coop_paint_redirect08</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a5/Cave_Johnson_fifties_fifth_test_complete09.wav"
+				data-quote="Science isn't about WHY. It's about WHY NOT. Why is so much of our science dangerous? Why not marry safe science if you love it so much. In fact, why not invent a special safety door that won't hit you on the butt on the way out, because you are fired." class=cav>fifties_fifth_test_complete09</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/0/05/GLaDOS_mp_coop_wall_intro02.wav"
+				data-quote="Do you know why they abandoned this course? Too deadly." class=gla>mp_coop_wall_intro02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/50/GLaDOS_coop_laugh01.wav"
+				data-quote="[Laughs]" class=gla>coop_laugh01</a></dd>
+		</dl></td>
+		<td class="blank" colspan=2></td>
+	</tr>
+	<tr><td>Generic</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/b/b8/GLaDOS_mp_coop_wall_intro01.wav"
+				data-quote="This course was created and then abandoned by humans. They tend to do that, create something wonderful and then abandon it." class=gla>mp_coop_wall_intro01</a></dd>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/b/b4/Cave_Johnson_fifties_intro01.wav"
+				data-quote="Welcome, gentlemen, to Aperture Science. Astronauts, war heroes, Olympians--you're here because we want the best, and you are it. So: Who is ready to make some science?" class=cav>fifties_intro01</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c4/Cave_Johnson_fifties_outro02.wav"
+				data-quote="Congratulations! The simple fact that you're standing here listening to me means you've made a glorious contribution to science." class=cav>fifties_outro02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/6/6c/Cave_Johnson_fifties_outro05.wav"
+				data-quote="As founder and CEO of Aperture Science, I thank you for your participation and hope we can count on you for another round of tests." class=cav>fifties_outro05</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/7/70/Cave_Johnson_fifties_outro07.wav"
+				data-quote="We're not gonna release this stuff into the wild until it's good and damn ready, so as long as you keep yourself in top physical form, there'll always be a limo waiting for you." class=cav>fifties_outro07</a></dd>
+		</dl></td>
+		<td class="mon">
+			<a>
+			<img src="https://developer.valvesoftware.com/w/images/7/75/Aperture_logo.jpg" alt="Aperture Logo">
+		</a></td>
+		<td class="mon">
+			<a>
+			<img src="https://developer.valvesoftware.com/w/images/7/75/Aperture_logo.jpg" alt="Aperture Logo">
+		</a></td>
+	</tr>
+	</table>
+	
+	<h2><a id="over">Overgrown Style (TS Addons)</a></dl></h2>
+	<p>Unreleased at time of writing, these are the lines that I'm planning to add. In this style the Announcer does use the in/out dings.</p>
+	<table>
+	<tr><th>Category (high to low)</th><th>Lines (SP)</th><th>Lines (Coop)</th></tr>
+	<tr><td>Always Plays</td>
+		<td colspan=2><dl>
+		<dt>Neurotoxin turned off (TS Addons):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/e/e6/Announcer_sp_sabotage_implosion01.wav"
+				data-quote="Warning! Neurotoxin pressure has reached dangerously unlethal levels." class=ann>sp_sabotage_implosion01</a></dd>
+		<dt>Pick up cube (and floor buttons exist):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7a/Announcer_prehub11.wav" 
+		 		data-quote="Cube- and button-based testing remains an important tool for science, even in a dire emergency." class=ann>prehub11</a></dd>
+		 	<dd><a href="http://i1.theportalwiki.net/img/9/98/Announcer_prehub12.wav"
+				data-quote="If cube- and button-based testing caused this emergency, don't worry. The odds of this happening twice are very slim." class=ann>prehub12</a></dd>
+		 <dt>Fizzle Cube (not via re-dispensing):</dt>
+		 	<dd><a href="http://i1.theportalwiki.net/img/5/50/Announcer_testchamber09.wav" 
+		 		data-quote="Great work! Because this message is prerecorded, any observations related to your performance are speculation on our part. Please disregard any undeserved compliments." class=ann>testchamber09</a></dd>
+		 <dt>Player touches fizzler:</dt>
+				<dd><a href="http://i1.theportalwiki.net/img/f/ff/Announcer_testchamber07.wav"
+		data-quote="You have just passed through an Aperture Science Material Emancipation Grill, which vaporizes most Aperture Science equipment that touches it." class=ann>testchamber07</a></dd>
+		<dt>Turret sees player:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5a/Announcer_sp_sabotage_factory17.wav" 
+				data-quote="Please avoid alerting active turrets or being shot by active turrets." class=ann>sabotage_factory17</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>White Gel</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/9/94/Announcer_testchamber02.wav"
+				data-quote="If the Enrichment Center is currently being bombarded with fireballs, meteorites, or other objects from space, please avoid unsheltered testing areas wherever a lack of shelter from space-debris DOES NOT appear to be a deliberate part of the test." class=ann>testchamber02</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Orange Gel</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7c/Announcer_testchamber10.wav"
+		data-quote="This next test applies the principles of momentum to movement through portals. If the laws of physics no longer apply in the future, God help you." class=ann>testchamber10</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Pellet (BEEMOD)</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/3e/Announcer_testchamber04.wav"
+				data-quote="To ensure that sufficient power remains for core testing protocols, all safety devices have been disabled. The Enrichment Center respects your right to have questions or concerns about this policy." class=ann>testchamber04</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/1/1d/Announcer_mp_hub_return04.wav"
+				data-quote="For your testing convenience, all tests are available and all safety precautions within testing chambers have been deactivated." class=ann>mp_hub_return04</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Turret</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/ad/Announcer_testchamber05.wav" 
+				data-quote="Some emergency testing may require prolonged interaction with lethal military androids. Rest assured that all lethal military androids have been taught to read and provided with one copy of the Laws of Robotics. To share." class=ann>testchamber05</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/1/1d/Announcer_testchamber06.wav"
+				data-quote="Good. If you feel that a lethal military android has not respected your rights as detailed in the Laws of Robotics, please note it on your self-reporting form. A future Aperture Science Entitlement Associate will initiate the appropriate grievance-filing paperwork." class=ann>testchamber06</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/6/6b/Announcer_sp_sabotage_factory20.wav"
+				data-quote="Non-defective turret testing active." class=ann>sp_sabotage_factory20</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f7/Announcer_good02.wav"
+				data-quote="Good!" class=ann>good02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/7/70/Announcer_prehub46.wav"
+				data-quote="If the Earth is currently governed by a manner of animal-king, sentient cloud, or other governing body that either refuses to or is incapable of listening to reason, th- [RECORDING SHORTS OUT]" class=ann>prehub46</a></dd>
+	</tr>
+	<tr><td>Blue Gel</td>
+		<td><dl>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/e/ec/Announcer_openingexercise04.wav"
+				data-quote="Good. This completes the gymnastic portion of your mandatory physical and mental wellness exercise." class=ann>openingexercise04</a></dd>
+		</dl></td>
+		<td><dl>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/5/5a/Announcer_mp_hub_return07.wav"
+				data-quote="By completing all test courses, you have achieved Level C security clearance. You may now access all testing courses and three of Aperture Science's 176 restrooms." class=ann>mp_hub_return07</a></dd>
+		</dl></td>
+	</tr>	
+	<tr><td>Laser or Paint Fizzler (Stylechanger)</td>
+		<td colspan=2><dl>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d4/Announcer_prehub18.wav"
+				data-quote="Good work getting this far, future-starter! That said, if you are simple-minded, old, or irradiated in such a way that the future should not start with you, please return to your primitive tribe and send back someone better-qualified for testing." class=ann>prehub18</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Deadly</td>
+		<td colspan=2><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/37/Announcer_prehub43.wav" 
+				data-quote="At the time of this recording, Federal disclosure policies require us to inform you that this next test is probably lethal and to redirect you to a safer test environment." class=ann>prehub43</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a7/Announcer_prehub44.wav" 
+				data-quote="We will attempt to comply with these now non-existent agencies by playing some more smooth jazz." class=ann>prehub44</a></dd>
+			<dd><a data-quote="Sparks from malfunctioning recording." class=sfx>*GladosPotatoZap*</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Orange Autoportal (BEEMOD)</td>
+		<td><dl>
+		<dt>Entry corridor (certain room only):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/e/e1/Announcer_prehub10.wav"
+				data-quote="The portal will open and emergency testing will begin in three, two, one." class=ann>prehub10</a></dd>
+		</dl></td>
+		<td class="blank"></td>
+	</tr>
+	<tr><td>Generic</td>
+		<td><dl> 
+		<dt>Entry 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a6/Announcer_prehub17.wav"
+			data-quote="If you are a non-employee who has discovered this facility amid the ruins of civilization, welcome! And remember: Testing is the future, and the future starts with you." class=ann>prehub17</a></dd>
+		<dt>Entry 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/6/67/Announcer_prehub08.wav"
+				data-quote="We are currently experiencing technical difficulties due to circumstances of potentially apocalyptic significance beyond our control." class=ann>prehub08</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/1/18/Announcer_prehub09.wav"
+				data-quote="However, thanks to Emergency Testing Protocols, testing can continue. These pre-recorded messages will provide instructional and motivational support, so that science can still be done, even in the event of environmental, social, economic, or structural collapse." class=ann>prehub09</a></dd>
+		<dt>Entry 3:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/70/Announcer_prehub46.wav"
+				data-quote="If the Earth is currently governed by a manner of animal-king, sentient cloud, or other governing body that either refuses to or is incapable of listening to reason, th- [RECORDING SHORTS OUT]" class=ann>prehub46</a></dd>
+		<dt>Entry 4 (played less often):</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/e/e8/Announcer_openingexercise01.wav"
+				data-quote="Good morning. You have been in suspension for -fifty- days. In compliance with state and federal regulations, all testing candidates in the Aperture Science Extended Relaxation Center must be revived periodically for a mandatory physical and mental wellness exercise." class=ann>openingexercise01</a></dd>
+		<dt>Exit 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f6/Announcer_mp_hub_return06.wav"
+				data-quote="Thank you for completing the testing courses. If you enjoyed your experience, you may now re-enter the testing course of your choice." class=ann>mp_hub_return06</a></dd>
+		<dt>Exit 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/48/Announcer_prehub20.wav"
+				data-quote="Before re-entering a relaxation vault at the conclusion of testing, please take a moment to write down the results of your test. An Aperture Science Reintegration Associate will revive you for an interview when society has been rebuilt." class=ann>prehub20</a></dd>
+		<dt>Exit 3:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f7/Announcer_good02.wav"
+				data-quote="Good!" class=ann>good02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/2/24/Announcer_prehub19.wav"
+				data-quote="Because of the technical difficulties we are currently experiencing, your test environment is unsupervised." class=ann>prehub19</a></dd>
+		<dt>Exit 4:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/0/0f/Announcer_evacuationmisc01.wav"
+				data-quote="Please prepare for emergency evacuation." class=ann>evacuationmisc01</a></dd>
+			</dl></td>
+		<td> <!-- COOP -->
+		<dt>Entry 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/ad/Announcer_testchamber05" 
+				data-quote="Some emergency testing may require prolonged interaction with lethal military androids. Rest assured that all lethal military androids have been taught to read and provided with one copy of the Laws of Robotics. To share." class=ann>testchamber05</a></dd>
+		<dt>Entry 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a6/Announcer_prehub17.wav"
+			data-quote="If you are a non-employee who has discovered this facility amid the ruins of civilization, welcome! And remember: Testing is the future, and the future starts with you." class=ann>prehub17</a></dd>
+		<dt>Exit 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/9/90/Announcer_testchamber03.wav"
+				data-quote="Well done! The Enrichment Center reminds you that although circumstances may appear bleak, you are not alone. All Aperture Science personality constructs will remain functional in apocalyptic, low power environments of as few as 1.1 volts." class=ann>testchamber03</a></dd>
+		<dt>Exit 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f6/Announcer_mp_hub_return06.wav"
+				data-quote="Thank you for completing the testing courses. If you enjoyed your experience, you may now re-enter the testing course of your choice." class=ann>mp_hub_return06</a></dd>
+		</dl></td>
+	</tr>
+	</table>
+	<h2><a id="wheat">Wheatley Style (TS Addons)</a></h2>
+	<p>This is heavily WIP, I haven't actually got started on any part of this style yet!</p>
+	<table>
+	<tr><th>Category (high to low)</th><th>Lines (SP)</th><th>Lines (Coop)</th></tr>
+	<tr><td>Always Plays</td>
+		<td><dl>
+		<dt>Pick up FrankenTurret</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/dc/Wheatley_bw_sp_a4_intro_boxyell01.wav"
+				data-quote="For god's sake, you're BOXES with LEGS! It is literally your only purpose! Walking onto buttons! How can you not do the one thing you were designed for?" class=wht>bw_sp_a4_intro_boxyell01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>White Gel</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/6/68/Wheatley_bw_finale01_deathtrap04.wav"
+				data-quote="Oh, and don't bother trying to portal out of here, because it's impossible, okay? I thought of everything." class=wht>bw_finale01_deathtrap04</a></dd>
+		<dt>Exit: (only if entry plays)</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f2/Wheatley_bw_a4_finale02_mashplate_intro01.wav"
+				data-quote="Finally, a nemesis worthy of my vast intellect." class=wht>bw_a4_finale02_mashplate_intro01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Any Gel (Except Water)</td>
+		<td><dl>
+		<dt>Exit:</dt>
+			<dd><a data-quote="Beeps, like when Wheatley or GLaDOS 'type' things." class=sfx>*Beep*</a></dd>
+			<dd><a data-quote="A spray of water, muffled as if from a distance" class=sfx>*Water spray*</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/6/69/Wheatley_bw_finale04_stalemate_intro06.wav"
+				data-quote="Ah, that just cleans right off' does it? Well that would've been good to know - a little earlier." class=wht>bw_finale04_stalemate_intro06</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Neurotoxin (TS Addons)</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/32/Wheatley_sp_a2_bts5_first_hose01.wav"
+				data-quote="Do you smell neurotoxin?" class=wht>sp_a2_bts5_first_hose01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/7/73/Wheatley_bw_sp_a2_core_potato04.wav"
+				data-quote="[Laughs]" class=wht>bw_sp_a2_core_potato04</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Portalgun pedestal (FGE)</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/31/Wheatley_sp_intro_03_intro09.wav"
+				data-quote="There should be a portal device on that podium over there." class=wht>sp_intro_03_intro09</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Crusher (BEEMOD)</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d4/Wheatley_bw_a4_spike_smash01.wav"
+				data-quote="Had a bit of a brain wave. There I was, smashing some steel plates together, and I thought, 'yes, it's deadly. But what's missing? What's missing?' And I thought lots of sharp bits welded onto the flat bits." class=wht>bw_a4_spike_smash01</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Light Bridge</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/0/04/Wheatley_sp_sabotage_factory_hackdoor08.wav"
+				data-quote="Oh! Good news! [electric pop] Nevermind." class=wht>sp_sabotage_factory_hackdoor08</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c3/Wheatley_jailbreakneardoor03.wav"
+				data-quote="Hold on. Run back the other way! I'll turn the bridges back on!" class=wht>jailbreakneardoor03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/9/91/Wheatley_bw_sp_a4_jump_polarity_intro04.wav"
+				data-quote="Carry on!" class=wht>bw_sp_a4_jump_polarity_intro04</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Laser</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a0/Wheatley_bw_a4_speed_tb_catch02.wav"
+				data-quote="Just getting a test ready... For you. Obviously. Who else would I be doing it for? No one." class=wht>bw_a4_speed_catch02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/4/49/Wheatley_sp_a2_bts5_lockeddoor03.wav"
+				data-quote="Though it does give me an idea: WHAT if we stand here and let the gentle hum of the laser transport us to a state of absolute relaxation. Might help us think of a way to open the door." class=wht>sp_a2_bts5_lockeddoor03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/1/15/Wheatley_bw_sp_a4_tb_polarity_intro10.wav"
+				data-quote="Just--do the test! Just do the test!" class=wht>bw_sp_a4_tb_polarity_intro10</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Funnel</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/44/Wheatley_bw_a4_more_tests01.wav"
+				data-quote="It's alright! Everything's good. I just invented some more tests!" class=wht>bw_a4_more_tests</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d4/Wheatley_bw_sp_a4_tb_trust_drop_intro03.wav"
+				data-quote="Jammed 'em all together. Buttons. Got funnels. Bottomless pits are involved. It's got it all, it's absolute dynamite." class=wht>bw_sp_a4_trust_drop_intro03</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c1/Wheatley_bw_sp_a4_tb_wall_button_intro08.wav"
+				data-quote="Be honest. You can't even tell, can you? Seamless." class=wht>bw_sp_a4_tb_wall_button_intro08</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Turret</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/e/e6/Wheatley_bw_a4_finale02_beamtrap_intro02.wav"
+				data-quote="Anyway, new turrets. Not defective. Ace of fours. The best hand. Unbeatable, I imagine." class=wht>bw_a4_finale02_beamtrap_intro02</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Button</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/1/18/Wheatley_bw_a4_first_test_solve_nags03.wav"
+				data-quote="I'll give you a hint. Button. That's all I'm gonna say. One word. Button." class=wht>bw_a4_first_test_solve_nags03</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Deadly</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/ce/Wheatley_sp_intro_03_afterfallalt09.wav"
+				data-quote="I'll wait--I'll wait one hour. Then I'll come back and, assuming I can locate your dead body, I'll bury you. Alright? Brilliant! Go team! See you in an hour! Hopefully! If you're not... dead." class=wht>sp_intro_03_afterfallalt09</a></dd>
+		<dt>Exit:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/3/30/Wheatley_bw_a4_speed_tb_catch03.wav"
+				data-quote="Agh! You're alive! great!" class=wht>bw_a4_speed_tb_catch03</a></dd>
+			 <dd><a href="http://i1.theportalwiki.net/img/f/f8/Wheatley_bw_a4_paradox11.wav"
+			 	data-quote="Alright, get moving." class=wht>bw_a4_paradox11</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Glass</td>
+		<td><dl>
+		<dt>Entry:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/1/1a/Wheatley_sp_a2_factory_window02.wav"
+				data-quote="Go on, just walk up to the window, have a quick look out." class=wht>sp_a2_factory_window02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/e/e3/Wheatley_sp_a2_factory_window05.wav"
+				data-quote="Just glass. Transparent. Smooth. Not going to hurt you. Just take a quick look." class=wht>sp_a2_factory_window05</a></dd>
+		</dl></td>
+	</tr>
+	<tr><td>Generic</td>
+		<td><dl>
+		<dt>Entry 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/f/f9/Wheatley_bw_sp_a4_intro_moat03.wav"
+				data-quote="Made this test myself. It's a little bit difficult." class=wht>bw_sp_a4_intro_moat03</a></dd>
+		<dt>Entry 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/0/02/Wheatley_bw_a4_first_test_solve_nags02.wav"
+				data-quote="Impossible as it is to imagine, there actually is a solution. Devilishly hidden." class=wht>bw_a4_first_test_solve_nags02</a></dd>
+		<dt>Entry 3:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/4/44/Wheatley_bw_a4_more_tests01.wav"
+				data-quote="It's alright! Everything's good. I just invented some more tests!" class=wht>bw_a4_more_tests01</a></dd>
+		<dt>Entry 4:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/8/89/Announcer_a4_recapture01.wav"
+				data-quote="Explosion imminent. Evacuate the facility immediately." class=ann>a4_recapture01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/2/2f/Wheatley_bw_sp_a4_laser_platform_intro02.wav"
+				data-quote="Was. Was self-destructing. Already fixed." class=wht>bw_sp_a4_laser_platform_intro02</a></dd>
+			<dd><a data-quote="The random explosions occuring in the distance are forced to trigger." class=sfx>*Explosion*</a></dd>
+		<dt>Entry 5:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/7/7f/Wheatley_bw_a4_finale04_wakeupa08.wav"
+				data-quote="Alright, then. Let's see... 'Vital maintenance protocols.' Wow, there's a lot of them. Should have looked into this earlier. Well, let's try this: [reading while typing] DO THEM. [failure buzzer]. Fair enough. Maybe it's a password." class=wht>bw_a4_finale04_wakeupa08</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/d/d1/Wheatley_bw_a4_finale04_wakeupa09.wav"
+				data-quote="A, A, A, A, A, A. [NNNT!] No, okay. A, A, A, A, A, B. [NNNT!] Hold on, I've done both of these. Skip ahead. A, B, C... D, G, H. [DING!]" class=wht>bw_a4_finale04_wakeupa09</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/0/04/Wheatley_sp_sabotage_factory_hackdoor08.wav"
+				data-quote="Oh! Good news! [electric pop] Nevermind." class=wht>sp_sabotage_factory_hackdoor08</a></dd>
+			
+		<dt>Exit 1:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/8/86/Wheatley_bw_a4_test_solve_reacs_happy02.wav"
+				data-quote="Oh! Yes. Well done." class=wht>bw_a4_test_solve_reacs_happy02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a0/Wheatley_bw_a4_speed_tb_catch02.wav"
+				data-quote="Just getting a test ready... For you. Obviously. Who else would I be doing it for? No one." class=wht>bw_a4_speed_tb_catch02</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/f/fb/Wheatley_bw_sp_a4_speed_tb_catch_intro04.wav"
+				data-quote="There. Bing! Perfect. On you go." class=wht>bw_sp_speed_tb_catch_intro04</a></dd>
+		<dt>Exit 2:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/8/86/Wheatley_bw_a4_test_solve_reacs_happy02.wav"
+				data-quote="Oh! Yes. Well done." class=wht>bw_a4_test_solve_reacs_happy02</a></dd>
+		<dt>Exit 3:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/c/c5/Wheatley_bw_a4_test_solve_reacs_happy01.wav"
+				data-quote="Ohhhhh, yes. Ohhhh. Well done." class=wht>bw_a4_test_solve_reacs_happy01</a></dd>
+		<dt>Exit 4:</dt>
+			<dd><a href="http://i1.theportalwiki.net/img/a/a8/Wheatley_bw_sp_a4_stop_the_box_solve01.wav"
+				data-quote="Are you... are you sure you're solving these correctly?" class=wht>bw_a4_stop_the_box_solve01</a></dd>
+			<dd><a href="http://i1.theportalwiki.net/img/5/50/Wheatley_bw_sp_a4_stop_the_box_solve02.wav"
+				data-quote="Yes, you 'solved' it, but I'm wondering if there are a number of ways to solve them and you're picking all the worst ways." class=wht>bw_sp_a4_stop_the_box_solve02</a></dd>
+		</dl></td>
+	</tr>
+	</table>
+	<br>
+	<br>
+	<br>
+	<br>
+	</body>
+</html>

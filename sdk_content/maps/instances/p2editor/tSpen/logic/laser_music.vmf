@@ -1,0 +1,494 @@
+versioninfo
+{
+	"editorversion" "400"
+	"editorbuild" "5685"
+	"mapversion" "54"
+	"formatversion" "100"
+	"prefab" "0"
+}
+visgroups
+{
+}
+viewsettings
+{
+	"bSnapToGrid" "1"
+	"bShowGrid" "1"
+	"bShowLogicalGrid" "0"
+	"nGridSpacing" "8"
+	"bShow3DGrid" "0"
+}
+world
+{
+	"id" "1"
+	"mapversion" "54"
+	"classname" "worldspawn"
+	"detailmaterial" "detail/detailsprites"
+	"detailvbsp" "detail.vbsp"
+	"maxblobcount" "250"
+	"maxpropscreenwidth" "-1"
+	"skyname" "sky_black_nofog"
+}
+entity
+{
+	"id" "1259"
+	"classname" "logic_case"
+	"Case01" "0"
+	"Case02" "1"
+	"targetname" "case_1"
+	connections
+	{
+		"OnCase01" "snd_1PlaySound0-1"
+		"OnCase02" "snd_1StopSound0-1"
+	}
+	"origin" "-16 16 32"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "648"
+	"classname" "math_counter"
+	"max" "$connectioncount"
+	"targetname" "counter"
+	connections
+	{
+		"OnGetValue" "case_2InValue0-1"
+		"OnGetValue" "case_3InValue0-1"
+		"OnGetValue" "case_1InValue0-1"
+	}
+	"origin" "-16 32 32"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "752"
+	"classname" "logic_case"
+	"Case01" "1"
+	"Case02" "2"
+	"Case03" "0"
+	"targetname" "case_2"
+	connections
+	{
+		"OnCase01" "snd_2_1PlaySound0-1"
+		"OnCase01" "snd_2_2StopSound0-1"
+		"OnCase02" "snd_2_2PlaySound0-1"
+		"OnCase02" "snd_2_1PlaySound0-1"
+		"OnCase03" "snd_2_1StopSound0-1"
+		"OnCase03" "snd_2_2StopSound0-1"
+	}
+	"origin" "-16 0 32"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "756"
+	"classname" "logic_case"
+	"Case01" "1"
+	"Case02" "2"
+	"Case03" "3"
+	"Case04" "0"
+	"targetname" "case_3"
+	connections
+	{
+		"OnCase01" "snd_3_1PlaySound0-1"
+		"OnCase01" "snd_3_2StopSound0-1"
+		"OnCase01" "snd_3_3StopSound0-1"
+		"OnCase02" "snd_3_3StopSound0-1"
+		"OnCase02" "snd_3_2PlaySound0-1"
+		"OnCase02" "snd_3_1PlaySound0-1"
+		"OnCase03" "snd_3_1PlaySound0-1"
+		"OnCase03" "snd_3_2PlaySound0-1"
+		"OnCase03" "snd_3_3PlaySound0-1"
+		"OnCase04" "snd_3_3StopSound0-1"
+		"OnCase04" "snd_3_2StopSound0-1"
+		"OnCase04" "snd_3_1StopSound0-1"
+		"OnDefault" "snd_3_3PlaySound0-1"
+		"OnDefault" "snd_3_2PlaySound0-1"
+		"OnDefault" "snd_3_1PlaySound0-1"
+	}
+	"origin" "-16 -16 32"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "803"
+	"classname" "ambient_generic"
+	"cspinup" "0"
+	"fadeinsecs" "0"
+	"fadeoutsecs" "0"
+	"health" "10"
+	"lfomodpitch" "0"
+	"lfomodvol" "0"
+	"lforate" "0"
+	"lfotype" "0"
+	"message" "prop_laser_catcher.powerloop"
+	"pitch" "100"
+	"pitchstart" "100"
+	"preset" "0"
+	"radius" "1204"
+	"SourceEntityName" "origin"
+	"spawnflags" "17"
+	"spindown" "0"
+	"spinup" "0"
+	"targetname" "snd_1"
+	"volstart" "0"
+	"origin" "16 0 64"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 500]"
+	}
+}
+entity
+{
+	"id" "807"
+	"classname" "info_target"
+	"angles" "0 0 0"
+	"spawnflags" "0"
+	"targetname" "origin"
+	"origin" "0 0 0"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 1000]"
+	}
+}
+entity
+{
+	"id" "886"
+	"classname" "ambient_generic"
+	"cspinup" "0"
+	"fadeinsecs" "0"
+	"fadeoutsecs" "0"
+	"health" "10"
+	"lfomodpitch" "0"
+	"lfomodvol" "0"
+	"lforate" "0"
+	"lfotype" "0"
+	"message" "music.sp_a2_laser_stairs.laser01"
+	"pitch" "100"
+	"pitchstart" "100"
+	"preset" "0"
+	"radius" "1204"
+	"SourceEntityName" "origin"
+	"spawnflags" "17"
+	"spindown" "0"
+	"spinup" "0"
+	"targetname" "snd_2_1"
+	"volstart" "0"
+	"origin" "16 -16 48"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 500]"
+	}
+}
+entity
+{
+	"id" "898"
+	"classname" "ambient_generic"
+	"cspinup" "0"
+	"fadeinsecs" "0"
+	"fadeoutsecs" "0"
+	"health" "10"
+	"lfomodpitch" "0"
+	"lfomodvol" "0"
+	"lforate" "0"
+	"lfotype" "0"
+	"message" "music.sp_a2_laser_stairs.laser02"
+	"pitch" "100"
+	"pitchstart" "100"
+	"preset" "0"
+	"radius" "1204"
+	"SourceEntityName" "origin"
+	"spawnflags" "17"
+	"spindown" "0"
+	"spinup" "0"
+	"targetname" "snd_2_2"
+	"volstart" "0"
+	"origin" "16 16 48"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 500]"
+	}
+}
+entity
+{
+	"id" "922"
+	"classname" "ambient_generic"
+	"cspinup" "0"
+	"fadeinsecs" "0"
+	"fadeoutsecs" "0"
+	"health" "10"
+	"lfomodpitch" "0"
+	"lfomodvol" "0"
+	"lforate" "0"
+	"lfotype" "0"
+	"message" "music.sp_a2_triple_laser.laser03"
+	"pitch" "100"
+	"pitchstart" "100"
+	"preset" "0"
+	"radius" "1204"
+	"SourceEntityName" "origin"
+	"spawnflags" "17"
+	"spindown" "0"
+	"spinup" "0"
+	"targetname" "snd_3_3"
+	"volstart" "0"
+	"origin" "16 16 32"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 500]"
+	}
+}
+entity
+{
+	"id" "925"
+	"classname" "ambient_generic"
+	"cspinup" "0"
+	"fadeinsecs" "0"
+	"fadeoutsecs" "0"
+	"health" "10"
+	"lfomodpitch" "0"
+	"lfomodvol" "0"
+	"lforate" "0"
+	"lfotype" "0"
+	"message" "music.sp_a2_triple_laser.laser01"
+	"pitch" "100"
+	"pitchstart" "100"
+	"preset" "0"
+	"radius" "1204"
+	"SourceEntityName" "origin"
+	"spawnflags" "17"
+	"spindown" "0"
+	"spinup" "0"
+	"targetname" "snd_3_1"
+	"volstart" "0"
+	"origin" "16 -16 32"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 500]"
+	}
+}
+entity
+{
+	"id" "931"
+	"classname" "ambient_generic"
+	"cspinup" "0"
+	"fadeinsecs" "0"
+	"fadeoutsecs" "0"
+	"health" "10"
+	"lfomodpitch" "0"
+	"lfomodvol" "0"
+	"lforate" "0"
+	"lfotype" "0"
+	"message" "music.sp_a2_triple_laser.laser02"
+	"pitch" "100"
+	"pitchstart" "100"
+	"preset" "0"
+	"radius" "1204"
+	"SourceEntityName" "origin"
+	"spawnflags" "17"
+	"spindown" "0"
+	"spinup" "0"
+	"targetname" "snd_3_2"
+	"volstart" "0"
+	"origin" "16 0 32"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 500]"
+	}
+}
+entity
+{
+	"id" "1056"
+	"classname" "logic_relay"
+	"spawnflags" "0"
+	"StartDisabled" "0"
+	"targetname" "add"
+	connections
+	{
+		"OnTrigger" "counterAdd10-1"
+		"OnTrigger" "counterGetValue0.01-1"
+	}
+	"origin" "-16 16 64"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "1079"
+	"classname" "logic_relay"
+	"spawnflags" "0"
+	"StartDisabled" "0"
+	"targetname" "sub"
+	connections
+	{
+		"OnTrigger" "counterSubtract10-1"
+		"OnTrigger" "counterGetValue0.01-1"
+	}
+	"origin" "-16 -16 64"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "1175"
+	"classname" "logic_auto"
+	"spawnflags" "1"
+	connections
+	{
+		"OnMapSpawn" "counter_conGetValue0-1"
+		"OnMapSpawn" "@musicVolume80-1"
+		"OnMapSpawn" "@music_has_laserSetValue10-1"
+	}
+	"origin" "-16 0 64"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"comments" "Level music is decreased to make laser music more apparent"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "613"
+	"classname" "math_counter"
+	"max" "0"
+	"startvalue" "$connectioncount"
+	"targetname" "counter_con"
+	connections
+	{
+		"OnGetValue" "case_conInValue0-1"
+	}
+	"origin" "-16 -32 32"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "615"
+	"classname" "logic_case"
+	"Case01" "1"
+	"Case02" "2"
+	"Case03" "3"
+	"targetname" "case_con"
+	connections
+	{
+		"OnCase01" "case_2Kill0-1"
+		"OnCase01" "case_3Kill0-1"
+		"OnCase02" "case_1Kill0-1"
+		"OnCase02" "case_3Kill0-1"
+		"OnCase03" "case_1Kill0-1"
+		"OnCase03" "case_2Kill0-1"
+		"OnDefault" "case_2Kill0-1"
+		"OnDefault" "case_1Kill0-1"
+	}
+	"origin" "-16 0 48"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "617"
+	"classname" "func_instance_io_proxy"
+	"targetname" "proxy"
+	connections
+	{
+		"OnProxyRelay" "addTrigger0-1"
+		"OnProxyRelay" "subTrigger0-1"
+	}
+	"origin" "-16 -16 48"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 9000]"
+	}
+}
+entity
+{
+	"id" "623"
+	"classname" "func_instance_parms"
+	"parm1" "$connectioncount integer"
+	"origin" "-16 16 48"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+cameras
+{
+	"activecamera" "-1"
+}
+cordons
+{
+	"active" "0"
+}

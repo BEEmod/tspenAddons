@@ -1,0 +1,17 @@
+UnlitGeneric
+{
+$baseTexture "signage/indicator_lights/ts_under_timer_combined"
+$surfaceprop glass
+$translucent 1
+"%keywords" "portal underground"
+$decal 1
+Proxies
+{
+	ToggleTexture
+	{
+		toggleTextureVar $baseTexture
+		toggleTextureFrameNumVar $frame
+		toggleTextureShouldWrap 1
+		}
+	}
+}

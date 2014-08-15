@@ -1,0 +1,96 @@
+versioninfo
+{
+	"editorversion" "400"
+	"editorbuild" "5685"
+	"mapversion" "9"
+	"formatversion" "100"
+	"prefab" "0"
+}
+visgroups
+{
+}
+viewsettings
+{
+	"bSnapToGrid" "1"
+	"bShowGrid" "1"
+	"bShowLogicalGrid" "0"
+	"nGridSpacing" "16"
+	"bShow3DGrid" "0"
+}
+world
+{
+	"id" "1"
+	"mapversion" "9"
+	"classname" "worldspawn"
+	"detailmaterial" "detail/detailsprites"
+	"detailvbsp" "detail.vbsp"
+	"maxpropscreenwidth" "-1"
+	"skyname" "sky_black_nofog"
+}
+entity
+{
+	"id" "49"
+	"classname" "logic_timer"
+	"RefireTime" "0.5"
+	"spawnflags" "0"
+	"StartDisabled" "0"
+	"targetname" "@worldportal_timer"
+	"UseRandomTime" "0"
+	connections
+	{
+		"OnTimer" "@worldportal_scriptRunScriptCodethink()0-1"
+	}
+	"origin" "-16 0 0"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"comments" "Hack to work around script not thinking."
+		"logicalpos" "[0 500]"
+	}
+}
+entity
+{
+	"id" "66"
+	"classname" "logic_relay"
+	"spawnflags" "0"
+	"StartDisabled" "0"
+	"targetname" "@relay_spawn_on_entrance"
+	connections
+	{
+		"OnTrigger" "@worldportal_timerKill0-1"
+	}
+	"origin" "-16 -16 0"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 500]"
+	}
+}
+entity
+{
+	"id" "2"
+	"classname" "logic_script"
+	"targetname" "@worldportal_script"
+	"thinkfunction" "think"
+	"vscripts" "worldportal_door.nut"
+	"origin" "0 0 0"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 500]"
+	}
+}
+cameras
+{
+	"activecamera" "-1"
+}
+cordons
+{
+	"active" "0"
+}

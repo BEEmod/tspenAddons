@@ -1,0 +1,5 @@
+unlitgeneric
+{
+	$model 1 
+	$baseTexture "models/props_map_editor/tSpen/redlaser"
+}

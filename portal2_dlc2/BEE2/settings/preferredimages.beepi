@@ -1,0 +1,13 @@
+// overrides palette icon when only one of an item is placed on the palette (to show the multiple versions)
+
+//type								image
+"ITEM_TRIGGERS"						"palette/trigger_outputs.png"
+"ITEM_BUTTON_FLOOR"					"palette/portal_buttons.png"
+"ITEM_CUBE"							"palette/cubes.png"
+"ITEM_BARRIER_HAZARD"				"palette/hazards.png"
+"ITEM_BARRIER"						"palette/glass_grating.png"
+"ITEM_PAINT_SPLAT"					"palette/paints.png"
+
+//tSpen
+"ITEM_TSPEN_SPECIAL_DROPPER"		"palette/tSpen/droppers.png"
+"ITEM_TSPEN_LOGIC_INPUTS_SR"		"palette/tSpen/inputs_sr.png"

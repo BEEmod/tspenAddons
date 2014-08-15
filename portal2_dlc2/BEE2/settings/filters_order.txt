@@ -1,0 +1,27 @@
+All Items 
+(By Collection)
+  Portal 2
+  BEE
+  BEE 2
+  BEE 2 Addons
+   TS - New Items
+   TS - Modified Items
+   TS - Static Items
+   TS - Logic Items
+  HMW
+  FGE
+  Miscellaneous
+  Items Matching Style
+(Groups)
+  Test Elements
+  Panels
+  Geometry
+  Logic
+  Custom
+(By Creator)
+  BenVlodgi & Rantis
+  Carl Kenner
+  Felix Griffin
+  Mevious
+  TeamSpen210
+  [*]

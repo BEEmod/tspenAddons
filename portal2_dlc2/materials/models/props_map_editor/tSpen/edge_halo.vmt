@@ -1,0 +1,8 @@
+vertexlitgeneric
+{
+$baseTexture "models/props_map_editor/tspen/edge_halo"
+$nocull 1
+//$translucent 1
+$alphatest 1
+// This renders totally invisible, but would export as a mesh to make the yellow highlight around selected objects extend further.
+}
