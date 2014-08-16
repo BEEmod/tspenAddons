@@ -98,7 +98,7 @@ strong {
 }
 
 ul {
-	list-style: inside;
+	list-tyle: inside;
 	padding-left: 25px;
 }
 
@@ -123,12 +123,10 @@ dl dt {
 
 dl dd {
 	padding-left: 20px;
-	font-style: italic;
 }
 
 dl p {
 	padding-left: 20px;
-	font-style: italic;
 }
 
 hr {
@@ -257,7 +255,7 @@ h1.header {
 }
 
 
-h1.header, a.header, a.name, header a{
+h1.header, a.header, a.name, header a, a.button{
 	color: #fff;
 }
 
@@ -269,12 +267,12 @@ a.name {
 	white-space: nowrap;
 }
 
-header ul {
+ul.buttons {
 	list-style:none;
 	padding:0;
 }
 
-header li {
+ul.buttons li {
 	list-style-type: none;
   width:132px;
   height:15px;
@@ -298,7 +296,7 @@ header li {
 
 }
 
-header li:hover {
+ul.buttons li:hover {
 	background: #C3001D;
 	background: -moz-linear-gradient(top, #C3001D 0%, #950119 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
@@ -308,7 +306,7 @@ header li:hover {
 	background: linear-gradient(top, #C3001D 0%,#950119 100%);
 }
 
-a.buttons {
+a.button {
 	-webkit-font-smoothing: antialiased;
 	background: url(../images/bullet.png) no-repeat left center;
 	font-weight: normal;
@@ -318,11 +316,11 @@ a.buttons {
 	text-decoration:none;
 }
 
-a.github {
+a.ico-github {
 	background-image: url(../images/octocat-small.png);
 }
 
-a.plus {
+a.ico-plus {
 	background-image: url(../images/plus.png);
 }
 
@@ -342,7 +340,7 @@ a.noicon {
 	background: none;
 }
 
-a.buttons:hover {
+a.button:hover {
 	color: #fff;
 	text-decoration: none;
 }
