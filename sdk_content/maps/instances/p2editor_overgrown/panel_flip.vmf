@@ -1,8 +1,8 @@
 versioninfo
 {
 	"editorversion" "400"
-	"editorbuild" "5685"
-	"mapversion" "129"
+	"editorbuild" "6432"
+	"mapversion" "134"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -20,13 +20,13 @@ viewsettings
 	"bSnapToGrid" "1"
 	"bShowGrid" "1"
 	"bShowLogicalGrid" "0"
-	"nGridSpacing" "2"
+	"nGridSpacing" "16"
 	"bShow3DGrid" "0"
 }
 world
 {
 	"id" "1"
-	"mapversion" "129"
+	"mapversion" "134"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -188,6 +188,16 @@ world
 	}
 	group
 	{
+		"id" "3608"
+		editor
+		{
+			"color" "210 239 0"
+			"visgroupshown" "1"
+			"visgroupautoshown" "1"
+		}
+	}
+	group
+	{
 		"id" "3539"
 		editor
 		{
@@ -280,12 +290,13 @@ entity
 	"pitchstart" "100"
 	"preset" "0"
 	"radius" "1250"
+	"SourceEntityName" "flipping_panel"
 	"spawnflags" "48"
 	"spindown" "0"
 	"spinup" "0"
 	"targetname" "snd"
 	"volstart" "0"
-	"origin" "0 -16 -76"
+	"origin" "0 -32 -48"
 	editor
 	{
 		"color" "220 30 220"
@@ -521,7 +532,7 @@ entity
 	"spawnflags" "2"
 	"StartDisabled" "0"
 	"targetname" "br"
-	"vrad_brush_cast_shadows" "0"
+	"vrad_brush_cast_shadows" "1"
 	solid
 	{
 		"id" "1359"
@@ -1500,7 +1511,7 @@ hidden
 				}
 				editor
 				{
-					"color" "220 30 220"
+					"color" "210 239 0"
 					"visgroupshown" "1"
 					"visgroupautoshown" "1"
 				}
@@ -1508,7 +1519,8 @@ hidden
 		}
 		editor
 		{
-			"color" "220 30 220"
+			"color" "210 239 0"
+			"groupid" "3608"
 			"visgroupid" "11"
 			"visgroupshown" "0"
 			"visgroupautoshown" "1"
@@ -1843,7 +1855,7 @@ entity
 	"_lightscaleHDR" "1"
 	"_quadratic_attn" "1"
 	"_zero_percent_distance" "145"
-	"origin" "0 0 -112"
+	"origin" "0 0 -104"
 	editor
 	{
 		"color" "220 30 220"
@@ -1965,7 +1977,7 @@ entity
 	"classname" "func_instance_parms"
 	"parm1" "$connectioncount integer 1"
 	"parm2" "$start_deployed integer 0"
-	"origin" "-2.09815e-006 -32 -48"
+	"origin" "-32 -32 -48"
 	editor
 	{
 		"color" "220 30 220"
@@ -1989,7 +2001,7 @@ entity
 		"OnTrue" "timClose0-1"
 		"OnFalse" "timOpen0-1"
 	}
-	"origin" "-32 -32 -48"
+	"origin" "-32 0 -48"
 	editor
 	{
 		"color" "220 30 220"
@@ -2009,7 +2021,7 @@ entity
 		"OnHitMax" "branch_toggleToggleTest0-1"
 		"OnChangedFromMax" "branch_toggleToggleTest0-1"
 	}
-	"origin" "-2.09815e-006 32 -48"
+	"origin" "32 0 -48"
 	editor
 	{
 		"color" "220 30 220"
@@ -2047,7 +2059,7 @@ entity
 		"OnMapSpawn" "branch_toggleTest0.1-1"
 		"OnMapSpawn" "flipping_panelDisableDraw0-1"
 	}
-	"origin" "24.4238 16.1739 -55"
+	"origin" "0 32 -55"
 	editor
 	{
 		"color" "220 30 220"

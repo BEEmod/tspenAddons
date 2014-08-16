@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6432"
-	"mapversion" "1723"
+	"mapversion" "1724"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -86,7 +86,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "1723"
+	"mapversion" "1724"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -58032,7 +58032,7 @@ entity
 	"id" "36313"
 	"classname" "func_instance"
 	"angles" "-0 0 0"
-	"file" "instances/p2editor_overgrown/global_ents.vmf"
+	"file" "instances/p2editor_overgrown/global_ents_quiet.vmf"
 	"targetname" "global_ents"
 	"origin" "-1280 1280 496"
 	editor
@@ -59919,8 +59919,8 @@ cameras
 	"activecamera" "0"
 	camera
 	{
-		"position" "[-4.78407 336.752 -394.781]"
-		"look" "[-3.85406 370.198 -448.335]"
+		"position" "[-1303.53 1253.19 599.439]"
+		"look" "[-1359.76 1227.2 587.174]"
 	}
 	camera
 	{

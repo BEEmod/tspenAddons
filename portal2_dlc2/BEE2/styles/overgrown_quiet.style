@@ -69,7 +69,6 @@
 //      "AntlineCorner" "signage/indicator_lights/lobby_indicator_lights_corner_wall" 
 		// These have a turned-off texture- 0=off,1=blue,2=orange
 
-//		"Glss"			"glass/glasswindow007a_less_shiny"
 //		"Glass"			"BEE2/glass_over"
 //		"Grating"		"metal/underground_metalgrate002a"
 
@@ -982,7 +981,7 @@
 				}
 				"3"
 				{
-					"Name"				"instances/p2editor_overgrown/door_entrance_4.vmf"
+					"Name"				"instances/p2editor_overgrown/door_entrance_4_quiet.vmf"
 					"EntityCount"		"58"
 					"BrushCount"		"136"
 					"BrushSideCount"	"920"
@@ -1026,7 +1025,7 @@
 				// NOTE: Elevator instances must go after door instances
 				"9"
 				{
-					"Name"				"instances/p2editor_overgrown/elevator_entrance.vmf"
+					"Name"				"instances/p2editor_overgrown/elevator_entrance_quiet.vmf"
 					//packer_additem:scripts/vscripts/pti_dest_video_splitter.nut
 					"EntityCount"		"215"  //modded video_splitter which always does destroyed videos
 					"BrushCount"		"296"
@@ -1129,7 +1128,7 @@
 				// NOTE: Elevator instances must go after door instances
 				"3"
 				{
-					"Name"				"instances/p2editor_overgrown/coop_exit.vmf"
+					"Name"				"instances/p2editor_overgrown/coop_exit_quiet.vmf"
 					"EntityCount"		"250"
 					"BrushCount"		"404"
 					"BrushSideCount"	"2947"
