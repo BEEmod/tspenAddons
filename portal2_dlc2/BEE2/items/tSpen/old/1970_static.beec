@@ -1,0 +1,1320 @@
+//@Style
+//      "Style"         "1970s"
+//      "Name"          "tSpen - Static"
+//      "Author"        "TeamSpen210"
+//      "Comment"       "My collection of items, mostly variants on existing items with special features."
+//@EndStyle
+
+// I don't have many items for this style because there are only slight differences between the old Aperture decades, which won't change an item enough to need another instance to be made.
+
+"ItemData"
+{ 	
+	"Item"
+	{	
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Static Items"
+		"Author"		"TeamSpen210"
+		"Description"	"An angled surface that extends to both sides of a block. White and black versions are available. The 60 and 30 degree blocks are designed to be used together to form one continuous surface."
+		"Type"			"ITEM_TSPEN_ANGLED_BLOCK"
+		"ItemClass"		"ItemButtonFloor"
+		"Editor"
+		{
+			"SubTypeProperty"		"ButtonType"
+			"SubType"
+			{
+				"Name"			"Block - 60 degrees"
+				"Model"
+				{
+					"ModelName"		"tspen_ang_60.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"ANGLED BLOCK - 60 DEGREES"
+					"Image"		"palette/panel_flap.png"
+					"Position"		"2 3 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Block - 45 degrees"
+				"Model"
+				{
+					"ModelName"		"tspen_ang_45.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"ANGLED BLOCK"
+					"Image"		"palette/panel_flap.png"
+					"Position"		"3 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Block - 30 degrees"
+				"Model"
+				{
+					"ModelName"		"tspen_ang_30.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"ANGLED BLOCK - 30 DEGREES"
+					"Image"		"palette/panel_flap.png"
+					"Position"	"3 1 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"	"HANDLE_4_DIRECTIONS"
+			"DesiredFacing"		"DESIRES_DOWN"
+			"CanAnchorOnBarriers"	"1"
+		}
+		"Properties"
+		{
+			"ButtonType"
+			{
+				"DefaultValue"	"0"
+				"Index"			"0"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/blocks/60_white_70.vmf"
+					"EntityCount"		"0"
+					"BrushCount"		"2"
+					"BrushSideCount"	"11"
+				}
+				"1"
+				{
+					"Name"				"instances/p2editor/tSpen/old/blocks/60_black.vmf"
+					"EntityCount"		"0"
+					"BrushCount"		"2"
+					"BrushSideCount"	"11"
+				}
+				"2"
+				{
+					"Name"				"instances/p2editor/tSpen/old/blocks/45_white_70.vmf"
+					"EntityCount"		"0"
+					"BrushCount"		"1"
+					"BrushSideCount"	"5"
+				}
+				"3"
+				{
+					"Name"				"instances/p2editor/tSpen/old/blocks/45_black.vmf"
+					"EntityCount"		"0"
+					"BrushCount"		"2"
+					"BrushSideCount"	"11"
+				}
+				"4"
+				{
+					"Name"				"instances/p2editor/tSpen/old/blocks/30_white_70.vmf"
+					"EntityCount"		"0"
+					"BrushCount"		"1"
+					"BrushSideCount"	"5"
+				}
+				"5"
+				{
+					"Name"				"instances/p2editor/tSpen/old/blocks/30_black.vmf"
+					"EntityCount"		"0"
+					"BrushCount"		"2"
+					"BrushSideCount"	"11"
+				}
+			}
+			"TargetName"		"block"
+			"Offset"	"64 64 64"
+		}
+	}
+	
+	"Item"
+	{	
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Static Items"
+		"Author"		"TeamSpen210"
+		"Description"	"A version of the glass angled panel that is static, and therefore cheaper. This item also is more visually accurate in non Clean styles, using proper pistons in Portal 1 style and small support struts in Old Aperture style."
+		"Type"			"ITEM_TSPEN_PANEL_STATIC_GLASS"
+		"ItemClass"		"ItemButtonFloor"
+		"Editor"
+		{
+			"SubTypeProperty"		"ButtonType"
+			"SubType"
+			{
+				"Name"			"30 Degree Static Glass Panel"
+				"Model"
+				{
+					"ModelName"		"arm4_gls_30deg.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.RaisePanel"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.LowerPanel"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"45 Degree Static Glass Panel"
+				"Model"
+				{
+					"ModelName"		"arm4_gls_45deg.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"STATIC GLASS PANEL"
+					"Image"		"palette/tSpen/airlock_static.png"
+					"Position"		"3 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.RaisePanel"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.LowerPanel"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"60 Degree Static Glass Panel"
+				"Model"
+				{
+					"ModelName"		"arm4_gls_60deg.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.RaisePanel"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.LowerPanel"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"	"HANDLE_4_DIRECTIONS"
+			"DesiredFacing"		"DESIRES_DOWN"
+		}
+		"Properties"
+		{
+			"ButtonType"
+			{
+				"DefaultValue"	"0"
+				"Index"			"0"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/static_panel/30_glass_70.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"1"
+				{
+					"Name"				"instances/p2editor/tSpen/old/static_panel/30_glass_70.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"2"
+				{
+					"Name"				"instances/p2editor/tSpen/old/static_panel/45_glass_70.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"12"
+					"BrushSideCount"	"88"
+				}
+				"3"
+				{
+					"Name"				"instances/p2editor/tSpen/old/static_panel/45_glass_70.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"12"
+					"BrushSideCount"	"88"
+				}
+				"4"
+				{
+					"Name"				"instances/p2editor/tSpen/old/static_panel/60_glass_70.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"18"
+					"BrushSideCount"	"152"
+				}
+				"5"
+				{
+					"Name"				"instances/p2editor/tSpen/old/static_panel/60_glass_70.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"18"
+					"BrushSideCount"	"152"
+				}
+			}
+			"TargetName"		"glassStatic"
+			"Offset"			"64 64 64"
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"CollideType"		"COLLIDE_SOLID"
+					"CollideAgainst"	"COLLIDE_SOLID COLLIDE_PHYSICS"
+						
+					"Pos"		"0 0 0"
+				}
+
+				"Voxel"
+				{
+					"CollideType"		"COLLIDE_NOTHING"
+					"CollideAgainst"	"COLLIDE_ANTLINES"
+
+					"Pos"		"0 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+		
+			}
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+			}			
+		}
+	}
+	
+	"Item"
+	{
+		"Type"		"ITEM_TSPEN_MONITOR"
+		"Filter"	"TeamSpen210;BEE 2 Addons;TS - New Items"	
+		"Author"		"TeamSpen210"
+		"Description"	"A Wheatley monitor. This item shows the current controller of the Enrichment Center. Old Aperture style uses Cave portraits, matching the decade."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"		"Wheatley Monitor (70s Cave)"
+				"Model"
+				{
+					"ModelName"		"tspen_monitor_70.3ds"
+					"TextureName"		"observationroom.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"MONITOR (CAVE)"
+					"Image"		"palette/observation_room.png"
+					"Position"	"3 5 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"		"HANDLE_NONE"
+			"InvalidSurface"		"CEILING FLOOR"
+			"DesiredFacing"			"DESIRES_UP"
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/monitor_70.vmf"
+					"EntityCount"		"5"
+					"BrushCount"		"9"
+					"BrushSideCount"	"54"
+				}
+			}
+
+			"TargetName"		"mon"
+			"Offset"		"64 64 64"
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+								"Voxel"
+				{
+					"Pos"		"1 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+			}
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+				"Voxel"
+				{
+					"Pos"		"1 0 0"
+				}
+			}
+		}
+	}
+	"Item"
+	{
+		"Type"		"ITEM_TSPEN_HALF_BRUSH"
+		"Filter"	"TeamSpen210;BEE 2 Addons;TS - Static Items"
+		"Author"		"TeamSpen210"
+		"Description"	"Put this on the wall to replace the texture with a half black, half white wall. Useful to stop players from placing both portals into a room."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"			"Half and Half Wall"
+				"Model"
+				{
+					"ModelName"		"tSpen_half_wall_old.3ds"
+					"TextureName"	"tSpen_half_wall.png"
+				}
+				"Palette"
+				{
+					"Tooltip"		"HALF AND HALF WALL"
+					"Image"			"palette/tSpen/half_wall.png"
+					"Position"		"1 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceButton"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandButton"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseButton"
+					"SOUND_DELETED"					"P2Editor.RemoveButton"
+				}
+			}
+			"MovementHandle"	"HANDLE_4_DIRECTIONS"
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/blocks/half_wall_70.vmf"
+					"EntityCount"		"0"
+					"BrushCount"		"2" // correct
+					"BrushSideCount"	"12"
+				}
+			}
+			"TargetName"		"brush"
+            "OccupiedVoxels"
+            {
+                "Voxel"
+                {
+                    "Pos"               "0 0 0"
+                    "CollideType"       "COLLIDE_NOTHING"
+                    "CollideAgainst"    "COLLIDE_NOTHING"
+
+                    "Surface"
+                    {
+                        "Normal"    "0 0 1"
+                    }
+                }
+            }
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+			}
+			"Offset"	"64 64 64"
+		}
+	}
+	
+	"Item"
+	{
+		"Type"		"ITEM_TSPEN_COOP_CHECKPOINT"
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - New Items"
+		"Author"		"TeamSpen210"
+		"Description"	"A checkpoint room which will make players respawn there after they have walked through it. It is a one-way path and requires both players inside before the door in front will unlock as the doors behind close. The entry door will accept inputs to open/close it. Old Aperture uses a set of two pedestal buttons to ensure both players are inside the room."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"		"Coop Checkpoint"
+				"Model"
+				{
+					"ModelName"		"tspen_checkpoint.3ds"
+					"TextureName"		"foobar.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"COOP CHECKPOINT"
+					"Image"		"palette/door.png"
+					"Position"	"0 4 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"		"HANDLE_NONE"
+			"InvalidSurface"		"CEILING FLOOR"
+			"DesiredFacing"			"DESIRES_UP"
+		}
+		"Properties"
+		{
+			"ConnectionCount"
+			{
+				"DefaultValue"		"0"
+				"Index"		"1"
+			}
+			"StartOpen"
+			{
+				"DefaultValue"		"1"
+				"Index"		"2"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/coop_checkpoint_70.vmf"
+					"EntityCount"		"9"
+					"BrushCount"		"5"
+					"BrushSideCount"	"34"
+				}
+			}
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:counter;Add"
+					"Deactivate"		"instance:counter;Subtract"
+				}
+			}
+			"TargetName"		"check"
+			"Offset"		"64 64 64"
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}			
+				}
+				"Voxel"
+				{
+					"Pos"		"0 0 -6" // opposite face
+					"Surface"
+					{
+						"Normal"	"0 0 -1"
+					}			
+				}
+			}
+			"EmbeddedVoxels"
+			{
+				"Volume"
+				{
+					"Pos1"		"4 -2 0"
+					"Pos2"		"-1 2 -4"
+				}
+			}
+			"ConnectionPoints"
+			{
+				// top edge left to right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 6 0"
+					"SignageOffset"		"9 7 0"
+					"Priority"  "1"
+					"GroupID"	"0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "1"
+					"GroupID"	"0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 2 0"
+					"SignageOffset"		"9 3 0"
+					"Priority"  "1"
+					"GroupID"	"0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 0 0"
+					"SignageOffset"		"9 1 0"
+					"Priority"  "1"
+					"GroupID"	"0"
+				}
+
+				// left edge top to bottom
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"6 -1 0"
+					"SignageOffset"		"7 -2 0"
+					"Priority"  "0"
+					"GroupID"	"1"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "1"
+					"GroupID"	"1"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"2 -1 0"
+					"SignageOffset"		"3 -2 0"
+					"Priority"  "2"
+					"GroupID"	"1"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"0 -1 0"
+					"SignageOffset"		"1 -2 0"
+					"Priority"  "3"
+					"GroupID"	"1"
+				}
+
+				// right edge top to bottom
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"6 8 0"
+					"SignageOffset"		"7 9 0"
+					"Priority"  "0"
+					"GroupID"	"2"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "1"
+					"GroupID"	"2"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"2 8 0"
+					"SignageOffset"		"3 9 0"
+					"Priority"  "2"
+					"GroupID"	"2"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"0 8 0"
+					"SignageOffset"		"1 9 0"
+					"Priority"  "3"
+					"GroupID"	"2"
+				}
+
+				// bottom edge left to right
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 6 0"
+					"SignageOffset"		"-2 7 0"
+					"Priority"  "2"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "2"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 2 0"
+					"SignageOffset"		"-2 3 0"
+					"Priority"  "2"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 0 0"
+					"SignageOffset"		"-2 1 0"
+					"Priority"  "2"
+					"GroupID"	"3"
+				}
+			}
+		}
+	}
+	
+	"Item"
+	{
+		"ItemClass"		"ItemButtonFloor"
+		"Type"			"ITEM_TSPEN_BUMBLE_BUTTON"
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - New Items"
+		"Author"		"Skotty, TeamSpen210"
+		"Description"	"A modified sphere button that is pressed by the BumbleBall. When the BumbleBall is on the button it will not move by itself."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"		"Bumbleball Button"
+				"Model"
+				{
+					"ModelName"		"buttonball.3ds"
+					"TextureName"	"button_ball.png"
+				}
+				"Palette"
+				{
+					"Tooltip"		"BUMBLEBALL BUTTON"
+					"Image"			"palette/tSpen/bumble_button.png"
+					"Position"		"3 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceButton"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandButton"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseButton"
+					"SOUND_DELETED"					"P2Editor.RemoveButton"
+				}
+			}
+			"MovementHandle"	"HANDLE_NONE"
+		}
+		"Properties"
+		{
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/bb_button_white_70.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"18"
+					"BrushSideCount"	"152"
+				}
+				"1"
+				{
+					"Name"				"instances/p2editor/tSpen/old/bb_button_black_70.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"18"
+					"BrushSideCount"	"152"
+				}
+			}
+
+			"TargetName"		"bb_bt"
+			"Outputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:p;OnTrigger"
+					"Deactivate"	"instance:p;OnUser1"
+				}
+			}
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+			}
+			"ConnectionPoints"
+			{
+				// left
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 3 0"
+					"SignageOffset"		"-2 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "0"
+				}
+
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 3 0"
+					"SignageOffset"		"9 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "0"
+				}
+
+				// up
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"3 -1 0"
+					"SignageOffset"		"2 -2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "0"
+				}
+
+				// down
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"3 8 0"
+					"SignageOffset"		"2 9 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "0"
+				}
+			}
+			"Offset"	"64 64 64"
+		}
+	}
+	
+	"Item"
+	{
+		"Type"			"ITEM_TSPEN_BARRIER_HOLE"
+		"ItemClass"		"ItemBarrier"
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Static Items"
+		"Author"		"TeamSpen210"
+		"Description"	"Glass with a hole in it. Allows gel but not gel BOMBS through the hole. Some styles use a square hole, but work the same. The sides always have a full border."
+		"Editor"
+		{
+			"SubTypeProperty"		"BarrierType"
+			"SubType"
+			{
+				"Name"			"Glass With Hole"
+				"Model"
+				{
+					"ModelName"		"glass.3ds"
+					"TextureName"	"glassitem.png"
+				}
+				"Palette"
+				{
+					"Tooltip"		"GLASS WITH HOLE"
+					"Image"			"palette/tspen/glass_hole.png"
+					"Position"		"1 3 0"
+				}
+			}
+			"SubType"
+			{
+				"Name"			"Glass With Hole"
+				"Model"
+				{
+					"ModelName"		"glass.3ds"
+					"TextureName"	"glassitem.png"
+				}
+			}
+			"MovementHandle"		"HANDLE_4_DIRECTIONS"
+			"OccupiesVoxel"		"0"
+		}
+		"Properties"
+		{
+			"BarrierType"
+			{
+				"DefaultValue"	"0"
+				"Index"			"0"
+			}
+		}
+		"Exporting"
+		{
+			"Instances" // the ItemBarrier type only places frames and the glass/grating brush when it is the original ITEM_BARRIER item.
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/glass_hole_70.vmf"
+					"EntityCount"		"1"
+					"BrushCount"		"2"
+					"BrushSideCount"	"12"
+				}
+				"1"
+				{
+					"Name"				"instances/p2editor/tSpen/empty.vmf"
+					"EntityCount"		"0"
+				}
+				"2"
+				{
+					"Name"				"instances/p2editor/tSpen/empty.vmf"
+					"EntityCount"		"1"
+				}
+				"3"
+				{
+					"Name"				"instances/p2editor/tSpen/empty.vmf"
+					"EntityCount"		"1"
+				}
+				"4"
+				{
+					"Name"				"instances/p2editor/tSpen/empty.vmf"
+					"EntityCount"		"1"
+				}
+				"5"
+				{
+					"Name"				"instances/p2editor/tSpen/empty.vmf"
+					"EntityCount"		"2"
+				}
+				"6"
+				{
+					"Name"				"instances/p2editor/tSpen/empty.vmf"
+					"EntityCount"		"1"
+				}
+				"7"
+				{
+					"Name"				"instances/p2editor/tSpen/empty.vmf"
+					"EntityCount"		"1"
+				}
+				"8"
+				{
+					"Name"				"instances/p2editor/tSpen/empty.vmf"
+					"EntityCount"	"1"
+				}
+			}
+			"TargetName"		"gh"
+			"Offset"		"64 64 64"
+		}
+	}
+	
+	"Item"
+	{
+		"Type"		"ITEM_TS_CEILING_LIGHT"
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Static Items"
+		"Author"		"TeamSpen210"
+		"Description"	"An item that can be placed on the ceiling to provide large amounts of light, as well as make it look more interesting. Only place one of these at a time. When placed it will disable fancy lighting effects on the large observation room so it can use the effect. It appears as a hole in the roof with many lights shining down. Some lights are missing, and they are mounted off-center."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"		"Ceiling Light"
+				"Model"
+				{
+					"ModelName"		"tspen_ceil_light_old.3ds"
+					"TextureName"		"observationroom.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"CEILING LIGHT"
+					"Image"		"palette/observation_room.png"
+					"Position"	"3 5 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"		"HANDLE_4_DIRECTIONS"
+			"InvalidSurface"		"FLOOR WALL"
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/ceiling_light_70.vmf"
+					"EntityCount"		"5"
+					"BrushCount"		"9"
+					"BrushSideCount"	"54"
+				}
+			}
+
+			"TargetName"		"cl"
+			"Offset"		"64 64 64"
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"-1 -1 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"-1 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"-1 1 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"0 -1 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"0 1 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"1 -1 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"1 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"1 1 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+			}
+			"EmbeddedVoxels"
+			{
+				"Volume"
+				{
+					"Pos1"		"1 -1 0"
+					"Pos2"		"-1 1 -1"
+				}
+			}
+		}
+	}
+	
+	"Item"
+	{
+		"Type"			"ITEM_TSPEN_CRUSHER_PLATE"
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Static Items"
+		"Author"		"TeamSpen210"
+		"Description"	"A large plate with holes that crusher spikes fit nicely into. Place on walls and floors opposite crushers to make the map look nicer."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"			"Crusher Plate"
+				"Model"
+				{
+					"ModelName"		"tspen_crusher_hole.3ds" //"crusher.3ds"
+					"TextureName"		"observationroom.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"CRUSHER PLATE"
+					"Image"		"palette/tspen/crusher_floorplate.png"
+					"Position"	"2 4 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"		"HANDLE_4_DIRECTIONS"
+			"DesiredFacing"		"DESIRES_UP"
+		}
+		"Properties"
+		{
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tspen/old/crusher_plate_70.vmf"
+					"EntityCount"		"20"
+					"BrushCount"		"20"
+					"BrushSideCount"	"20"
+				}
+			}
+			"TargetName"		"crusher_plate"
+			"Offset"		"64 64 64"
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"0 -1 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"-1 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"-1 -1 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+			}
+			"EmbeddedVoxels"
+			{
+				"Volume"
+				{
+					"Pos1"		"0 -1 0"
+					"Pos2"		"-1 0 0"
+				}
+			}
+		}
+	}
+	
+	"Item"
+	{	
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Static Items"
+		"Author"		"TeamSpen210"
+		"Description"	"A style-specific bit of wall detail to make maps look a bit nicer. Scatter these around the walls of a chamber. There are six variants chosen by the portalability of the surface and the button type property. They are always non-portalable. In Clean and Portal 1 style this is a few different-size tiles arranged nicely. Wheatley style has a few panel arms sticking out, Destroyed has various damaged walls and Old Aperture uses various frames."
+		"Type"			"ITEM_TSPEN_WALL_FEATURE"
+		"ItemClass"		"ItemButtonFloor"
+		"Editor"
+		{
+			"SubTypeProperty"		"ButtonType"
+			"SubType"
+			{
+				"Name"			"Wall Feature 1"
+				"Model"
+				{
+					"ModelName"		"panel_pushout.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"WALL FEATURES"
+					"Image"		"palette/tSpen/wall_feature.png"
+					"Position"		"3 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Wall Feature 2"
+				"Model"
+				{
+					"ModelName"		"panel_pushout.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Wall Feature 3"
+				"Model"
+				{
+					"ModelName"		"panel_pushout.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"	"HANDLE_NONE"
+			"DesiredFacing"		"DESIRES_UP"
+			"InvalidSurface"	"FLOOR CEILING"
+		}
+		"Properties"
+		{
+			"ButtonType"
+			{
+				"DefaultValue"	"0"
+				"Index"			"0"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/feature/white_1_70.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"1"
+				{
+					"Name"				"instances/p2editor/tSpen/old/feature/black_1_70.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"2"
+				{
+					"Name"				"instances/p2editor/tSpen/old/feature/white_2_70.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"12"
+					"BrushSideCount"	"88"
+				}
+				"3"
+				{
+					"Name"				"instances/p2editor/tSpen/old/feature/black_2_70.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"12"
+					"BrushSideCount"	"88"
+				}
+				"4"
+				{
+					"Name"				"instances/p2editor/tSpen/old/feature/white_3_70.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"18"
+					"BrushSideCount"	"152"
+				}
+				"5"
+				{
+					"Name"				"instances/p2editor/tSpen/old/feature/black_3_70.vmf"
+					"EntityCount"		"0"
+					"BrushCount"		"18"
+					"BrushSideCount"	"152"
+				}
+			}
+			"TargetName"		"wf"
+			"Offset"	"64 64 64"
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+			}
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+			}
+		}
+	}
+}

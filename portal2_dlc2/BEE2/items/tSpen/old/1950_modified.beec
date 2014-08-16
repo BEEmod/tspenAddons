@@ -1,0 +1,4330 @@
+//@Style
+//      "Style"         "1950s"
+//      "Name"          "tSpen"
+//      "Author"        "TeamSpen210"
+//      "Comment"       "My collection of items, mostly variants on existing items with special features."
+//@EndStyle
+
+"ItemData"
+{ 	
+	//Retractable Pedestal Button
+	"Item"
+	{	
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Modified Items"
+		"Author"		"TeamSpen210"
+		"Description"	"A pedestal button specially modified to not trigger unless the inputs have been activated. It has two checkmark signs and a light to indicate its state. In other styles it moves into the floor when not useable."
+		// For Old Aperture, I thought the simplest design (from the perspective of the test builders) for this would be to wire the button into the same AND gate circuit the input is connected to, so pressing it does nothing when the inputs aren't on.
+		"Type"			"ITEM_TSPEN_BUTTON_PEDESTAL_RETRACT"
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"		"Retractable Pedestal Button" 
+				"Model"
+				{
+					"ModelName"		"tspen_retract_btn.3ds"
+					"TextureName"	"buttonpedestal.png"
+				}
+				"Palette"
+				{
+					"Tooltip"		"PEDESTAL BUTTON - RETRACTABLE"
+					"Image"			"palette/tspen/pedestal_retract.png"
+					"Position"		"2 1 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceButton"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandButton"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseButton"
+					"SOUND_DELETED"					"P2Editor.RemoveButton"
+				}
+			}
+			"MovementHandle"	"HANDLE_4_DIRECTIONS"
+		}
+		"Properties"
+		{
+			"TimerDelay"
+			{
+				"DefaultValue"	"3"
+				"Index"			"1"
+			}
+			"TimerSound"
+			{
+				"DefaultValue"	"0"
+				"Index"			"2"
+			}
+			"ConnectionCount"
+			{
+				"DefaultValue"	"0"
+				"Index"			"3"
+			}
+			"StartEnabled"
+			{
+				"DefaultValue"	"1"
+				"Index"			"4"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0" // The instance doesn't change when on white/black floors.
+				{
+					"Name"				"instances/p2editor/tSpen/old/pedestal_button_retract.vmf"
+					"EntityCount"		"16"
+					"BrushCount"		"31" // correct
+					"BrushSideCount"	"190"
+				}
+			}
+
+			"TargetName"		"rbut"
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:counter;Add"
+					"Deactivate"	"instance:counter;Subtract"
+				}
+			}
+			"Outputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:toggle;OnUser2"
+					"Deactivate"	"instance:toggle;OnUser1" // Using the env_texturetoggle's OnUser1/2 to save two relay entities
+				}
+			}
+			"EmbeddedVoxels" // This item doesn't retract into floor in 1950s style, the button is "electronically" ignored when disabled. We still have the embed, to reserve the space in case the map is switched to another style to ensure no placement errors happen.
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+			}
+			"EmbedFace" // Fill in the embeddedvoxel area, as we are not using it in this instance.
+			{
+				"Solid"
+				{	
+					"Center"			"64 64 128"
+					"Dimensions"		"128 128 4"
+					"Grid"			"2x2"
+				}
+			}
+				//"Solid"
+				//{
+					//"Center"		"16 64 128" // Small left
+					// "Dimensions"	"32 64 4"
+					// "Grid"			"4x4"
+				// }
+							// "Solid"
+				// {
+					// "Center"		"32 16 128" // Small bottom
+					// "Dimensions"	"64 32 4"
+					// "Grid"			"4x4"
+				// }
+				// "Solid"
+				// {
+					// "Center"		"32 112 128" // Small top
+					// "Dimensions"	"64 32 4"
+					// "Grid"			"4x4"
+				// }
+				// "Solid"
+				// {
+					// "Center"		"96 64 128" // Large block (right)
+					// "Dimensions"	"64 128 4"
+					// "Grid"			"4x4"
+				// }
+			// }
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+						"Pos"		"0 1 0"
+					}
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+						"Pos"		"0 2 0"
+					}
+
+					"Surface"
+					{
+						"Normal"	"1 0 0"
+						"Pos"		"0 1 0"
+					}
+					"Surface"
+					{
+						"Normal"	"1 0 0"
+						"Pos"		"0 2 0"
+					}
+					"Surface"
+					{
+						"Normal"	"1 0 0"
+						"Pos"		"0 1 1"
+					}
+					"Surface"
+					{
+						"Normal"	"1 0 0"
+						"Pos"		"0 2 1"
+					}
+				}
+			}
+
+			"ConnectionPoints"
+			{
+				// outside voxel
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 6 0"
+					"SignageOffset"		"-2 7 0"
+					"Priority"  "0"
+					"GroupID"	"0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "0"
+					"GroupID"	"0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 2 0"
+					"SignageOffset"		"-2 3 0"
+					"Priority"  "0"
+					"GroupID"	"0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 0 0"
+					"SignageOffset"		"-2 1 0"
+					"Priority"  "0"
+					"GroupID"	"0"
+				}
+
+				// sides
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"0 -1 0"
+					"SignageOffset"		"1 -2 0"
+					"Priority"  "1"
+					"GroupID"	"1"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"0 8 0"
+					"SignageOffset"		"1 9 0"
+					"Priority"  "1"
+					"GroupID"	"2"
+				}
+
+				// inside voxel
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"2 6 0"
+					"SignageOffset"		"3 7 0"
+					"Priority"  "2"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"2 4 0"
+					"SignageOffset"		"3 5 0"
+					"Priority"  "2"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"2 2 0"
+					"SignageOffset"		"3 3 0"
+					"Priority"  "2"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"2 0 0"
+					"SignageOffset"		"3 1 0"
+					"Priority"  "2"
+					"GroupID"	"3"
+				}
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"6 3 0"
+					"SignageOffset"		"7 2 0"
+					"Priority"	"0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"6 4 0"
+					"SignageOffset"		"7 5 0"
+					"Priority"	"0"
+				}
+			}
+
+			"Offset"	"64 64 64"
+		}
+	}
+	
+	// Diagonal Laser/Pellet
+	"Item"
+	{
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Modified Items"
+		"Author"		"TeamSpen210"
+		"Description"	"A laser or pellet emitter on a triangular block which makes it aim diagonally. Weighted is a pellet emitter, Cube is a centered laser and Sphere is a laser offset to the floor."
+		"ItemClass"	"ItemButtonFloor"
+		"Type"		"ITEM_DIAG_LASER"
+		"Editor"
+		{
+			"SubTypeProperty"		"ButtonType"
+			"SubType"
+			{
+				"Name"			"Diagonal Pellet Emitter"
+				"Model"
+				{
+					"ModelName"		"ts_diag_pellet.3ds" //"combine_ball_launcher.3ds"
+					"TextureName"	"buttonweight.png"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceButton"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandButton"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseButton"
+					"SOUND_DELETED"					"P2Editor.RemoveButton"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Diagonal Laser (Center)"
+				"Model"
+				{
+					"ModelName"		"ts_diag_las_center.3ds" //"laseremitc.3ds"
+					"TextureName"	"button_cube.png"
+				}
+				"Palette"
+				{
+					"Tooltip"		"DIAGONAL LASER/PELLET EMITTER"
+					"Image"			"palette/panel_flap.png"
+					"Position"		"2 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceButton"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandButton"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseButton"
+					"SOUND_DELETED"					"P2Editor.RemoveButton"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Diagonal Laser (Offset)"
+				"Model"
+				{
+					"ModelName"		"ts_diag_las_offset.3ds" //"laseremit.3ds"
+					"TextureName"	"button_ball.png"
+				}
+
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceButton"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandButton"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseButton"
+					"SOUND_DELETED"					"P2Editor.RemoveButton"
+				}
+			}
+			"MovementHandle"	"HANDLE_4_DIRECTIONS"
+		}
+		"Properties"
+		{
+			"ButtonType"
+			{
+				"DefaultValue"	"0"
+				"Index"			"0"
+			}
+					
+			"ConnectionCount"
+			{
+				"DefaultValue"		"0"
+				"Index"		"1"
+			}
+			"StartEnabled"
+			{
+				"DefaultValue"		"1"
+				"Index"		"2"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tspen/old/angled_laser/white_pellet.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"1"
+				{
+					"Name"				"instances/p2editor/tspen/old/angled_laser/black_pellet.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"2"
+				{
+					"Name"				"instances/p2editor/tspen/old/angled_laser/white_center.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"12"
+					"BrushSideCount"	"88"
+				}
+				"3"
+				{
+					"Name"				"instances/p2editor/tspen/old/angled_laser/black_center.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"12"
+					"BrushSideCount"	"88"
+				}
+				"4"
+				{
+					"Name"				"instances/p2editor/tspen/old/angled_laser/white_offset.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"18"
+					"BrushSideCount"	"152"
+				}
+				"5"
+				{
+					"Name"				"instances/p2editor/tspen/old/angled_laser/black_offset.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"18"
+					"BrushSideCount"	"152"
+				}
+			}
+
+			"TargetName"		"diag_las"
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:counter;Add"
+					"Deactivate"	"instance:counter;Subtract"
+				}
+			}
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+			}
+			"ConnectionPoints"
+			{
+				// left
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 3 0"
+					"SignageOffset"		"-2 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "0"
+				}
+
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 3 0"
+					"SignageOffset"		"9 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "0"
+				}
+
+				// up
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"3 -1 0"
+					"SignageOffset"		"2 -2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "0"
+				}
+
+				// down
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"3 8 0"
+					"SignageOffset"		"2 9 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "0"
+				}
+			}
+			"Offset"	"64 64 64"
+		}
+	}
+
+	"Item"
+	{
+		"Filter"	"TeamSpen210;BEE 2 Addons;TS - Modified Items"
+		"Author"	"TeamSpen210"
+		"Description"	"A special cube dropper which respawns any dropperless cube. The input will enable this dropper and disable any other global droppers. Don't set two to start enabled or connect two to the same thing; this will cause the cube to be duplicated. Use this in maps with multiple rooms and  to allow cubes to always respawn close to the player and not in inacessable rooms."
+		"Type"			"ITEM_DROPPER_GLOBAL"	
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"		"Global Cube Dropper"
+				"Model"
+				{
+					"ModelName"			"dropper.3ds"
+					"TextureName"		"dropper.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"GLOBAL CUBE DROPPER"
+					"Image"		"palette/dropper.png"
+					"Position"	"2 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceCube"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandCube"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseCube"
+					"SOUND_DELETED"					"P2Editor.RemoveCube"
+				}
+				"Animations"
+				{
+						"ANIM_IDLE"				"0"
+						"ANIM_EDITING_ACTIVATE"	"1"
+						"ANIM_EDITING_DEACTIVATE"	"2"
+						"ANIM_DISAPPEAR"			"3"
+						"ANIM_REAPPEAR"			"4"
+				}
+			}
+			"MovementHandle"		"HANDLE_NONE"
+			"InvalidSurface"		"WALL FLOOR"
+		}
+		"Properties"
+		{
+			"ConnectionCount"
+			{
+				"DefaultValue"	"0"
+				"Index"			"1"
+			}
+			"StartEnabled"
+			{
+				"DefaultValue"	"0"
+				"Index"			"2"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/global_item_dropper.vmf"
+					"EntityCount"		"1"
+					"BrushCount"		"1"
+					"BrushSideCount"	"1"
+				}
+			}
+
+			"TargetName"		"globaldrop"
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:counter;Add"
+					"Deactivate"	"instance:counter;Subtract"
+				}
+			}
+			"Offset"		"64 64 64"
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+			}
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+			}
+			"ConnectionPoints"
+			{
+				// left
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 3 0"
+					"SignageOffset"		"-2 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "0"
+				}
+
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 3 0"
+					"SignageOffset"		"9 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "0"
+				}
+
+				// up
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"3 -1 0"
+					"SignageOffset"		"2 -2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "0"
+				}
+
+				// down
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"3 8 0"
+					"SignageOffset"		"2 9 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "0"
+				}
+			}
+		}
+	}
+	
+	"Item"
+	{	
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Modified Items"
+		"Author"		"TeamSpen210"
+		"Description"	"A small hole in the wall with a water fountain to clean cubes."
+		"Type"			"ITEM_TSPEN_PAINT_CLEANER"
+		"ItemClass"		"ItemButtonFloor"
+		"Editor"
+		{
+			"SubTypeProperty"		"ButtonType"
+			"SubType"
+			{
+				"Name"			"Paint Cleaner"
+				"Model"
+				{
+					"ModelName"			"paint_splatter_water.3ds"
+					"TextureName"		"paint_dropper_water.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"PAINT CLEANER"
+					"Image"		"palette/paintsplat_water.png"
+					"Position"		"3 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"	"HANDLE_NONE"
+			"DesiredFacing"		"DESIRES_DOWN"
+		}
+		"Properties"
+		{
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/cleaner_white.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"1"
+				{
+					"Name"				"instances/p2editor/tSpen/old/cleaner_black.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"2"
+				{
+					"Name"				"instances/p2editor/tSpen/old/cleaner_white.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"3"
+				{
+					"Name"				"instances/p2editor/tSpen/old/cleaner_black.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"4"
+				{
+					"Name"				"instances/p2editor/tSpen/old/cleaner_white.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"5"
+				{
+					"Name"				"instances/p2editor/tSpen/old/cleaner_black.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+			}
+			"TargetName"		"cleaner"
+			"Offset"	"64 64 64"
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+			}
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+			}
+		}
+	}
+	
+	"Item"
+	{	
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Modified Items"
+		"Author"		"TeamSpen210"
+		"Description"	"A set of grating-topped panel arms that unfold in sequence. Chain these together using the in/outputs to get extend the effect. Start Reversed reverses the movement order."
+		"Type"			"ITEM_TSPEN_PANEL_DOUBLE_GRATE"
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"			"Double Grate Panel"
+				"Model"
+				{
+					"ModelName"	"tspen_arm_grate.3ds"
+					"TextureName"	"arm_motionplatform.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"DOUBLE GRATE PANEL"
+					"Image"		"palette/panel_door.png"
+					"Position"	"0 5 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"	"HANDLE_4_DIRECTIONS"
+			"DesiredFacing"		"DESIRES_DOWN"
+		}
+		"Properties"
+		{
+			"ConnectionCount"
+			{
+				"DefaultValue"	"0"
+				"Index"			"1"
+			}
+			"StartDeployed"
+			{
+				"DefaultValue"	"1"
+				"Index"			"2"
+			}
+			"StartReversed"
+			{
+				"DefaultValue"	"0"
+				"Index"			"3"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/panel_grate_double.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+			}
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:counter;Add"
+					"Deactivate"	"instance:counter;Subtract"
+				}
+			}
+			"Outputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:activated;OnTrigger"
+					"Deactivate"	"instance:deactivated;OnTrigger"
+				}
+			}
+			"TargetName"		"dap"
+			"Offset"	"64 64 64"
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"CollideType"		"COLLIDE_SOLID"
+					"CollideAgainst"	"COLLIDE_SOLID COLLIDE_PHYSICS"
+						
+					"Pos"		"0 0 0"
+				}
+
+				"Voxel"
+				{
+					"CollideType"		"COLLIDE_NOTHING"
+					"CollideAgainst"	"COLLIDE_ANTLINES"
+
+					"Pos"		"0 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+		
+			}
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+			}
+			"ConnectionPoints"
+			{
+				// left
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 3 0"
+					"SignageOffset"		"-2 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "0"
+				}
+
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 3 0"
+					"SignageOffset"		"9 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "0"
+				}
+
+				// up
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"3 -1 0"
+					"SignageOffset"		"2 -2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "0"
+				}
+
+				// down
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"3 8 0"
+					"SignageOffset"		"2 9 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "0"
+				}
+			}
+		}
+	}
+
+	"Item"
+	{
+		"ItemClass"	"ItemButtonFloor"
+		"Type"		"ITEM_TSPEN_CAGE"
+		"Filter"	"TeamSpen210;BEE 2 Addons;TS - Modified Items"
+		"Author"		"TeamSpen210"
+		"Description"	"Weighted=A turret in a cage which prevents the turret from being tipped over. Thy can still be destroyed by lasers. Cube=A reflector cube inside a cage to stop it from being moved. Both items can placed on walls and ceilings and still work fine. Sphere is the same, but higher up to let it interact with center-positioned lasers. Lasers will pass through the frame, to help with aiming."
+		"Editor"
+		{
+			"SubTypeProperty"		"ButtonType"
+			"SubType"
+			{
+				"Name"			"Caged Turret"
+				"Model"
+				{
+					"ModelName"		"sentry.3ds"
+					"TextureName"	"sentry_turret.png"
+				}
+				"Palette"
+				{
+					"Tooltip"		"CAGED TURRET"
+					"Image"			"palette/turret.png"
+					"Position"		"1 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceButton"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandButton"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseButton"
+					"SOUND_DELETED"					"P2Editor.RemoveButton"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Caged Reflection Cube"
+				"Model"
+				{
+					"ModelName"		"cubelaser.3ds"
+					"TextureName"	"button_cube.png"
+				}
+				"Palette"
+				{
+					"Tooltip"		"CAGED REFLECTION CUBE"
+					"Image"			"palette/reflection_cube.png"
+					"Position"		"2 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceButton"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandButton"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseButton"
+					"SOUND_DELETED"					"P2Editor.RemoveButton"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Caged Reflection Cube - High"
+				"Model"
+				{
+					"ModelName"		"laser_cube_falling.3ds"
+					"TextureName"	"cubelaser.png"
+				}
+				"Palette"
+				{
+					"Tooltip"		"CAGED REFLECTION CUBE - HIGH"
+					"Image"			"palette/reflection_cube.png"
+					"Position"		"2 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceButton"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandButton"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseButton"
+					"SOUND_DELETED"					"P2Editor.RemoveButton"
+				}
+			}
+			"MovementHandle"	"HANDLE_36_DIRECTIONS"
+			"InvalidSurface"	"WALL CEILING"
+		}
+		"Properties"
+		{
+			"ButtonType"
+			{
+				"DefaultValue"	"0"
+				"Index"			"0"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/cage/turret_white.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"1"
+				{
+					"Name"				"instances/p2editor/tSpen/old/cage/turret_black.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"2"
+				{
+					"Name"				"instances/p2editor/tSpen/old/cage/reflect_white.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"12"
+					"BrushSideCount"	"88"
+				}
+				"3"
+				{
+					"Name"				"instances/p2editor/tSpen/old/cage/reflect_black.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"12"
+					"BrushSideCount"	"88"
+				}
+				"4"
+				{
+					"Name"				"instances/p2editor/tSpen/old/cage/reflect_white_high.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"18"
+					"BrushSideCount"	"152"
+				}
+				"5"
+				{
+					"Name"				"instances/p2editor/tSpen/old/cage/reflect_black_high.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"18"
+					"BrushSideCount"	"152"
+				}
+			}
+			"Offset"	"64 64 64"
+			"TargetName"		"cage"
+			"OccupiedVoxels" // from cube
+			{
+				"Voxel"
+				{
+					"Pos"				"0 0 0"
+					"CollideType"		"COLLIDE_PHYSICS"
+					"CollideAgainst"	"COLLIDE_PHYSICS"
+
+					"Surface"
+					{
+						"Pos"		"1 1 0"
+					}
+					"Surface"
+					{
+						"Pos"		"1 2 0"
+					}
+					"Surface"
+					{
+						"Pos"		"2 1 0"
+					}
+					"Surface"
+					{
+						"Pos"		"2 2 0"
+					}
+
+					"Surface"
+					{
+						"Pos"		"1 1 1"
+					}
+					"Surface"
+					{
+						"Pos"		"1 2 1"
+					}
+					"Surface"
+					{
+						"Pos"		"2 1 1"
+					}
+					"Surface"
+					{
+						"Pos"		"2 2 1"
+					}
+				}
+			}
+		}
+	}
+	
+	"Item"
+	{
+		"Type"		"ITEM_TSPEN_STAIRS_WHITE"
+		"ItemClass"	"ItemStairs"
+		"Filter"	"TeamSpen210;BEE 2 Addons;TS - Modified Items"	
+		"Author"		"TeamSpen210"
+		"Description"	"Portalable Stairs. Note that they are not intended to be portalable when up (too small), only when retracted. Old Aperture & Portal 1 styles angle these surfaces differently, extending them straight out instead of angling them."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"		"Portalable Stair"
+				"Model"
+				{
+					"ModelName"	"stairs_white.3ds" // hexed model
+					"TextureName"	"arm_4panel.png"
+				}
+				"Model"
+				{
+					"ModelName"	"stairs_white_ghost.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"PORTALABLE STAIR"
+					"Image"		"palette/tSpen/stairs_white.png"
+					"Position"	"3 2 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"	"HANDLE_4_DIRECTIONS"
+		}
+		"Properties"
+		{
+			"ConnectionCount"
+			{
+				"DefaultValue"	"0"
+				"Index"			"1"
+			}
+			"StartDeployed"
+			{
+				"DefaultValue"	"1"
+				"Index"			"2"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/stairs_white.vmf"
+					"EntityCount"		"13"
+					"BrushCount"		"7"
+					"BrushSideCount"	"56"
+				}
+			}
+
+			"TargetName"		"stw"
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:counter;Add"
+					"Deactivate"	"instance:counter;Subtract"
+				}
+			}
+			"Offset"		"64 64 64"
+
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"CollideType"		"COLLIDE_SOLID"
+					"CollideAgainst"	"COLLIDE_SOLID COLLIDE_PHYSICS"
+					"Pos"			"0 0 0"
+
+					// First step
+					"Surface"
+					{
+						"Pos"		"0 0 0"
+					}
+					"Surface"
+					{
+						"Pos"		"0 1 0"
+					}
+					"Surface"
+					{
+						"Pos"		"0 2 0"
+					}
+					"Surface"
+					{
+						"Pos"		"0 3 0"
+					}
+
+					"Surface"
+					{
+						"Pos"		"1 0 0"
+					}
+					"Surface"
+					{
+						"Pos"		"1 1 0"
+					}
+					"Surface"
+					{
+						"Pos"		"1 2 0"
+					}
+					"Surface"
+					{
+						"Pos"		"1 3 0"
+					}
+
+					//Second Step bottom layer
+					"Surface"
+					{
+						"Pos"		"2 0 0"
+					}
+					"Surface"
+					{
+						"Pos"		"2 1 0"
+					}
+					"Surface"
+					{
+						"Pos"		"2 2 0"
+					}
+					"Surface"
+					{
+						"Pos"		"2 3 0"
+					}
+
+					"Surface"
+					{
+						"Pos"		"3 0 0"
+					}
+					"Surface"
+					{
+						"Pos"		"3 1 0"
+					}
+					"Surface"
+					{
+						"Pos"		"3 2 0"
+					}
+					"Surface"
+					{
+						"Pos"		"3 3 0"
+					}
+
+					//Second Step second layer
+					"Surface"
+					{
+						"Pos"		"2 0 1"
+					}
+					"Surface"
+					{
+						"Pos"		"2 1 1"
+					}
+					"Surface"
+					{
+						"Pos"		"2 2 1"
+					}
+					"Surface"
+					{
+						"Pos"		"2 3 1"
+					}
+
+					"Surface"
+					{
+						"Pos"		"3 0 1"
+					}
+					"Surface"
+					{
+						"Pos"		"3 1 1"
+					}
+					"Surface"
+					{
+						"Pos"		"3 2 1"
+					}
+					"Surface"
+					{
+						"Pos"		"3 3 1"
+					}
+				}
+				"Voxel"
+				{
+					"CollideType"		"COLLIDE_SOLID"
+					"CollideAgainst"	"COLLIDE_SOLID COLLIDE_PHYSICS"
+					"Pos"				"1 0 0"
+				}
+
+				"Voxel"
+				{
+					"CollideType"		"COLLIDE_NOTHING"
+					"CollideAgainst"	"COLLIDE_ANTLINES"
+					"Pos"				"0 0 0"
+					
+					"Surface"
+					{
+						"Normal"		"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"CollideType"		"COLLIDE_NOTHING"
+					"CollideAgainst"	"COLLIDE_ANTLINES"
+					"Pos"				"1 0 0"
+					
+					"Surface"
+					{
+						"Normal"		"0 0 1"
+					}
+				}
+			}
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+				"Voxel"
+				{
+					"Pos"		"1 0 0"
+				}
+			}
+			"ConnectionPoints"
+			{
+				// left
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 0 0"
+					"SignageOffset"		"-2 1 0"
+					"Priority"  "0"
+					"GroupID"	"0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 2 0"
+					"SignageOffset"		"-2 3 0"
+					"Priority"  "0"
+					"GroupID"	"0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "0"
+					"GroupID"	"0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 6 0"
+					"SignageOffset"		"-2 7 0"
+					"Priority"  "0"
+					"GroupID"	"0"
+				}
+
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"16 0 0"
+					"SignageOffset"		"17 1 0"
+					"Priority"  "2"
+					"GroupID"	"1"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"16 2 0"
+					"SignageOffset"		"17 3 0"
+					"Priority"  "2"
+					"GroupID"	"1"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"16 4 0"
+					"SignageOffset"		"17 5 0"
+					"Priority"  "2"
+					"GroupID"	"1"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"16 6 0"
+					"SignageOffset"		"17 7 0"
+					"Priority"  "2"
+					"GroupID"	"1"
+				}
+
+				// up
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"0 -1 0"
+					"SignageOffset"		"1 -2 0"
+					"Priority"  "1"
+					"GroupID"	"2"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"2 -1 0"
+					"SignageOffset"		"3 -2 0"
+					"Priority"  "2"
+					"GroupID"	"2"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "3"
+					"GroupID"	"2"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"6 -1 0"
+					"SignageOffset"		"7 -2 0"
+					"Priority"  "4"
+					"GroupID"	"2"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"8 -1 0"
+					"SignageOffset"		"9 -2 0"
+					"Priority"  "4"
+					"GroupID"	"2"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"10 -1 0"
+					"SignageOffset"		"11 -2 0"
+					"Priority"  "4"
+					"GroupID"	"2"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"12 -1 0"
+					"SignageOffset"		"13 -2 0"
+					"Priority"  "4"
+					"GroupID"	"2"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"14 -1 0"
+					"SignageOffset"		"15 -2 0"
+					"Priority"  "4"
+					"GroupID"	"2"
+				}
+
+				// down
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"0 8 0"
+					"SignageOffset"		"1 9 0"
+					"Priority"  "1"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"2 8 0"
+					"SignageOffset"		"3 9 0"
+					"Priority"  "2"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "3"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"6 8 0"
+					"SignageOffset"		"7 9 0"
+					"Priority"  "4"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"8 8 0"
+					"SignageOffset"		"9 9 0"
+					"Priority"  "4"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"10 8 0"
+					"SignageOffset"		"11 9 0"
+					"Priority"  "4"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"12 8 0"
+					"SignageOffset"		"13 9 0"
+					"Priority"  "4"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"14 8 0"
+					"SignageOffset"		"15 9 0"
+					"Priority"  "4"
+					"GroupID"	"3"
+				}
+			}
+		}
+	}
+	"Item"
+	{
+		"Type"		"ITEM_TSPEN_PISTON_PLATFORM_PORTALABLE"
+		"ItemClass"		"ItemPistonPlatform"
+		"Filter"	"TeamSpen210;BEE 2 Addons;TS - Modified Items"	
+		"Author"		"TeamSpen210"
+		"Description"	"A portable piston platform. This platform deals less crush damage to allow you to portal through a auto-triggering platform."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"		"PORTALABLE PISTON PLATFORM"
+				"Model"
+				{
+					"ModelName"		"piston_lift_grate.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section01.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section02.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section03.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"panel_pushout.3ds"
+					"TextureName"	"motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"		"destination_target_outline.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_tube.3ds"
+					"TextureName"	"motionplatform.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"PORTALABLE PISTON PLATFORM"
+					"Image"		"palette/tSpen/arm_white.png"
+					"Position"	"2 3 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"		"HANDLE_NONE"
+		}
+		"Properties"
+		{
+			"BottomLevel"
+			{
+				"DefaultValue"		"0"
+				"Index"		"1"
+			}
+			"TopLevel"
+			{
+				"DefaultValue"		"1"
+				"Index"		"2"
+			}
+			"StartUp"
+			{
+				"DefaultValue"		"0"
+				"Index"		"3"
+			}
+			"ConnectionCount"
+			{
+				"DefaultValue"		"0"
+				"Index"		"4"
+			}
+			"AutoTrigger"
+			{
+				"DefaultValue"		"1"
+				"Index"		"5"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/lift_portal.vmf"
+					"EntityCount"		"47"
+					"BrushCount"		"16"
+					"BrushSideCount"	"112"
+				}
+			}
+
+			"TargetName"		"plp"
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:counter;Add"
+					"Deactivate"		"instance:counter;Subtract"
+				}
+			}
+			"Offset"		"64 64 64"
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+				"Voxel"
+				{
+					"Pos"		"0 0 -1"
+				}
+			}
+			"ConnectionPoints"
+			{
+				// left
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 3 0"
+					"SignageOffset"		"-2 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "0"
+				}
+
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 3 0"
+					"SignageOffset"		"9 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "0"
+				}
+
+				// up
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"3 -1 0"
+					"SignageOffset"		"2 -2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "0"
+				}
+
+				// down
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"3 8 0"
+					"SignageOffset"		"2 9 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "0"
+				}
+			}
+		}
+	}
+	
+	"Item"
+	{
+		"ItemClass"	"ItemButtonFloor"
+		"Type"		"ITEM_RECESSED_FIZZLER"
+		"Filter"	"TeamSpen210; BEE 2 Addons;TS - Modified Items"	
+		"Author"		"TeamSpen210"
+		"Description"	"A panel recessed into the wall with a fizzler covering it. Accepts inputs like normal. Weighted is a Discouragement Field, Cube is a Emancipation Grill and Sphere is a Paint Fizzler."
+		"Editor"
+		{
+			"SubTypeProperty"		"ButtonType"
+			"SubType"
+			{
+				"Name"			"Recessed Discouragement Field"
+				"Model"
+				{
+					"ModelName"		"tspen_rec_las_field.3ds"
+					"TextureName"	"null.png"
+				}
+				"Palette"
+				{
+					"Tooltip"		"Recessed Discouragement Field"
+					"Image"			"palette/tSpen/recess_las.png"
+					"Position"		"1 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Recessed Emancipation Grid"
+				"Model"
+				{
+					"ModelName"		"tspen_rec_fizz.3ds"
+					"TextureName"	"null.png"
+				}
+				"Palette"
+				{
+					"Tooltip"		"Recessed Emancipation Grid"
+					"Image"			"palette/tSpen/recess_fiz.png"
+					"Position"		"2 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Recessed Paint Fizzler"
+				"Model"
+				{
+					"ModelName"		"tspen_rec_paint_fizz.3ds"
+					"TextureName"	"null.png"
+				}
+				"Palette"
+				{
+					"Tooltip"		"RECESSED PAINT FIZZLER"
+					"Image"			"palette/tSpen/recess_paint.png"
+					"Position"		"3 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"	"HANDLE_4_DIRECTIONS"
+			"DesiredFacing"		"DESIRES_DOWN"
+		}
+		"Properties"
+		{
+			"ButtonType"
+			{
+				"DefaultValue"	"0"
+				"Index"			"0"
+			}
+			"StartEnabled"
+			{
+				"DefaultValue"	"1"
+				"Index"			"1"
+			}
+			"ConnectionCount"
+			{
+				"DefaultValue"	"0"
+				"Index"			"2"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/recessFiz/laser_white.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"1"
+				{
+					"Name"				"instances/p2editor/tSpen/old/recessFiz/laser_black.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"2"
+				{
+					"Name"				"instances/p2editor/tSpen/old/recessFiz/fizz_white.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"3"
+				{
+					"Name"				"instances/p2editor/tSpen/old/recessFiz/fizz_black.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}	
+				"4"
+				{
+					"Name"				"instances/p2editor/tSpen/old/recessFiz/paint_white.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"5"
+				{
+					"Name"				"instances/p2editor/tSpen/old/recessFiz/paint_black.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}				
+			}
+
+			"TargetName"		"rfiz"
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:counter;Add"
+					"Deactivate"	"instance:counter;Subtract"
+				}
+			}
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+			}
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+			}
+			"ConnectionPoints"
+			{
+				// left
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 3 0"
+					"SignageOffset"		"-2 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "0"
+				}
+
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 3 0"
+					"SignageOffset"		"9 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "0"
+				}
+
+				// up
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"3 -1 0"
+					"SignageOffset"		"2 -2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "0"
+				}
+
+				// down
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"3 8 0"
+					"SignageOffset"		"2 9 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "0"
+				}
+			}
+			"Offset"	"64 64 64"
+		}
+	}
+	
+	"Item"
+	{
+		"Type"		"ITEM_TSPEN_CATAPULT_ROT_1"
+		"ItemClass"		"ItemCatapult"
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Modified Items"
+		"Author"		"TeamSpen210"
+		"Description"	"A faith plate that accepts an input to rotate it to fire in the direction of the Rotating Faith Plate Part 2. Place both in the same block, then set the two trajectories."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"		"Rotating Faith Plate Part 1"
+				"Model"
+				{
+					"ModelName"		"paint_splatter_blue.3ds"
+					"TextureName"		"faithplate.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"ROTATING FAITH PLATE PART ONE"
+					"Image"		"palette/tspen/rotate_1.png"
+					"Position"	"1 2 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"		"HANDLE_CATAPULT"
+		}
+		"Properties"
+		{
+			"ConnectionCount"
+			{
+				"DefaultValue"		"0"
+				"Index"		"1"
+			}
+			"CatapultSpeed"
+			{
+				"DefaultValue"		"500"
+				"Index"		"2"
+			}
+			"TargetName"
+			{
+				"DefaultValue"		"target"
+				"Index"		"3"
+			}
+			"VerticalAlignment"
+			{
+				"DefaultValue"		"0"
+				"Index"		"4"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/rot_faith_1.vmf"
+					"EntityCount"		"8"
+					"BrushCount"		"3"
+					"BrushSideCount"	"22"
+				}
+			}
+
+			"TargetName"		"fprot1"
+			"Offset"		"64 64 64"
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+					"CollideType"		"COLLIDE_SOLID"
+					"CollideAgainst"	"COLLIDE_SOLID COLLIDE_GLASS COLLIDE_GRATING COLLIDE_ANTLINES"
+
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+			}
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+			}
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:counter;Add"
+					"Deactivate"	"instance:counter;Subtract"
+				}
+			}
+			"ConnectionPoints"
+			{
+				// left
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 3 0"
+					"SignageOffset"		"-2 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "0"
+				}
+
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 3 0"
+					"SignageOffset"		"9 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "0"
+				}
+
+				// up
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"3 -1 0"
+					"SignageOffset"		"2 -2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "0"
+				}
+
+				// down
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"3 8 0"
+					"SignageOffset"		"2 9 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "0"
+				}
+			}
+		}
+	}
+	
+	"Item"
+	{
+		"Type"		"ITEM_TSPEN_CATAPULT_ROT_2"
+		"ItemClass"		"ItemCatapult"
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Modified Items" // This would probably fit better in the logic catagory, but it's here so it stays next to the first part.
+		"Author"		"TeamSpen210"
+		"Description"	"The second part of Rotating Faith Plates that sets the direction that it fires when enabled."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"		"Rotating Faith Plate Part 2"
+				"Model"
+				{
+					"ModelName"		"rotationgrip.3ds"
+					"TextureName"		"faithplate.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"ROTATING FAITH PLATE PART TWO"
+					"Image"		"palette/tspen/rotate_2.png"
+					"Position"	"1 2 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"		"HANDLE_CATAPULT"
+		}
+		"Properties"
+		{
+			"ConnectionCount"
+			{
+				"DefaultValue"		"0"
+				"Index"		"1"
+			}
+			"CatapultSpeed"
+			{
+				"DefaultValue"		"500"
+				"Index"		"2"
+			}
+			"TargetName"
+			{
+				"DefaultValue"		"target"
+				"Index"		"3"
+			}
+			"VerticalAlignment"
+			{
+				"DefaultValue"		"0"
+				"Index"		"4"
+			}
+		}
+		"Exporting"
+		{
+			"Instances" // Stub instance, contains func_brush target and proxy to control trigger_catapult
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/logic/rot_faith_2.vmf"
+					"EntityCount"		"8"
+					"BrushCount"		"3" // item only contains some triggers and nodraw brushes, nothing visible
+					"BrushSideCount"	"22"
+				}
+			}
+			}
+
+			"TargetName"		"fprot2"
+			"Offset"		"64 64 64"	
+		}
+	}
+	
+	"Item"
+	{
+		"Type"		"ITEM_TSPEN_HALF_GLASS_PANEL"
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Modified Items"
+		"Author"		"TeamSpen210"
+		"Description"	"A separated glass door like in coop maps, for between-chamber doors. Only occupies half of a voxel. Put it on the ceiling to make the antlines connect better."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"		"Half Glass Panel"
+				"Model"
+				{
+					"ModelName"		"tspen_glass_door.3ds"
+					"TextureName"	"arm4_gls_90deg.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"Half Glass Panel"
+					"Image"		"palette/airlock.png"
+					"Position"	"1 2 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"		"HANDLE_4_DIRECTIONS"
+		}
+		"Properties"
+		{
+			"ConnectionCount"
+			{
+				"DefaultValue"	"0"
+				"Index"			"1"
+			}
+			"StartEnabled"
+			{
+				"DefaultValue"	"1"
+				"Index"			"2"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/half_glass.vmf"
+					"EntityCount"		"2"
+					"BrushCount"		"2"
+					"BrushSideCount"	"12"
+				}
+			}
+			"TargetName"		"glassDoor"
+			"Offset"		"64 64 64"
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+					"CollideType"		"COLLIDE_SOLID"
+					"CollideAgainst"	"COLLIDE_SOLID COLLIDE_ANTLINES"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+					"Surface"
+					{
+						"Normal"	"0 0 -1"
+					}
+					
+				}
+			}
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+				"Voxel"
+				{
+					"Pos"		"0 0 2" // opposite side
+				}
+			}
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:counter;Add"
+					"Deactivate"	"instance:counter;Subtract"
+				}
+			}
+			"ConnectionPoints"
+			{
+				// left
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 3 0"
+					"SignageOffset"		"-2 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "0"
+				}
+
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 3 0"
+					"SignageOffset"		"9 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "0"
+				}
+
+				// up
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"3 -1 0"
+					"SignageOffset"		"2 -2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "0"
+				}
+
+				// down
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"3 8 0"
+					"SignageOffset"		"2 9 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "0"
+				}
+			}
+		}
+	}
+	
+	"Item"
+	{
+		"Type"		"ITEM_TSPEN_PISTON_RELAY"
+		"ItemClass"	"ItemPistonPlatform"
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Modified Items"
+		"Author"		"TeamSpen210"
+		"Description"	"A laser relay attached to the top of a piston platform. This does not auto-trigger, like the normal platform when no inputs are connected. The glass platform is not present. WARNING: Goo destroys laser relays, do not place this item in goo."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"		"Piston Laser Relay"
+				"Model"
+				{
+					"ModelName"		"piston_lift_grate.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section01.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section02.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section03.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"laserrelayc.3ds" // relay at top
+					"TextureName"	"motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"		"tspen_laserrelayc_ghost.3ds" // glass textured/ghost relay
+					"TextureName"	"arm_4panel.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_tube.3ds"
+					"TextureName"	"motionplatform.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"PISTON LASER RELAY"
+					"Image"		"palette/tspen/laser_retract.png"
+					"Position"	"2 3 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"		"HANDLE_NONE"
+		}
+		"Properties"
+		{
+			"BottomLevel"
+			{
+				"DefaultValue"		"0"
+				"Index"		"1"
+			}
+			"TopLevel"
+			{
+				"DefaultValue"		"1"
+				"Index"		"2"
+			}
+			"StartUp"
+			{
+				"DefaultValue"		"0"
+				"Index"		"3"
+			}
+			"ConnectionCount"
+			{
+				"DefaultValue"		"0"
+				"Index"		"4"
+			}
+			"AutoTrigger"
+			{
+				"DefaultValue"		"1"
+				"Index"		"5"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/piston_relay.vmf"
+					"EntityCount"		"46"
+					"BrushCount"		"15"
+					"BrushSideCount"	"106"
+				}
+			}
+
+			"TargetName"		"plr"
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:counter;Add"
+					"Deactivate"	"instance:counter;Subtract"
+				}
+			}
+			"Outputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:p;OnUser2" // to allow laser to display firing down.
+					"Deactivate"	"instance:p;OnUser1"
+				}
+			}
+			"Offset"		"64 64 64"
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+				"Voxel"
+				{
+					"Pos"		"0 0 -1"
+				}
+			}
+			"ConnectionPoints"
+			{
+				// left
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 3 0"
+					"SignageOffset"		"-2 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "0"
+				}
+
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 3 0"
+					"SignageOffset"		"9 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "0"
+				}
+
+				// up
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"3 -1 0"
+					"SignageOffset"		"2 -2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "0"
+				}
+
+				// down
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"3 8 0"
+					"SignageOffset"		"2 9 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "0"
+				}
+			}
+		}
+	}
+	
+	"Item"
+	{
+		"Type"		"ITEM_TS_BRIDGE_PANEL"
+		"ItemClass"	"ItemAngledPanel"
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Modified Items"
+		"Author"		"TeamSpen210"
+		"Description"	"A Hard Light Bridge mounted on an angled panel, to allow them to change their angle during a chamber. Input A and the Start Enabled property control the bridge; Input B and the Start Open property control the panel arm. The panel is always non-portalable, and in some styles may be completely absent. Set Start Reversed to switch the bridge to a vertical orientation, instead of a horizontal one. Moving a Light Bridge causes gel on it to vanish, and appears slightly glitchy when moving."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"		"Angled Hard Light Bridge"
+				"Model"
+				{
+					"ModelName"	"arm4_blk_90deg.3ds"
+					"TextureName"	"arm_motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"	"arm4_blk_60deg.3ds"
+					"TextureName"	"arm_motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"	"arm4_blk_45deg.3ds"
+					"TextureName"	"arm_motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"	"arm4_blk_30deg.3ds"
+					"TextureName"	"arm_motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"	"arm4_blk_90deg.3ds"
+					"TextureName"	"arm_motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"	"arm4_blk_60deg.3ds"
+					"TextureName"	"arm_motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"	"arm4_blk_45deg.3ds"
+					"TextureName"	"arm_motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"	"arm4_blk_30deg.3ds"
+					"TextureName"	"arm_motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"	"arm4_ghost_90deg.3ds"
+					"TextureName"	"laser_models.png"
+				}
+				"Model"
+				{
+					"ModelName"	"arm4_ghost_60deg.3ds"
+					"TextureName"	"laser_models.png"
+				}
+				"Model"
+				{
+					"ModelName"	"arm4_ghost_45deg.3ds"
+					"TextureName"	"laser_models.png"
+				}
+				"Model"
+				{
+					"ModelName"	"arm4_ghost_30deg.3ds"
+					"TextureName"	"laser_models.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"ANGLED LIGHT BRIDGE"
+					"Image"		"palette/tspen/angled_bridge.png"
+					"Position"	"0 5 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"	"HANDLE_4_DIRECTIONS"
+			"DesiredFacing"		"DESIRES_DOWN"
+		}
+		"Properties"
+		{
+			"ConnectionCount"
+			{
+				"DefaultValue"	"0"
+				"Index"			"1"
+			}
+			"Portalable"
+			{
+				"DefaultValue"	"1"
+				"Index"			"2"
+			}
+			"AngledPanelType"
+			{
+				"DefaultValue"	"2"
+				"Index"			"3"
+			}
+			"AngledPanelAnimation"
+			{
+				"DefaultValue"	"ramp_45_deg_open"
+				"Index"			"4"
+			}
+			"StartEnabled"
+			{
+				"DefaultValue"	"1"
+				"Index"			"5"
+			}
+			"StartDeployed"
+			{
+				"DefaultValue"	"1"
+				"Index"			"6"
+			}
+			"StartReversed"
+			{
+				"DefaultValue"	"0"
+				"Index"			"7"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/panel_bridge.vmf"
+					"EntityCount"		"13"
+					"BrushCount"		"5"
+					"BrushSideCount"	"39"
+				}
+			}
+
+			"TargetName"		"tslbp"
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:branch_toggle_item;ToggleTest" //A
+					"Deactivate"	"instance:branch_toggle_arm;ToggleTest" //B
+				}
+			}
+			"Offset"		"64 64 64"
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"CollideType"		"COLLIDE_SOLID"
+					"CollideAgainst"	"COLLIDE_SOLID COLLIDE_PHYSICS"
+						
+					"Pos"		"0 0 0"
+				}
+
+				"Voxel"
+				{
+					"CollideType"		"COLLIDE_NOTHING"
+					"CollideAgainst"	"COLLIDE_ANTLINES"
+
+					"Pos"		"0 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+		
+			}
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+			}
+			"ConnectionPoints"
+			{
+				// left
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 3 0"
+					"SignageOffset"		"-2 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "0"
+				}
+
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 3 0"
+					"SignageOffset"		"9 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "0"
+				}
+
+				// up
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"3 -1 0"
+					"SignageOffset"		"2 -2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "0"
+				}
+
+				// down
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"3 8 0"
+					"SignageOffset"		"2 9 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "0"
+				}
+			}
+		}
+	}
+	
+	"Item"
+	{
+		"Type"		"ITEM_TSPEN_CRUSHER_SLOW"
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Modified Items"
+		"Author"	"TeamSpen210"
+		"Description"	"Slower moving crushers that extend when activated, and do not oscillate. Seen in some coop maps."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"			"Slow Crusher"
+				"Model"
+				{
+					"ModelName"		"crusher.3ds"
+					"TextureName"		"observationroom.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"SLOW CRUSHER"
+					"Image"		"palette/crusher2.png"
+					"Position"	"2 5 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"		"HANDLE_NONE"
+			"DesiredFacing"		"DESIRES_UP"
+		}
+		"Properties"
+		{
+			"ConnectionCount"
+			{
+				"DefaultValue"		"0"
+				"Index"		"1"
+			}
+			"StartDeployed"
+			{
+				"DefaultValue"		"0"
+				"Index"		"2"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/slow_crusher.vmf"
+					"EntityCount"		"20"
+					"BrushCount"		"20"
+					"BrushSideCount"	"20"
+				}
+			}
+			"TargetName"		"scr"
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:counter;Add"
+					"Deactivate"	"instance:counter;Subtract"
+				}
+			}
+			"Offset"		"64 64 64"
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"0 -1 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"-1 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"-1 -1 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+			}
+			"EmbeddedVoxels"
+			{
+				"Volume"
+				{
+					"Pos1"		"0 -1 0"
+					"Pos2"		"-1 0 -3"
+				}
+			}
+			"EmbedFace"
+			{
+				"Solid"
+				{
+					"Center"		"0 -112 128"
+					"Dimensions"	"256 32 4"
+					"Grid"			"4x4"
+				}
+				"Solid"
+				{
+					"Center"		"0 112 128"
+					"Dimensions"	"256 32 4"
+					"Grid"			"4x4"
+				}
+				"Solid"
+				{
+					"Center"		"-112 0 128"
+					"Dimensions"	"32 192 4"
+					"Grid"			"4x4"
+				}
+				"Solid"
+				{
+					"Center"		"112 0 128"
+					"Dimensions"	"32 192 4"
+					"Grid"			"4x4"
+				}
+			}
+			"ConnectionPoints"
+			{
+				// left
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 3 0"
+					"SignageOffset"		"-2 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "0"
+				}
+
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 3 0"
+					"SignageOffset"		"9 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "0"
+				}
+
+				// up
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"3 -1 0"
+					"SignageOffset"		"2 -2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "0"
+				}
+
+				// down
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"3 8 0"
+					"SignageOffset"		"2 9 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "0"
+				}
+			}
+		}
+	}
+	
+	"Item"
+	{
+		"Type"		"ITEM_PISTON_AUTO_PORTAL"
+		"ItemClass"	"ItemPistonPlatform"
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Modified Items"
+		"Author"		"BenVlodgi & Rantis, TeamSpen210"
+		"Description"	"A piston platform combined with a orange auto-portal emitter. The portal will close when moving, but reactivate when stopped. Uses the Input A/B system, with Input A controlling the portal and Input B controlling the piston. It does not automatically move when not given inputs."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"		"Piston Mounted Orange Auto-Portal"
+				"Model"
+				{
+					"ModelName"		"piston_lift_grate.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section01.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section02.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section03.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"autoportal_orange.3ds"
+					"TextureName"	"motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"		"destination_target_outline.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_tube.3ds"
+					"TextureName"	"motionplatform.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"PISTON AUTO-PORTAL"
+					"Image"		"palette/fixed_portal_door_orange.png"
+					"Position"	"2 3 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"	"HANDLE_4_DIRECTIONS"
+			"DesiredFacing"		"DESIRES_UP"	
+		}
+		"Properties"
+		{
+			"ConnectionCount"
+			{
+				"DefaultValue"		"0"
+				"Index"		"1"
+			}
+			"BottomLevel"
+			{
+				"DefaultValue"		"0"
+				"Index"		"2"
+			}
+			"TopLevel"
+			{
+				"DefaultValue"		"1"
+				"Index"		"3"
+			}
+			"StartUp"
+			{
+				"DefaultValue"		"0"
+				"Index"		"4"
+			}
+			"StartEnabled"
+			{
+				"DefaultValue"		"0"
+				"Index"		"5"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tspen/old/lift_autoportal.vmf"
+					"EntityCount"		"46"
+					"BrushCount"		"15"
+					"BrushSideCount"	"106"
+					//packer_additem:scripts/vscripts/piston_portal.nut
+				}
+			}
+
+			"TargetName"		"plap"
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Deactivate"	"instance:portal_toggle;ToggleTest"
+					"Activate"		"instance:piston_toggle;ToggleTest"
+				}
+			}
+			"Offset"		"64 64 64"
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+				"Voxel"
+				{
+					"Pos"		"0 0 -1"
+				}
+			}
+			"ConnectionPoints"
+			{
+				// left
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 3 0"
+					"SignageOffset"		"-2 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "0"
+				}
+
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 3 0"
+					"SignageOffset"		"9 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "0"
+				}
+
+				// up
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"3 -1 0"
+					"SignageOffset"		"2 -2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "0"
+				}
+
+				// down
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"3 8 0"
+					"SignageOffset"		"2 9 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "0"
+				}
+			}
+		}
+	}
+
+	"Item"
+	{
+		"Type"		"ITEM_TSPEN_PISTON_CUBE"
+		"ItemClass"	"ItemPistonPlatform"
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Modified Items"
+		"Author"		"TeamSpen210"
+		"Description"	"A cube held in place by a claw on a piston. When the input is triggered, the cube will be released as the piston retracts into the wall. The hole will then be closed over. Cannot be placed on the floor. If pointed up or down the cube will drop straight, if pointed sideways the cube will roll out on that side. Reflection cubes can still be used while held. This works very well with a Global Cube Dropper to allow the cube to be replaced if destroyed."
+		"Editor"
+		{
+			"SubTypeProperty"	"CubeType"
+			"SubType"
+			{
+				"Name"		"Clamped Cube: Weighted"
+				"Model"
+				{
+					"ModelName"		"tspen_piston_clamp_base.3ds"  //"piston_lift_grate.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section01.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section02.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section03.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"cube.3ds" //"piston_lift_top.3ds"
+					"TextureName"	"motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"		"destination_target_outline.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Model"
+				{
+					"ModelName"		"tspen_piston_clamp.3ds" //"piston_lift_tube.3ds"
+					"TextureName"	"motionplatform.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"CLAMPED CUBE"
+					"Image"		"palette/tSpen/pincer_cube.png"
+					"Position"	"2 3 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Clamped Cube: Companion"
+				"Model"
+				{
+					"ModelName"		"tspen_piston_clamp_base.3ds"  //"piston_lift_grate.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section01.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section02.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section03.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"cubecompanion.3ds" //"piston_lift_top.3ds"
+					"TextureName"	"motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"		"destination_target_outline.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Model"
+				{
+					"ModelName"		"tspen_piston_clamp.3ds" 
+					"TextureName"	"motionplatform.png"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Clamped Cube: Reflection"
+				"Model"
+				{
+					"ModelName"		"tspen_piston_clamp_base.3ds"  //"piston_lift_grate.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section01.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section02.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section03.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"cubelaser.3ds" //"piston_lift_top.3ds"
+					"TextureName"	"motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"		"destination_target_outline.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Model"
+				{
+					"ModelName"		"tspen_piston_clamp_las.3ds" // Has red laser line shooting from where cube will be
+					"TextureName"	"motionplatform.png"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Clamped Cube: Sphere"
+				"Model"
+				{
+					"ModelName"		"tspen_piston_clamp_base.3ds" //"piston_lift_grate.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section01.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section02.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section03.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"cubesphere.3ds" //"piston_lift_top.3ds"
+					"TextureName"	"motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"		"destination_target_outline.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Model"
+				{
+					"ModelName"		"tspen_piston_clamp.3ds" 
+					"TextureName"	"motionplatform.png"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Clamped Cube: Franken"
+				"Model"
+				{
+					"ModelName"		"tspen_piston_clamp_base.3ds" //"piston_lift_grate.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section01.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section02.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"piston_lift_section03.3ds"
+					"TextureName"	"pistonlift.png"
+				}
+				"Model"
+				{
+					"ModelName"		"frankenturret.3ds" //"piston_lift_top.3ds"
+					"TextureName"	"motionplatform.png"
+				}
+				"Model"
+				{
+					"ModelName"		"destination_target_outline.3ds"
+					"TextureName"	"arm_4panel.png"
+				}
+				"Model"
+				{
+					"ModelName"		"tspen_piston_clamp.3ds" 
+					"TextureName"	"motionplatform.png"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceOther"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandOther"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseOther"
+					"SOUND_DELETED"					"P2Editor.RemoveOther"
+				}
+			}
+			"MovementHandle"		"HANDLE_4_DIRECTIONS"
+			"DesiredFacing"			"DESIRES_UP"
+			"InvalidSurface"		"FLOOR" // Cube could stay in clamp and get lost under floor
+		}
+		"Properties"
+		{
+			"CubeType"
+			{
+				"DefaultValue"		"0"
+				"Index"				"1"
+			}
+			"ConnectionCount"
+			{
+				"DefaultValue"		"0"
+				"Index"				"2"
+			}
+			"BottomLevel"
+			{
+				"DefaultValue"		"0"
+				"Index"				"3"
+			}
+			"TopLevel"
+			{
+				"DefaultValue"		"2"
+				"Index"				"4"
+			}
+			"StartUp"
+			{
+				"DefaultValue"		"1"
+				"Index"				"5"
+			}
+			"AutoDrop"
+			{
+				"DefaultValue"		"0"
+				"Index"				"6"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tspen/old/piston_cube.vmf"
+					"EntityCount"		"46"
+					"BrushCount"		"15"
+					"BrushSideCount"	"106"
+				}
+			}
+
+			"TargetName"		"plc"
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:counter;Add"
+					"Deactivate"	"instance:counter;Subtract"
+				}
+			}
+			"Offset"		"64 64 64"
+			"EmbeddedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+				"Voxel"
+				{
+					"Pos"		"0 0 -1"
+				}
+				"Voxel"
+				{
+					"Pos"		"0 0 -2"
+				}
+			}
+			"EmbedFace" // 64 unit border
+			{
+				"Solid"
+				{
+					"Center"		"64 16 128"
+					"Dimensions"	"128 32 4"
+					"Grid"			"4x4"
+				}
+				"Solid"
+				{
+					"Center"		"64 112 128"
+					"Dimensions"	"128 32 4"
+					"Grid"			"4x4"
+				}
+				"Solid"
+				{
+					"Center"		"16 64 128"
+					"Dimensions"	"32 64 4"
+					"Grid"			"4x4"
+				}
+				"Solid"
+				{
+					"Center"		"112 64 128"
+					"Dimensions"	"32 64 4"
+					"Grid"			"4x4"
+				}
+			}
+			"ConnectionPoints"
+			{
+				// left
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 3 0"
+					"SignageOffset"		"-2 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "0"
+				}
+
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 3 0"
+					"SignageOffset"		"9 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "0"
+				}
+
+				// up
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"3 -1 0"
+					"SignageOffset"		"2 -2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "0"
+				}
+
+				// down
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"3 8 0"
+					"SignageOffset"		"2 9 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "0"
+				}
+			}
+		}
+	}
+	
+	"Item"
+	{
+		"Type"			"ITEM_TSPEN_SP_CHECKPOINT"
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Modified Items"
+		"Author"		"TeamSpen210"
+		"ItemClass"		"ItemButtonFloor"
+		"Description"	"An exit door combined with a fizzler and some triggers, so it will lock closed after the player walks through. This will trigger its output permanently when the door closes, as well as autosave. This uses old style doors and fizzlers."
+		"Editor"
+		{
+			"SubType"
+			{
+				"Name"			"ChamberLock"
+				"Model"
+				{
+					"ModelName"		"tspen_chamberlock.3ds"
+					"TextureName"		"portal_door.png"
+				}
+				"Palette"
+				{
+					"Tooltip"	"CHAMBERLOCK"
+					"Image"		"palette/door.png"
+					"Position"	"0 0 0"
+				}
+			}
+			"MovementHandle"		"HANDLE_NONE"
+			"DesiredFacing"			"DESIRES_UP"
+			"InvalidSurface"		"CEILING FLOOR"
+		}
+		"Properties"
+		{
+			"ConnectionCount"
+			{
+				"DefaultValue"		"0"
+				"Index"		"1"
+			}
+			"StartEnabled"
+			{
+				"DefaultValue"		"1"
+				"Index"		"2"
+			}
+			"AutoRespawn"
+			{
+				"DefaultValue"		"1"
+				"Index"		"3"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/chamberlock_white.vmf"
+					"EntityCount"		"55"
+					"BrushCount"		"48"
+					"BrushSideCount"	"310"
+				}
+				"1"
+				{
+					"Name"				"instances/p2editor/tSpen/old/chamberlock_black.vmf"
+					"EntityCount"		"9"
+					"BrushCount		"48
+					"BrushSideCount"	"310"
+				}
+			}
+			"TargetName"		"chdr"
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:counter;Add"
+					"Deactivate"	"instance:counter;Subtract"
+				}
+			}
+			"Outputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:out_rl;OnTrigger"
+					"Deactivate"	"instance:out_rl;OnUser4" //unused
+				}
+			}
+			"Offset"		"64 64 64"
+			"OccupiedVoxels"
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+					"Surface"
+					{
+						"Normal"	"0 0 1" // Front wall
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"0 0 -2"
+					"Surface"
+					{
+						"Normal"	"0 0 -1" // Back wall
+					}
+				}
+			}
+			"EmbeddedVoxels" // + shape, so walls can be replaced (dont need corners)
+			{
+				"Voxel"
+				{
+					"Pos"		"0 0 0"
+				}
+				"Voxel"
+				{
+					"Pos"		"1 0 0"
+				}
+				"Voxel"
+				{
+					"Pos"		"-1 0 0"
+				}
+				"Voxel"
+				{
+					"Pos"		"0 1 0"
+				}
+				"Voxel"
+				{
+					"Pos"		"0 -1 0"
+				}
+			}
+
+			"ConnectionPoints"
+			{
+				// top edge left to right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 6 0"
+					"SignageOffset"		"9 7 0"
+					"Priority"  "1"
+					"GroupID"	"0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "1"
+					"GroupID"	"0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 2 0"
+					"SignageOffset"		"9 3 0"
+					"Priority"  "1"
+					"GroupID"	"0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 0 0"
+					"SignageOffset"		"9 1 0"
+					"Priority"  "1"
+					"GroupID"	"0"
+				}
+
+				// left edge top to bottom
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"6 -1 0"
+					"SignageOffset"		"7 -2 0"
+					"Priority"  "0"
+					"GroupID"	"1"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"4 -1 0"
+					"SignageOffset"		"5 -2 0"
+					"Priority"  "1"
+					"GroupID"	"1"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"2 -1 0"
+					"SignageOffset"		"3 -2 0"
+					"Priority"  "2"
+					"GroupID"	"1"
+				}
+				"Point"
+				{
+					"Dir"				"0 1 0"
+					"Pos"				"0 -1 0"
+					"SignageOffset"		"1 -2 0"
+					"Priority"  "3"
+					"GroupID"	"1"
+				}
+
+				// right edge top to bottom
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"6 8 0"
+					"SignageOffset"		"7 9 0"
+					"Priority"  "0"
+					"GroupID"	"2"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"4 8 0"
+					"SignageOffset"		"5 9 0"
+					"Priority"  "1"
+					"GroupID"	"2"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"2 8 0"
+					"SignageOffset"		"3 9 0"
+					"Priority"  "2"
+					"GroupID"	"2"
+				}
+				"Point"
+				{
+					"Dir"				"0 -1 0"
+					"Pos"				"0 8 0"
+					"SignageOffset"		"1 9 0"
+					"Priority"  "3"
+					"GroupID"	"2"
+				}
+
+				// bottom edge left to right
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 6 0"
+					"SignageOffset"		"-2 7 0"
+					"Priority"  "2"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 4 0"
+					"SignageOffset"		"-2 5 0"
+					"Priority"  "2"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 2 0"
+					"SignageOffset"		"-2 3 0"
+					"Priority"  "2"
+					"GroupID"	"3"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-1 0 0"
+					"SignageOffset"		"-2 1 0"
+					"Priority"  "2"
+					"GroupID"	"3"
+				}
+			}
+		}
+	}
+	
+	"Item"
+	{
+		"ItemClass"	"ItemButtonFloor"
+		"Type"		"ITEM_TSPEN_BUTTON_RETRACT_FLOOR"
+		"Filter"		"TeamSpen210;BEE 2 Addons;TS - Modified Items"
+		"Author"		"TeamSpen210"
+		"Description"	"A floor button that has panels to cover it so players/objects cannot push the button, cubes are fizzled when the panels close. (This item takes up three squares.) Grates can be added to make it only usable by cubes or spheres." 
+		"Editor"
+		{
+			"SubTypeProperty"		"ButtonType"
+			"SubType"
+			{
+				"Name"			"Retractable Floor Button"
+				"Model"
+				{
+					"ModelName"		"tspen_ret_btn_old.3ds"
+					"TextureName"	"null.png"
+				}
+				"Palette"
+				{
+					"Tooltip"		"RETRACTABLE FLOOR BUTTON"
+					"Image"			"palette/portal_button.png"
+					"Position"		"1 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceButton"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandButton"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseButton"
+					"SOUND_DELETED"					"P2Editor.RemoveButton"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Retractable Cube Button"
+				"Model"
+				{
+					"ModelName"		"tspen_ret_btn_old_cube.3ds"
+					"TextureName"	"null.png"
+				}
+				"Palette"
+				{
+					"Tooltip"		"RETRACTABLE CUBE BUTTON"
+					"Image"			"palette/box_socket.png"
+					"Position"		"2 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceButton"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandButton"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseButton"
+					"SOUND_DELETED"					"P2Editor.RemoveButton"
+				}
+			}
+			"SubType"
+			{
+				"Name"		"Retractable Ball Button"
+				"Model"
+				{
+					"ModelName"		"tspen_ret_btn_old_sphere.3ds"
+					"TextureName"	"null.png"
+				}
+				"Palette"
+				{
+					"Tooltip"		"RETRACTABLE BALL BUTTON"
+					"Image"			"palette/ball_socket.png"
+					"Position"		"3 0 0"
+				}
+				"Sounds"
+				{
+					"SOUND_CREATED"					"P2Editor.PlaceButton"
+					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandButton"
+					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseButton"
+					"SOUND_DELETED"					"P2Editor.RemoveButton"
+				}
+			}
+			"MovementHandle"	"HANDLE_4_DIRECTIONS"
+			"DesiredFacing"		"DESIRES_DOWN"
+		}
+		"Properties"
+		{
+			"ButtonType"
+			{
+				"DefaultValue"	"0"
+				"Index"			"0"
+			}
+			"ConnectionCount"
+			{
+				"DefaultValue"	"0"
+				"Index"			"1"
+			}
+			"StartEnabled"
+			{
+				"DefaultValue"	"0"
+				"Index"			"2"
+			}
+		}
+		"Exporting"
+		{
+			"Instances"
+			{
+				"0"
+				{
+					"Name"				"instances/p2editor/tSpen/old/retract_btn/floor_white.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"1"
+				{
+					"Name"				"instances/p2editor/tSpen/old/retract_btn/floor_black.vmf"
+					"EntityCount"		"3"
+					"BrushCount"		"41"
+					"BrushSideCount"	"286"
+				}
+				"2"
+				{
+					"Name"				"instances/p2editor/tSpen/old/retract_btn/cube_white.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"12"
+					"BrushSideCount"	"88"
+				}
+				"3"
+				{
+					"Name"				"instances/p2editor/tSpen/old/retract_btn/cube_black.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"12"
+					"BrushSideCount"	"88"
+				}
+				"4"
+				{
+					"Name"				"instances/p2editor/tSpen/old/retract_btn/ball_white.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"18"
+					"BrushSideCount"	"152"
+				}
+				"5"
+				{
+					"Name"				"instances/p2editor/tSpen/old/retract_btn/ball_black.vmf"
+					"EntityCount"		"4"
+					"BrushCount"		"18"
+					"BrushSideCount"	"152"
+				}
+			}
+
+			"TargetName"		"btr"
+			"Inputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:counter;Add"
+					"Deactivate"	"instance:counter;Subtract"
+				}
+			}
+			"Outputs"
+			{
+				"CONNECTION_STANDARD"
+				{
+					"Activate"		"instance:and;OnChangeToAllTrue"
+					"Deactivate"	"instance:and;OnChangeToAnyFalse"
+				}
+			}
+			"OccupiedVoxels"
+			{
+				"Voxel" // Center square and half of two side squares
+				{
+					"Pos"		"0 0 0"
+					"CollideType"	"COLLIDE_NOTHING"
+					"CollideAgainst""COLLIDE_ANTLINES"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				"Voxel"
+				{
+					"Pos"		"0 1 0" // Block antlines on the sides
+					"CollideType"	"COLLIDE_NOTHING"
+					"CollideAgainst""COLLIDE_ANTLINES"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				
+				"Voxel"
+				{
+					"Pos"		"0 -1 0" // Block antlines on the sides
+					"CollideType"	"COLLIDE_NOTHING"
+					"CollideAgainst""COLLIDE_ANTLINES"
+					"Surface"
+					{
+						"Normal"	"0 0 1"
+					}
+				}
+				
+				"Voxel"
+				{
+					"CollideType"		"COLLIDE_SOLID"
+					"CollideAgainst"	"COLLIDE_SOLID COLLIDE_PHYSICS"
+						
+					"Pos"		"0 0 0"
+				}
+				
+				"Voxel" 
+				{
+					"Pos"		"0 1 0"
+					"CollideType"		"COLLIDE_SOLID"
+					"CollideAgainst"	"COLLIDE_SOLID COLLIDE_PHYSICS"
+					"Surface"
+					{
+						"Pos"	"0 0 0"
+					}
+					"Surface"
+					{
+						"Pos"	"1 0 0"
+					}
+					"Surface"
+					{
+						"Pos"	"2 0 0"
+					}
+					"Surface"
+					{
+						"Pos"	"3 0 0"
+					}
+					
+					"Surface"
+					{
+						"Pos"	"0 1 0"
+					}
+					"Surface"
+					{
+						"Pos"	"1 1 0"
+					}
+					"Surface"
+					{
+						"Pos"	"2 1 0"
+					}
+					"Surface"
+					{
+						"Pos"	"3 1 0"
+					}
+				}
+				
+				"Voxel"
+				{
+					"Pos"		"0 -1 0"
+					"CollideType"		"COLLIDE_SOLID"
+					"CollideAgainst"	"COLLIDE_SOLID COLLIDE_PHYSICS"
+					"Surface"
+					{
+						"Pos"	"0 2 0"
+					}
+					"Surface"
+					{
+						"Pos"	"1 2 0"
+					}
+					"Surface"
+					{
+						"Pos"	"2 2 0"
+					}
+					"Surface"
+					{
+						"Pos"	"3 2 0"
+					}
+					
+					"Surface"
+					{
+						"Pos"	"0 3 0"
+					}
+					"Surface"
+					{
+						"Pos"	"1 3 0"
+					}
+					"Surface"
+					{
+						"Pos"	"2 3 0"
+					}
+					"Surface"
+					{
+						"Pos"	"3 3 0"
+					}
+				}
+			}
+			"EmbeddedVoxels"
+			{
+				"Volume"
+				{
+					"Pos1"		"0 -1 0"
+					"Pos2"		"0 1 0"
+				}
+			}
+			"EmbedFace"
+			{
+				"Solid"
+				{
+					"Center"		"64 -96 128"
+					"Dimensions"	"128 64 4"
+					"Grid"			"2x2"
+				}
+				"Solid"
+				{
+					"Center"		"64 224 128"
+					"Dimensions"	"128 64 4"
+					"Grid"			"2x2"
+				}
+			}
+			"ConnectionPoints"
+			{
+				// up/down blocked by panels, but room for more on other sides
+				// left
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-2 1 0"
+					"SignageOffset"		"-3 0 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-2 3 0"
+					"SignageOffset"		"-3 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-2 4 0"
+					"SignageOffset"		"-3 5 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"1 0 0"
+					"Pos"				"-2 6 0"
+					"SignageOffset"		"-3 7 0"
+					"Priority"  "0"
+				}
+
+				// right
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 1 0"
+					"SignageOffset"		"9 0 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 3 0"
+					"SignageOffset"		"9 2 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 4 0"
+					"SignageOffset"		"9 5 0"
+					"Priority"  "0"
+				}
+				"Point"
+				{
+					"Dir"				"-1 0 0"
+					"Pos"				"8 6 0"
+					"SignageOffset"		"9 7 0"
+					"Priority"  "0"
+				}
+			}
+			"Offset"	"64 64 64"
+		}
+	}
+}
