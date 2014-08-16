@@ -1,0 +1,190 @@
+		
+		h1 {
+		font-size: 32pt;
+		text-decoration: underline;
+		text-align: center;
+		}
+		h2 {
+		font-size: 24pt;
+		text-align: center;
+		
+		position: relative;
+		width: 95%;
+		left: 2.5%;
+		right: 2.5%;
+		border-top: 2pt solid black; /* add a dividing line above the h2 headings */
+		padding-top: 15pt;
+		margin-bottom: 4pt;
+		margin-top: 4pt;
+		}
+		
+		li.divider {
+		list-style-type: none;
+		position: relative;
+		right: 10pt;
+		}
+		
+		
+		table {
+		width: 100%;
+		background-color: #FBFAF7;
+		border: 2pt solid black;
+		}
+		
+		td {
+		background: white;
+		font-weight: bold;
+		border: 1pt solid black;
+		}
+		
+		th {
+		font-weight: bold;
+		color: white;
+		background: black;
+		text-align: center;
+		border: 2pt solid black;
+		}
+		
+		td:first-child {
+		text-align: center; /* center first column */
+		}
+		
+		td:first-child dl {
+		text-align: left; /* but not the lists */
+		}
+		
+		td a {
+		font-weight: normal;
+		color: black;
+		text-decoration: none;
+		}
+		
+		td.blank { /* empty table cell, rendered without border to shunt a cell over if sp column is empty. */
+		border: none;
+		background: none;
+		}
+		
+		td.mon {
+		border: none;
+		width: 100pt;
+		height: 50pt;
+		background-color: inherit;
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
+		}
+		
+		td.mon a img {
+		display: block;
+		width: 100pt;
+		height: 50pt;
+		}
+		
+		dl {
+		margin: 0pt;
+		font-weight: normal;
+		}
+		
+		dt {
+		display: list-item;
+		list-style-type: circle;
+		list-style-position: inside;
+		font-weight: bold; /* first text should be bold*/
+		position: relative;
+		margin-left: 10pt;
+		}
+		
+		dd a:before, dd a:before {
+		color: black;
+		font-weight: bold;
+		content: " - ";
+		}
+		
+		td a:hover, td a:focus {
+		text-decoration: underline;
+		font-weight: 600; /* bold and underline selected text */
+		}
+
+		dd a:hover:before, dd a:focus:before { 
+		content: " > ";
+		text-decoration: none !important;
+		font-weight: lighter;
+		}
+		
+		td a:hover:after, td a:focus:after { /* add hover tooltip */
+		display:block;
+		content: '"' attr(data-quote) '"';
+		position:absolute;
+		float:right;
+		font-weight:normal;
+		border: 2pt outset #999;
+		background-color: rgb(255,255,255); /* will be overridden by next if transparency is supported */
+		background-color: rgba(255,255,255,0.9);
+		z-index: 3;
+		padding:5pt;
+		width:50%;
+		left:25%;
+		right:25%;
+		}
+		
+		td a.ann:hover:after, td a.ann:focus:after {
+		content: 'Announcer: ' open-quote attr(data-quote) close-quote;
+		}
+		
+		td a.gla:hover:after, td a.gla:focus:after {
+		content: 'GLaDOS: ' open-quote attr(data-quote) close-quote;
+		}
+		
+		td a.wht:hover:after, td a.wht:focus:after  {
+		content: 'Wheatley: ' open-quote attr(data-quote) close-quote;
+		}
+		
+		td a.car:hover:after, td a.car:focus:after  {
+		content: 'Caroline: ' open-quote attr(data-quote) close-quote;
+		}
+				
+		td a.cav:hover:after, td a.cav:focus:after  {
+		content: 'Cave Johnson: ' open-quote attr(data-quote) close-quote;
+		}
+		
+		td a.tur:hover:after, td a.tur:focus:after  {
+		content: 'Turret: ' open-quote attr(data-quote) close-quote;
+		}
+		
+		td a.sfx:hover:after, td a.sfx:focus:after  {
+		content: '[' attr(data-quote) ']';
+		}
+		
+		td a.none:hover:after, td a.none:focus:after, td.mon a:hover:after, td.mon a:focus:after {
+		content: '';
+		display:none !important;
+		}
+		
+		#char {
+		font-weight: bold;
+		}
+		
+		.gla { /* GLaDOS */
+		color: #C86400;
+		}
+		.wht { /* Wheatley */
+		color: #1DACD6;
+		}
+		.ann { /* Annoncer */
+		color: #FFAF22;
+		}
+		.cav { /* Cave Johnson */
+		color: #EE1111;
+		}
+		.car{ /* Caroline */
+		color: #00BBAa;
+		}
+		.tur { /* Turret */
+		color: #990100;
+		}
+		.sfx{ /*Sound Effects, eg sparks */
+		color:gray;
+		}
+		.none{
+		color: #232323;
+		}
