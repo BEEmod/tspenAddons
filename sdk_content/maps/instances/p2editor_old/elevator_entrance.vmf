@@ -1,8 +1,8 @@
 versioninfo
 {
 	"editorversion" "400"
-	"editorbuild" "5685"
-	"mapversion" "1004"
+	"editorbuild" "6432"
+	"mapversion" "1041"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -20,13 +20,13 @@ viewsettings
 	"bSnapToGrid" "1"
 	"bShowGrid" "1"
 	"bShowLogicalGrid" "0"
-	"nGridSpacing" "128"
+	"nGridSpacing" "32"
 	"bShow3DGrid" "0"
 }
 world
 {
 	"id" "1"
-	"mapversion" "1004"
+	"mapversion" "1041"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -1442,6 +1442,275 @@ world
 			"visgroupshown" "1"
 			"visgroupautoshown" "1"
 		}
+	}
+}
+entity
+{
+	"id" "261731"
+	"classname" "npc_bullseye"
+	"alwaystransmit" "0"
+	"angles" "0 0 0"
+	"autoaimradius" "0"
+	"disableflashlight" "0"
+	"disablereceiveshadows" "0"
+	"disableshadowdepth" "0"
+	"disableshadows" "0"
+	"health" "35"
+	"hintlimiting" "0"
+	"ignoreunseenenemies" "0"
+	"minangle" "360"
+	"mindist" "0"
+	"physdamagescale" "1.0"
+	"renderamt" "255"
+	"rendercolor" "255 255 255"
+	"renderfx" "0"
+	"rendermode" "0"
+	"shadowdepthnocache" "0"
+	"sleepstate" "0"
+	"spawnflags" "204816"
+	"targetname" "@cave_bullseye"
+	"wakeradius" "0"
+	"wakesquad" "0"
+	"origin" "-1120 120 -672"
+	editor
+	{
+		"color" "255 0 0"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"comments" "AddOutput is not fixed by VBSP - that will allow correct targetnames for the choreo scenes!"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "261733"
+	"classname" "npc_bullseye"
+	"alwaystransmit" "0"
+	"angles" "0 0 0"
+	"autoaimradius" "0"
+	"disableflashlight" "0"
+	"disablereceiveshadows" "0"
+	"disableshadowdepth" "0"
+	"disableshadows" "0"
+	"health" "35"
+	"hintlimiting" "0"
+	"ignoreunseenenemies" "0"
+	"minangle" "360"
+	"mindist" "0"
+	"physdamagescale" "1.0"
+	"renderamt" "255"
+	"rendercolor" "255 255 255"
+	"renderfx" "0"
+	"rendermode" "0"
+	"shadowdepthnocache" "0"
+	"sleepstate" "0"
+	"spawnflags" "204816"
+	"targetname" "@cave_exit_bullseye"
+	"wakeradius" "0"
+	"wakesquad" "0"
+	"origin" "-1056 120 -672"
+	editor
+	{
+		"color" "255 0 0"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "261786"
+	"classname" "logic_auto"
+	"spawnflags" "1"
+	connections
+	{
+		"OnMapSpawn" "player_start_rlTrigger0-1"
+		"OnMapSpawn" "fade_spawnFade0-1"
+		"OnMapSpawn" "@normal_gunTrigger0.15-1"
+		"OnMapSpawn" "@pipes_whiteTrigger0.55-1"
+		"OnMapSpawn" "@has_laserTrigger0.6-1"
+		"OnMapSpawn" "@pipes_blueTrigger0.65-1"
+		"OnMapSpawn" "@has_deadlyTrigger0.7-1"
+		"OnMapSpawn" "@pipes_orangeTrigger0.75-1"
+		"OnMapSpawn" "@pipes_greyTrigger0.8-1"
+		"OnMapSpawn" "@pipes_purpleTrigger0.85-1"
+		"OnMapSpawn" "@cave_exit_genericFireUser10.9-1"
+		"OnMapSpawn" "@cave_enter_genericFireUser10.9-1"
+		"OnMapSpawn" "@has_funnelTrigger0.5-1"
+		"OnMapSpawn" "global_entsinstance:environment_underground;Trigger0-1"
+		"OnMapSpawn" "@cave_exit_lobbyFireUser10.45-1"
+	}
+	"origin" "-1160.38 120 -699.301"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 1500]"
+	}
+}
+entity
+{
+	"id" "261967"
+	"classname" "npc_bullseye"
+	"alwaystransmit" "0"
+	"angles" "0 0 0"
+	"autoaimradius" "0"
+	"disableflashlight" "0"
+	"disablereceiveshadows" "0"
+	"disableshadowdepth" "0"
+	"disableshadows" "0"
+	"health" "35"
+	"hintlimiting" "0"
+	"ignoreunseenenemies" "0"
+	"minangle" "360"
+	"mindist" "0"
+	"physdamagescale" "1.0"
+	"renderamt" "255"
+	"rendercolor" "255 255 255"
+	"renderfx" "0"
+	"rendermode" "0"
+	"shadowdepthnocache" "0"
+	"sleepstate" "0"
+	"spawnflags" "204816"
+	"targetname" "@cave_catwalk_bullseye"
+	"wakeradius" "0"
+	"wakesquad" "0"
+	"origin" "-1088 120 -640"
+	editor
+	{
+		"color" "255 0 0"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "262115"
+	"classname" "npc_bullseye"
+	"alwaystransmit" "0"
+	"angles" "0 0 0"
+	"autoaimradius" "0"
+	"disableflashlight" "0"
+	"disablereceiveshadows" "0"
+	"disableshadowdepth" "0"
+	"disableshadows" "0"
+	"health" "35"
+	"hintlimiting" "0"
+	"ignoreunseenenemies" "0"
+	"minangle" "360"
+	"mindist" "0"
+	"physdamagescale" "1.0"
+	"renderamt" "255"
+	"rendercolor" "255 255 255"
+	"renderfx" "0"
+	"rendermode" "0"
+	"shadowdepthnocache" "0"
+	"sleepstate" "0"
+	"spawnflags" "204816"
+	"targetname" "choreo_2_bull"
+	"wakeradius" "0"
+	"wakesquad" "0"
+	"origin" "-1128.82 120 -575.478"
+	editor
+	{
+		"color" "255 0 0"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"comments" "These are used for FGEmod choreo and have to always exist, since they can trigger at any time."
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "262117"
+	"classname" "npc_bullseye"
+	"alwaystransmit" "0"
+	"angles" "0 0 0"
+	"autoaimradius" "0"
+	"disableflashlight" "0"
+	"disablereceiveshadows" "0"
+	"disableshadowdepth" "0"
+	"disableshadows" "0"
+	"health" "35"
+	"hintlimiting" "0"
+	"ignoreunseenenemies" "0"
+	"minangle" "360"
+	"mindist" "0"
+	"physdamagescale" "1.0"
+	"renderamt" "255"
+	"rendercolor" "255 255 255"
+	"renderfx" "0"
+	"rendermode" "0"
+	"shadowdepthnocache" "0"
+	"sleepstate" "0"
+	"spawnflags" "204816"
+	"targetname" "choreo_1_bull"
+	"wakeradius" "0"
+	"wakesquad" "0"
+	"origin" "-1112.82 120 -575.478"
+	editor
+	{
+		"color" "255 0 0"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"comments" "These are used for FGEmod choreo and have to always exist, since they can trigger at any time."
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "262119"
+	"classname" "npc_bullseye"
+	"alwaystransmit" "0"
+	"angles" "0 0 0"
+	"autoaimradius" "0"
+	"disableflashlight" "0"
+	"disablereceiveshadows" "0"
+	"disableshadowdepth" "0"
+	"disableshadows" "0"
+	"health" "35"
+	"hintlimiting" "0"
+	"ignoreunseenenemies" "0"
+	"minangle" "360"
+	"mindist" "0"
+	"physdamagescale" "1.0"
+	"renderamt" "255"
+	"rendercolor" "255 255 255"
+	"renderfx" "0"
+	"rendermode" "0"
+	"shadowdepthnocache" "0"
+	"sleepstate" "0"
+	"spawnflags" "204816"
+	"targetname" "@cave_exit_lift"
+	"wakeradius" "0"
+	"wakesquad" "0"
+	"origin" "-1120.82 120 -559.478"
+	editor
+	{
+		"color" "255 0 0"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"comments" "These are used for FGEmod choreo and have to always exist, since they can trigger at any time. @cave_exit_lift is used by other things too."
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "260847"
+	"classname" "func_instance"
+	"angles" "-0 0 0"
+	"file" "instances/p2editor_clean/sendtor_manager.vmf"
+	"fixup_style" "0"
+	"origin" "-3840 1152 736"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"comments" "don't rotate me!"
+		"logicalpos" "[0 7500]"
 	}
 }
 entity
@@ -8345,7 +8614,6 @@ entity
 {
 	"id" "248787"
 	"classname" "env_cubemap"
-	"sides" ""
 	"origin" "-825.414 -568.721 -1395.3"
 	editor
 	{
@@ -8360,7 +8628,6 @@ entity
 {
 	"id" "248790"
 	"classname" "env_cubemap"
-	"sides" ""
 	"origin" "-825.414 -568.721 -979.3"
 	editor
 	{
@@ -9081,34 +9348,20 @@ entity
 entity
 {
 	"id" "243863"
-	"classname" "ambient_generic"
-	"cspinup" "0"
-	"fadeinsecs" "0"
-	"fadeoutsecs" "0"
-	"health" "10"
-	"lfomodpitch" "0"
-	"lfomodvol" "0"
-	"lforate" "0"
-	"lfotype" "0"
-	"message" "vo/cavejohnson/fifties_fifth_test_complete03.wav"
-	"pitch" "100"
-	"pitchstart" "100"
-	"preset" "0"
-	"radius" "12500"
-	"spawnflags" "49"
-	"spindown" "0"
-	"spinup" "0"
+	"classname" "logic_choreographed_scene"
+	"busyactor" "1"
+	"onplayerdeath" "0"
+	"SceneFile" "scenes/npc/cavejohnson/fifties_fifth_test_complete03.vcd"
 	"targetname" "@cave_exit_deadly2"
-	"volstart" "0"
 	connections
 	{
-		"OnUser2" "!selfPlaySound0-1"
-		"OnUser2" "@cave_exit_deadly3FireUser25-1"
+		"OnUser2" "!selfStart0-1"
+		"OnCompletion" "@cave_exit_deadly3Start0-1"
 	}
 	"origin" "-1237.75 1544 -800.238"
 	editor
 	{
-		"color" "220 30 220"
+		"color" "0 0 255"
 		"visgroupshown" "1"
 		"visgroupautoshown" "1"
 		"logicalpos" "[0 0]"
@@ -9117,33 +9370,15 @@ entity
 entity
 {
 	"id" "243893"
-	"classname" "ambient_generic"
-	"cspinup" "0"
-	"fadeinsecs" "0"
-	"fadeoutsecs" "0"
-	"health" "10"
-	"lfomodpitch" "0"
-	"lfomodvol" "0"
-	"lforate" "0"
-	"lfotype" "0"
-	"message" "vo/cavejohnson/fifties_fifth_test_complete08.wav"
-	"pitch" "100"
-	"pitchstart" "100"
-	"preset" "0"
-	"radius" "12500"
-	"spawnflags" "49"
-	"spindown" "0"
-	"spinup" "0"
+	"classname" "logic_choreographed_scene"
+	"busyactor" "1"
+	"onplayerdeath" "0"
+	"SceneFile" "scenes/npc/cavejohnson/fifties_fifth_test_complete08.vcd"
 	"targetname" "@cave_exit_deadly3"
-	"volstart" "0"
-	connections
-	{
-		"OnUser2" "!selfPlaySound0-1"
-	}
 	"origin" "-1237.12 1544 -766.892"
 	editor
 	{
-		"color" "220 30 220"
+		"color" "0 0 255"
 		"visgroupshown" "1"
 		"visgroupautoshown" "1"
 		"logicalpos" "[0 0]"
@@ -9152,33 +9387,19 @@ entity
 entity
 {
 	"id" "243947"
-	"classname" "ambient_generic"
-	"cspinup" "0"
-	"fadeinsecs" "0"
-	"fadeoutsecs" "0"
-	"health" "10"
-	"lfomodpitch" "0"
-	"lfomodvol" "0"
-	"lforate" "0"
-	"lfotype" "0"
-	"message" "vo/cavejohnson/fifties_second_test_complete02.wav"
-	"pitch" "100"
-	"pitchstart" "100"
-	"preset" "0"
-	"radius" "12500"
-	"spawnflags" "49"
-	"spindown" "0"
-	"spinup" "0"
+	"classname" "logic_choreographed_scene"
+	"busyactor" "1"
+	"onplayerdeath" "0"
+	"SceneFile" "scenes/npc/cavejohnson/fifties_second_test_complete02.vcd"
 	"targetname" "@cave_exit_bluegel2"
-	"volstart" "0"
 	connections
 	{
-		"OnUser2" "!selfPlaySound0-1"
+		"OnUser2" "!selfStart0-1"
 	}
 	"origin" "-1165.36 1544 -800.952"
 	editor
 	{
-		"color" "220 30 220"
+		"color" "0 0 255"
 		"visgroupshown" "1"
 		"visgroupautoshown" "1"
 		"logicalpos" "[0 0]"
@@ -9187,33 +9408,19 @@ entity
 entity
 {
 	"id" "243995"
-	"classname" "ambient_generic"
-	"cspinup" "0"
-	"fadeinsecs" "0"
-	"fadeoutsecs" "0"
-	"health" "10"
-	"lfomodpitch" "0"
-	"lfomodvol" "0"
-	"lforate" "0"
-	"lfotype" "0"
-	"message" "vo/cavejohnson/fifties_repulsion_intro03.wav"
-	"pitch" "100"
-	"pitchstart" "100"
-	"preset" "0"
-	"radius" "12500"
-	"spawnflags" "49"
-	"spindown" "0"
-	"spinup" "0"
+	"classname" "logic_choreographed_scene"
+	"busyactor" "1"
+	"onplayerdeath" "0"
+	"SceneFile" "scenes/npc/cavejohnson/fifties_repulsion_intro03.vcd"
 	"targetname" "@cave_enter_bluegel2"
-	"volstart" "0"
 	connections
 	{
-		"OnUser2" "!selfPlaySound0-1"
+		"OnUser2" "!selfStart0-1"
 	}
 	"origin" "-1212.81 120 -644.303"
 	editor
 	{
-		"color" "220 30 220"
+		"color" "0 0 255"
 		"visgroupshown" "1"
 		"visgroupautoshown" "1"
 		"logicalpos" "[0 0]"
@@ -9222,38 +9429,25 @@ entity
 entity
 {
 	"id" "241995"
-	"classname" "ambient_generic"
-	"cspinup" "0"
-	"fadeinsecs" "0"
-	"fadeoutsecs" "0"
-	"health" "10"
-	"lfomodpitch" "0"
-	"lfomodvol" "0"
-	"lforate" "0"
-	"lfotype" "0"
-	"message" "vo/cavejohnson/eighties_intro06.wav"
-	"pitch" "100"
-	"pitchstart" "100"
-	"preset" "0"
-	"radius" "12500"
-	"spawnflags" "49"
-	"spindown" "0"
-	"spinup" "0"
+	"classname" "logic_choreographed_scene"
+	"busyactor" "1"
+	"onplayerdeath" "0"
+	"SceneFile" "scenes/npc/cavejohnson/eighties_intro06.vcd"
 	"targetname" "@cave_enter_whitegel"
-	"volstart" "0"
 	connections
 	{
-		"OnUser2" "!selfPlaySound0-1"
+		"OnUser2" "!selfStart0-1"
 		"OnUser1" "@cave_enter_funnelKill0-1"
 		"OnUser1" "@cave_enter_laserKill0-1"
 		"OnUser1" "@cave_enter_bluegelKill0-1"
 		"OnUser1" "@cave_enter_genericKill0-1"
 		"OnUser1" "@pipes_blueFireUser30-1"
+		"OnUser1" "@cave_bullseyeAddOutputtargetname cave_portal_intro_office0-1"
 	}
-	"origin" "-1184.2 120 -673.872"
+	"origin" "-1216.2 120 -673.872"
 	editor
 	{
-		"color" "220 30 220"
+		"color" "0 0 255"
 		"visgroupshown" "1"
 		"visgroupautoshown" "1"
 		"logicalpos" "[0 0]"
@@ -9263,16 +9457,30 @@ entity
 {
 	"id" "242007"
 	"classname" "logic_relay"
-	"spawnflags" "1"
+	"spawnflags" "0"
 	"StartDisabled" "0"
 	"targetname" "@cave_enter"
 	connections
 	{
-		"OnTrigger" "@cave_enter_whitegelFireUser25-1"
-		"OnTrigger" "@cave_enter_funnelFireUser25-1"
-		"OnTrigger" "@cave_enter_bluegelFireUser25-1"
-		"OnTrigger" "@cave_enter_genericFireUser25-1"
-		"OnTrigger" "@cave_enter_laserFireUser25-1"
+		"OnTrigger" "@cave_enter_whitegelFireUser251"
+		"OnTrigger" "@cave_enter_funnelFireUser251"
+		"OnTrigger" "@cave_enter_bluegelFireUser251"
+		"OnTrigger" "@cave_enter_genericFireUser251"
+		"OnTrigger" "@cave_enter_laserFireUser251"
+		"OnSpawn" "choreo_1_bullAddOutputtargetname cave_transition01_dummy_exit0.11"
+		"OnSpawn" "choreo_2_bullAddOutputtargetname cave_bomb_flings_chamber0.11"
+		"OnSpawn" "choreo_1_bullSetLocalOrigin0 0 640.051"
+		"OnSpawn" "choreo_2_bullSetLocalOrigin0 0 640.051"
+		"OnSpawn" "@cave_exit_liftSetLocalOrigin0 0 640.051"
+		"OnSpawn" "@cave_catwalk_bullseyeSetLocalOrigin0 0 640.051"
+		"OnSpawn" "@cave_bullseyeSetLocalOrigin0 0 640.051"
+		"OnSpawn" "@cave_exit_bullseyeSetLocalOrigin0 0 640.051"
+		"OnSpawn" "@cave_exit_liftSetParent!player01"
+		"OnSpawn" "choreo_2_bullSetParent!player01"
+		"OnSpawn" "choreo_1_bullSetParent!player01"
+		"OnSpawn" "@cave_catwalk_bullseyeSetParent!player01"
+		"OnSpawn" "@cave_exit_bullseyeSetParent!player01"
+		"OnSpawn" "@cave_bullseyeSetParent!player01"
 	}
 	"origin" "-1253.95 120 -720.981"
 	editor
@@ -9280,67 +9488,26 @@ entity
 		"color" "220 30 220"
 		"visgroupshown" "1"
 		"visgroupautoshown" "1"
+		"comments" "We parent the bullseyes to the player, then teleport them to the head so they always play at max volume."
 		"logicalpos" "[0 0]"
 	}
 }
 entity
 {
-	"id" "242215"
-	"classname" "logic_auto"
-	"spawnflags" "1"
+	"id" "243074"
+	"classname" "logic_choreographed_scene"
+	"busyactor" "1"
+	"onplayerdeath" "0"
+	"SceneFile" "scenes/npc/cavejohnson/fifties_fifth_test_intro01.vcd"
+	"targetname" "@cave_catwalks1"
 	connections
 	{
-		"OnMapSpawn" "player_start_rlTrigger0-1"
-		"OnMapSpawn" "fade_spawnFade0-1"
-		"OnMapSpawn" "@normal_gunTrigger0.15-1"
-		"OnMapSpawn" "@pipes_whiteTrigger0.55-1"
-		"OnMapSpawn" "@has_laserTrigger0.6-1"
-		"OnMapSpawn" "@pipes_blueTrigger0.65-1"
-		"OnMapSpawn" "@has_deadlyTrigger0.7-1"
-		"OnMapSpawn" "@pipes_orangeTrigger0.75-1"
-		"OnMapSpawn" "@pipes_greyTrigger0.8-1"
-		"OnMapSpawn" "@pipes_purpleTrigger0.85-1"
-		"OnMapSpawn" "@cave_exit_genericFireUser10.9-1"
-		"OnMapSpawn" "@cave_enter_genericFireUser10.9-1"
-		"OnMapSpawn" "@has_funnelTrigger0.5-1"
-		"OnMapSpawn" "global_entsinstance:environment_underground;Trigger0-1"
-		"OnMapSpawn" "@cave_exit_lobbyFireUser10.45-1"
+		"OnCompletion" "@cave_catwalks2Start0-1"
 	}
-	"origin" "-794.803 -272.8 -965.38"
-	editor
-	{
-		"color" "220 30 220"
-		"visgroupshown" "1"
-		"visgroupautoshown" "1"
-		"logicalpos" "[0 1500]"
-	}
-}
-entity
-{
-	"id" "243074"
-	"classname" "ambient_generic"
-	"cspinup" "0"
-	"fadeinsecs" "0"
-	"fadeoutsecs" "0"
-	"health" "10"
-	"lfomodpitch" "0"
-	"lfomodvol" "0"
-	"lforate" "0"
-	"lfotype" "0"
-	"message" "cavejohnson.fifties_fifth_test_intro01"
-	"pitch" "100"
-	"pitchstart" "100"
-	"preset" "0"
-	"radius" "1250"
-	"spawnflags" "49"
-	"spindown" "0"
-	"spinup" "0"
-	"targetname" "@cave_catwalks1"
-	"volstart" "0"
 	"origin" "-229.412 1067.36 -496"
 	editor
 	{
-		"color" "220 30 220"
+		"color" "0 0 255"
 		"visgroupshown" "1"
 		"visgroupautoshown" "1"
 		"logicalpos" "[0 0]"
@@ -9349,29 +9516,15 @@ entity
 entity
 {
 	"id" "243077"
-	"classname" "ambient_generic"
-	"cspinup" "0"
-	"fadeinsecs" "0"
-	"fadeoutsecs" "0"
-	"health" "10"
-	"lfomodpitch" "0"
-	"lfomodvol" "0"
-	"lforate" "0"
-	"lfotype" "0"
-	"message" "cavejohnson.fifties_fifth_test_intro03"
-	"pitch" "100"
-	"pitchstart" "100"
-	"preset" "0"
-	"radius" "1250"
-	"spawnflags" "49"
-	"spindown" "0"
-	"spinup" "0"
+	"classname" "logic_choreographed_scene"
+	"busyactor" "1"
+	"onplayerdeath" "0"
+	"SceneFile" "scenes/npc/cavejohnson/fifties_fifth_test_intro03.vcd"
 	"targetname" "@cave_catwalks2"
-	"volstart" "0"
 	"origin" "-226.467 1083.36 -495.569"
 	editor
 	{
-		"color" "220 30 220"
+		"color" "0 0 255"
 		"visgroupshown" "1"
 		"visgroupautoshown" "1"
 		"logicalpos" "[0 0]"
@@ -10016,6 +10169,7 @@ entity
 {
 	"id" "240578"
 	"classname" "logic_relay"
+	"spawnflags" "0"
 	"StartDisabled" "1"
 	"targetname" "@has_deadly"
 	connections
@@ -10075,25 +10229,12 @@ entity
 entity
 {
 	"id" "240682"
-	"classname" "ambient_generic"
-	"cspinup" "0"
-	"fadeinsecs" "0"
-	"fadeoutsecs" "0"
-	"health" "10"
-	"lfomodpitch" "0"
-	"lfomodvol" "0"
-	"lforate" "0"
-	"lfotype" "0"
-	"message" "vo/cavejohnson/fifties_outro07.wav"
-	"pitch" "100"
-	"pitchstart" "100"
-	"preset" "0"
-	"radius" "12500"
-	"spawnflags" "49"
-	"spindown" "0"
-	"spinup" "0"
+	"classname" "logic_choreographed_scene"
+	"busyactor" "1"
+	"onplayerdeath" "0"
+	"SceneFile" "scenes/npc/cavejohnson/fifties_outro07.vcd"
+	"spawnflags" "0"
 	"targetname" "@cave_exit_gel"
-	"volstart" "0"
 	connections
 	{
 		"OnUser1" "@cave_exit_genericKill0-1"
@@ -10101,12 +10242,13 @@ entity
 		"OnUser1" "@cave_exit_deadlyKill0-1"
 		"OnUser1" "@cave_exit_lobbyKill0-1"
 		"OnUser1" "@cave_exit_bluegelKill0-1"
-		"OnUser2" "!selfPlaySound0-1"
+		"OnUser2" "!selfStart0-1"
+		"OnUser1" "@cave_exit_bullseyeAddOutputtargetname cave_transition01_dummy_exit0-1"
 	}
 	"origin" "-1132.87 1544 -821.757"
 	editor
 	{
-		"color" "220 30 220"
+		"color" "0 0 255"
 		"visgroupshown" "1"
 		"visgroupautoshown" "1"
 		"logicalpos" "[0 0]"
@@ -10115,25 +10257,11 @@ entity
 entity
 {
 	"id" "240743"
-	"classname" "ambient_generic"
-	"cspinup" "0"
-	"fadeinsecs" "0"
-	"fadeoutsecs" "0"
-	"health" "10"
-	"lfomodpitch" "0"
-	"lfomodvol" "0"
-	"lforate" "0"
-	"lfotype" "0"
-	"message" "vo/cavejohnson/fifties_fifth_test_complete09.wav"
-	"pitch" "100"
-	"pitchstart" "100"
-	"preset" "0"
-	"radius" "12500"
-	"spawnflags" "49"
-	"spindown" "0"
-	"spinup" "0"
+	"classname" "logic_choreographed_scene"
+	"busyactor" "1"
+	"onplayerdeath" "0"
+	"SceneFile" "scenes/npc/cavejohnson/fifties_fifth_test_complete09.vcd"
 	"targetname" "@cave_exit_deadly"
-	"volstart" "0"
 	connections
 	{
 		"OnUser1" "@cave_exit_gelKill0-1"
@@ -10141,13 +10269,13 @@ entity
 		"OnUser1" "@cave_exit_bluegelKill0-1"
 		"OnUser1" "@cave_exit_lobbyKill0-1"
 		"OnUser1" "@cave_exit_genericKill0-1"
-		"OnUser2" "!selfPlaySound0-1"
-		"OnUser2" "@cave_exit_deadly2FireUser215-1"
+		"OnUser2" "!selfStart0-1"
+		"OnCompletion" "@cave_exit_deadly2Start0-1"
 	}
 	"origin" "-1238.28 1544 -822.916"
 	editor
 	{
-		"color" "220 30 220"
+		"color" "0 0 255"
 		"visgroupshown" "1"
 		"visgroupautoshown" "1"
 		"logicalpos" "[0 0]"
@@ -10188,8 +10316,8 @@ entity
 		"OnTrigger" "@cave_exit_lobbyFireUser201"
 		"OnTrigger" "@cave_exit_bluegelFireUser201"
 		"OnTrigger" "@cave_exit_genericFireUser201"
-		"OnTrigger" "@cave_catwalks1PlaySound451"
-		"OnTrigger" "@cave_catwalks2PlaySound551"
+		"OnTrigger" "@cave_catwalks1Start45-1"
+		"OnTrigger" "@cave_catwalk_bullseyeAddOutputtargetname cave_crazy_box_2nd_chamber40-1"
 	}
 	"origin" "-1202.62 1544 -868.866"
 	editor
@@ -17559,7 +17687,7 @@ entity
 	"origin" "-1216.01 144.49 -960"
 	"spawnflags" "65"
 	"StartDisabled" "0"
-	"targetname" "AutoInstance1-$cleanser_name"
+	"targetname" "fiz"
 	"UseScanline" "0"
 	"Visible" "1"
 	solid
@@ -17995,7 +18123,7 @@ entity
 	"file" "instances/p2editor_old/global_pti_ents.vmf"
 	"replace01" "$disable_pti_audio 0"
 	"targetname" "global_pti_ents"
-	"origin" "-2088 1456 816"
+	"origin" "-3712 1664 816"
 	editor
 	{
 		"color" "220 30 220"
@@ -18145,8 +18273,8 @@ cameras
 	"activecamera" "0"
 	camera
 	{
-		"position" "[-809.818 454.601 -810.426]"
-		"look" "[-870.785 461.447 -825.268]"
+		"position" "[-1357.51 -3970.2 704.835]"
+		"look" "[-1356.68 -3910.88 683.245]"
 	}
 	camera
 	{
