@@ -1,0 +1,16 @@
+table {
+	border: 5pt outset black;
+	margin: 5pt;
+}
+	
+	td {
+	border: 1pt solid black;
+	text-align: center;
+}
+	
+	th {
+	background: black;
+	color: white;
+	padding-left: 3pt;
+	padding-right: 3pt;
+}

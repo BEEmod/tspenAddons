@@ -1,0 +1,351 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>BEE2 Addons - Changelog</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="stylesheets/changelog.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">BEE2 Addons</h1>
+        <p class="header">Items and Styles for the BEE2</p>
+
+        <ul class="buttons">
+ 			<li><a class="button arr-left" href="index.html">Back</a></li>
+				<br>
+			<li class="download"><a class="button arr-down" href="http://forums.thinkingwithportals.com/downloads.php?view=detail&amp;df_id=2833">Download</a></li>
+			<li><a class="button ico-plus" href="items.html">New Items</a></li>
+			<li><a class="button arr-right" href="quotes.html">Quote list</a></li>
+			<li><a class="button ico-github" href="https://github.com/TeamSpen210/tspenAddons">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This mod is maintained by <a class="header name" href="https://github.com/TeamSpen210">TeamSpen210</a>.</p>
+      </header>
+      <section>
+		<h1>Changelog</h1>
+		<ul id="changelog">
+		<!-- <li>New item - Floor Debris, piles of junk to make floors look &quot;better&quot;. (Does not appear in Clean style.)</li>
+			<li>Added custom variants of many Old Aperture items, stuff like Excursion Funnels, Crushers or Light Bridges look more like a prototype. (50s/60s/70s/80s can look slightly different, in 80s style everything is basically modern).</li>-->
+			<li> v44:
+				<ul>
+					<li><strong><big>IMPORTANT: please delete the various &quot;tspen_collection&quot; files in the &quot;portal 2/portal2_dlc2/BEE2/items&quot; folder</big></strong>, I've moved them into subfolders to organise them.</li>
+					<li>NEW: I've improved most of the FGE items and many others, everything should work much better. Some items have been merged together.</li>
+					<li>Sendificators should pack correctly.</li>
+					<li>BEE Autoportals have a Blue version - having that in the map gives the player an orange-only gun. Having both takes the gun away entirely.</li>
+					<li>Portalgun pedestals no longer have a PoTaTOS variant, it's been replaced with an orange-only gun (makes more sense-I don't think GLaDOS would clone herself!). After the player picks up the portalgun, the matching autoportals are permanently disabled (to prevent the portals from glitching up, as well as stopping the map from messing with the gun.)</li>
+					<li>High Energy Pellet Catchers can switch to a timed mode, where they reset after a time limit. You can now customise the lifetime on Pellet Launchers.</li>
+					<li>(Hopefully) most bugs have been fixed with the other items, restyled versions will come soon.</li>
+				</ul>
+			<li> v43:
+				<ul>
+					<li>Improved Overgrown style observation rooms, the sound should be quieter and the flickering can be completely disabled by turning off &quot;start enabled&quot; in the large observation room.</li>
+					<li>The overgrown style elevator screens are less random, they match Cave's PTI dialogue (If you heard them all, the video screens will be random).</li>
+					<li>Overgrown Turrets are twitchy now.</li>
+					<li>Changed style of Refurbished lights.</li>
+					<li>Fixed bug with Overgrown track platform rails.</li>
+				</ul>
+			<li> v42:
+				<ul>
+					<li>Fixed Overgrown reflection cube packing.</li>
+					<li>Fixed floating cubes on Overgrown piston platforms.</li>
+					<li>Added custom model for P1 styled storage cubes, companion cubes, spheres, pedestal buttons and laserfields.</li>
+					<li>New custom Overgrown style glass.</li>
+					<li>Better P1 style crusher, piston platform and buttons.</li>
+					<li>Custom indicator lights for P1 style, to make them appear smaller.</li>
+				</ul>
+			<Li> v41:
+				<ul>
+					<li>All Valve+BEE1+HMW items finished for Overgrown Style.</li>
+					<li>Coop exits done.</li>
+				</ul>
+			</li>
+			<li> v40:
+				<ul>
+					<li>Added first version of Overgrown Style, featuring a heavily damaged Aperture overgrown with plants. This is not finished, some items remain clean styled, and Coop exit corridors haven't been styled yet.</li>
+					<li>A quote list has been added to describe how the extra quotes in the various styles are picked.</li>
+					<li>Neurotoxin vents have been modified to be cheaper; the activation radius is now only visible in the editor.</li>
+					<li>Neurotoxin will permanently shut off when players get inside the exit door.</li>
+					<li>Added update checker to the readme. When the next update is released, the readme will show a message (only when actually open).</li>
+				</ul>
+			</li>
+			<li> v39:
+				<ul>
+					<li>Added files for some checkpoint instances.</li>
+					<li>Adjusted lighting in P1 Style Checkpoint, and changed droppers to use P1 style versions (both checkpoints).</li>
+					<li>Added the second door for P1 Style Chamberlocks (Whoops.)</li>
+					<li>Checkpoints will not close their front door if an object is placed between it and the fizzler.</li>
+					<li>Players will slide off of the camera in Refurbished Small Observation Rooms. (Prevents cheating puzzles).</li>
+					<li>Changed something with Companion Cubes...</li>
+				</ul>
+			</li>
+			<li> v38:
+				<ul>
+					<li>Fixed Refurbished Entrance leak.</li>
+				</ul>
+			</li>
+			<li> v37:
+				<ul>
+					<li>Fixed Art Therapy elevator not working.</li>
+					<li>Fixed Clean Style Retractable buttons.</li>
+				</ul>
+			</li>
+			<li> v36:
+				<ul>
+					<li>Fixed Old Aperture Large Obs Rooms (They use a different grate in 80s style, and glass is used if the map has neurotoxin.)</li>
+					<li>Added Unlocked Clean Style, which allows you to add/delete the mandatory items (exit/entry doors, the primary observation room). It could cause crashes or other bugs, be careful.</li>
+				</ul>
+			<li> v35: 
+				<ul>
+					<li>New Item - Retractable Floor Button.</li>
+					<li>Neurotoxin vents now embed into the wall.</li>
+					<li>Added a second door to Chamberlocks.</li>
+					<li>Remade Global Cube Droppers so they are more reliable and are able to queue replacements if too many are triggered at once.</li>
+					<li>Art Therapy Checkpoints now have bare vactube droppers.</li>
+					<li>Implemented voices for Refurbished style, with a mix of Cave and GLaDOS.</li>
+					<li>Many other changes to Refurbished spheres</li>
+					<li>Lots of bugfixes.</li>
+				</ul>
+			</li>
+			<li> v34: 
+				<ul>
+					<li>Bugfixes.</li>
+				</ul>
+			</li>
+			<li> v33: 
+				<ul>
+					<li>New Item - Chamberlock.</li>
+					<li>1980s open style.</li>
+					<li>better P1 style pistons.</li>
+					<li>better P1 style Covneyor.</li>
+					<li>fixed restarting when killed by neurotoxin.</li>
+				</ul>
+			</li>
+			<li> v32:
+				<ul>
+					<li>Added in-editor models for most items.</li>
+					<li>New Item - Antline Magnet.</li>
+				</ul>
+			</li>
+			<li> v31: 
+				<ul>
+					<li>New Item - Neurotoxin Vent.</li>
+					<li>New Item - Neurotoxin Timer.</li>
+				</ul>
+			</li>
+			<li> v30:
+				<ul>
+					<li>New Item - Override.</li>
+				</ul>
+			</li>
+			<li> v29: 
+				<ul>
+					<li>Bugfixes</li>
+				</ul>
+			</li>
+			<li> v28: 
+				<ul>
+					<li>New Item - Clamped Cube.</li>
+					<li>New Item - Global Cube.</li>
+					<li>Improved conveyors.</li>
+				</ul>
+			</li>
+			<li> v27: 
+				<ul>
+					<li>New Item - Piston Autoportal.</li>
+					<li>New Item - Timeout Portal.</li>
+				</ul>
+			</li>
+			<li> v26: 
+				<ul>
+					<li>Bugfixes</li>
+				</ul>
+			</li>
+			<li> v25:
+				<ul>
+					<li>Bugfixes</li>
+				</ul>
+			</li>
+			<li> v24: 
+				<ul>
+					<li>New Item - Ceiling Light.</li>
+					<li>New Item - Cube Transmuter.</li>
+					<li>New Item - Separated Checkpoint.</li>
+					<li>Coop Refurbished maps skip the tubes in preview mode.</li>
+				</ul>
+			</li>
+			<li> v23: 
+				<ul>
+					<li>Update for BEE2 v2.5</li>
+					<li>Removed quiet styles, as they are now part of BEE2.</li>
+					<li>Players now drop into coop Refurbished maps through the sphere.</li>
+				</ul>
+			</li>
+			<li> v22: 
+				<ul>
+					<li>Bugfixes for various items</li>
+					<li>Improved WorldPortal Door.</li>
+					<li>New Old Aperture Retractable Pedestal Button.</li>
+				</ul>
+			</li>
+			<li> v21: 
+				<ul>
+					<li>New Item - Glass with Hole.</li>
+					<li>New Item - Slow Crusher.</li>
+					<li>New Item - Piston Relay.</li>
+					<li>New Item - SR Latch.</li>
+					<li>New Item - Glass Door.</li>
+					<li>New Item - Angled Light Bridge.</li>
+					<li>Re-added a older version of Conveyors that is paintable (but buggy).</li>
+				</ul>
+			</li>
+			<li> v20: 
+				<ul>
+					<li>New Item - Rotating Faith Plate.</li>
+				</ul>
+			</li>
+			<li> v19:
+				<ul>
+					<li>New Item - BumbleBall Dropper.</li>
+					<li>New Item - Catapult-Cube Dropper.</li>
+					<li>New Item - Bomb Dropper.</li>
+					<li>New Item - BumbleBall Button.</li>
+					<li>Made Coop Checkpoints unlock after entering if in singleplayer mode.</li>
+					<li>Added background to GLaDOS monitors.</li>
+				</ul>
+			</li>
+			<li> v18:
+				<ul>
+					<li>Missed a file.</li>
+				</ul>
+			</li>
+			<li> v17: 
+				<ul>
+					<li>New Item - Sideways Light Bridge.</li>
+					<li>New Item - Static Glass Panel.
+					<li>New Item - Static Half Panel.</li>
+					<li>New Item - Shredder.</li>
+					<li>Fixed an exploit that could allow players to keep portals when passing through a coop checkpoint if they have conversion gel.</li>
+				</ul>
+			</li>
+			<li> v16: 
+				<ul>
+					<li>Items all restyled for Art Therapy and Radelite's Ratman style.</li>
+					<li>Added Quiet styles.</li>
+					<li>conveyor belts improved (but now unpaintable).</li>
+				</ul>
+			</li>
+			<li> v15: 
+				<ul>
+					<li>New Item - Recessed Fizzler.</li>
+					<li>New Item - Crusher Plate.</li>
+					<li>added 60s/70s/80s coop checkpoint variants.</li>
+				</ul>
+			</li>
+			<li> v14:
+				<ul>
+					<li>Actually added Refurbished Style.</li>
+				</ul>
+			</li>
+			<li> v13:
+				<ul>
+					<li>Added Refurbished Style.</li>
+					<li>New Item - Coop Checkpoint.</li>
+				</ul>
+			</li>
+			<li> v12: 
+				<ul>
+					<li>Bugfixes for Sphere Cannon Droppers.</li>
+					<li>Bugfixes for Worldportal Doors.</li>
+					<li>Bugfixes for Music.</li>
+					<li>Bugfixes for Conveyors.</li>
+				</ul>
+			</li>
+			<li> v11: 
+				<ul>
+					<li>new Item - Static Piston Platform.</li>
+					<li>New Item - Half/Half Wall.</li>
+					<li>New Item - Static Panel.</li>
+					<li>Rearranged readme.</li>
+					<li>Added more filters to help with sorting my items.</li>
+				</ul>
+			</li>
+			<li> v10: 
+				<ul>
+					<li>New Item - Toggleable Faith Plate.</li>
+					<li>Fixed Futbols not respawning when fizzled.</li>
+					<li>Improved Large Faith Plate.</li>
+					<li>Added model for Double Grate Panel.</li>
+				</ul>
+			</li>
+			<li> v9:
+				<ul>
+					<li>Some missing files.</li>
+				</ul>
+			</li>
+			<li> v8: 
+				<ul>
+					<li>New Item - Portalable Piston Platform.</li>
+					<li>New Item - Turret Dropper.</li>
+				</ul>
+			<li> v7: 
+				<ul>
+					<li>New Item - Wheatley Monitor.</li>
+					<li>New Item - Caged Cube.</li>
+					<li>New Item - Portalable Stair.</li>
+					<li>Made conveyors less buggy.</li>
+				</ul>
+			</li>
+			<li> v6: 
+				<ul>
+					<li>Fixed futbols always respawning on death.</li>
+				</ul>
+			</li>
+			<li> v5: 
+				<ul>
+					<li>New Item - Futbol.</li>
+					<li>New Item - Ditch.</li>
+				</ul>
+			</li>
+			<li> v4: 
+				<ul>
+					<li>New Item - Paint Cleanser.</li>
+					<li>New Item - Double Grated Panel.</li>
+				</ul>
+			</li>
+			<li> v3: 
+				<ul>
+					<li>New Item - Global Cube Dropper.</li>
+				</ul>
+			</li>
+			<li> v2: 
+				<ul>
+					<li>Some missing files.</li>
+				</ul>
+			</li>
+			<li> v1: 
+				<ul>
+					<li>Initial release</li>
+					<li>Items:<ul>
+						<li>Worldportals (Entry/Exit)</li>
+						<li>Sphere Cannon Dropper</li>	
+						<li>Retractable Pedestal Button</li>
+						<li>Antline Router</li>	
+						<li>Angled Block</li>
+						<li>Diagonal Pellet/Laser</li>	
+						<li>Music</li>
+						<li>Black and White Thin Wall</li>
+						<li>Large Faith Plate</li>
+						<li>Conveyor Belt</li>
+					</ul></li>
+				</ul>
+			</li>
+		</ul>
+	  </section>
+	</div>
+  </body>
+</html>

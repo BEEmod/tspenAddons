@@ -1,0 +1,28 @@
+/*#changelog 
+	{
+	border: thick solid black;
+	overflow:scroll; /* if overflow-x is not supported this should work. */
+	overflow-x:hidden; 
+	overflow-y:scroll;
+	height:400pt;
+}*/
+#changelog ul li { /* version bullet */
+	font-weight: bold;
+	border: thin solid black;
+	display:block;
+	list-style-type:none;
+	padding: 3pt;
+	margin: 5pt;
+	position: relative;
+	left:-30pt;
+	width:100%;
+}
+#changelog ul li ul li { /* change bullets */
+	display:list-item;
+	font-weight: normal;
+	border:none;
+	list-style-type:square;
+	padding: 1pt;
+	position:static;
+	left:0pt;
+}
