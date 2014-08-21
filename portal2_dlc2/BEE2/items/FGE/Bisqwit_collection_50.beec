@@ -1304,10 +1304,15 @@
 				{
 					"ModelName"			"bis_sign_1.3ds"
 				}
+				"Model"
+				{
+					"ModelName"			"bis_sign_1.3ds"
+				}
 				"Palette"
 				{
-					"Tooltip"		"DICE SIGNAGE"
-					"Image"			"palette/bis/dice.png"
+					"Tooltip"		"DICE SIGNAGE - 1" // Steal the wall icons for signage connection mode
+					"Image"			"signage_overlay_dots1.png" 
+					
 					"Position"		"0 0 0"
 				}
 			}
@@ -1318,10 +1323,24 @@
 				{
 					"ModelName"			"bis_sign_2.3ds"
 				}
+				"Model"
+				{
+					"ModelName"			"bis_sign_2.3ds"
+				}
+				"Palette"
+				{
+					"Tooltip"		"DICE SIGNAGE - 2"
+					"Image"			"signage_overlay_dots2.png"
+					"Position"		"0 0 0"
+				}
 			}
 			"SubType"
 			{
 				"Name"			"Dice Signage: Error"
+				"Model"
+				{
+					"ModelName"			"bis_sign_err.3ds"
+				}
 				"Model"
 				{
 					"ModelName"			"bis_sign_err.3ds"
@@ -1334,6 +1353,16 @@
 				{
 					"ModelName"			"bis_sign_3.3ds"
 				}
+				"Model"
+				{
+					"ModelName"			"bis_sign_3.3ds"
+				}
+				"Palette"
+				{
+					"Tooltip"		"DICE SIGNAGE - 3"
+					"Image"			"signage_overlay_dots3.png"
+					"Position"		"0 0 0"
+				}
 			}
 			"SubType"
 			{
@@ -1341,6 +1370,16 @@
 				"Model"
 				{
 					"ModelName"			"bis_sign_4.3ds"
+				}
+				"Model"
+				{
+					"ModelName"			"bis_sign_4.3ds"
+				}
+				"Palette"
+				{
+					"Tooltip"		"DICE SIGNAGE - 4"
+					"Image"			"signage_overlay_dots4.png"
+					"Position"		"0 0 0"
 				}
 			}
 			"MovementHandle"		"HANDLE_4_DIRECTIONS"
