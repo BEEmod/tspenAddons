@@ -1,0 +1,11 @@
+patch
+{
+	include "materials/models/props_map_editor/item_lighting_common.vmt"
+	insert
+	{
+		$baseTexture "models/props_map_editor/tspen/rex_beam"
+		$model 1
+		$translucent 1
+		$nocull 1
+	}
+}
