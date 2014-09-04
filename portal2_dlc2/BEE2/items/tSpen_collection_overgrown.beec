@@ -748,14 +748,14 @@
 			{
 				"0"
 				{
-					"Name"				"instances/p2editor/tSpen/art/pedestal_button_retract.vmf"
+					"Name"				"instances/p2editor/tSpen/overgrown/pedestal_button_retract.vmf"
 					"EntityCount"		"16"
 					"BrushCount"		"25" // correct
 					"BrushSideCount"	"54"
 				}
 				"1"
 				{
-					"Name"				"instances/p2editor/tSpen/art/pedestal_button_retract_black.vmf"
+					"Name"				"instances/p2editor/tSpen/overgrown/pedestal_button_retract_black.vmf"
 					"EntityCount"		"16"
 					"BrushCount"		"25" // correct
 					"BrushSideCount"	"54"
