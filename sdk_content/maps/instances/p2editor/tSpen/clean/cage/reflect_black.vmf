@@ -1,8 +1,8 @@
 versioninfo
 {
 	"editorversion" "400"
-	"editorbuild" "5685"
-	"mapversion" "11"
+	"editorbuild" "6432"
+	"mapversion" "12"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -20,13 +20,13 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "11"
+	"mapversion" "12"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
+	"maxblobcount" "250"
 	"maxpropscreenwidth" "-1"
 	"skyname" "sky_black_nofog"
-	"maxblobcount" "250"
 }
 entity
 {
@@ -1911,6 +1911,7 @@ entity
 {
 	"id" "847"
 	"classname" "func_clip_vphysics"
+	"origin" "0 0 -34"
 	"StartDisabled" "0"
 	solid
 	{

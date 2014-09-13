@@ -3116,7 +3116,7 @@
 				"Name"			"Caged Turret"
 				"Model"
 				{
-					"ModelName"		"sentry.3ds"
+					"ModelName"		"tspen_caged_turret.3ds"
 					"TextureName"	"sentry_turret.png"
 				}
 				"Palette"
@@ -3131,6 +3131,12 @@
 					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandButton"
 					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseButton"
 					"SOUND_DELETED"					"P2Editor.RemoveButton"
+				}
+				"Animations"
+				{
+					"ANIM_IDLE"						"0"
+					"ANIM_EDITING_ACTIVATE"			"1"
+					"ANIM_EDITING_DEACTIVATE"			"2"
 				}
 			}
 			"SubType"
@@ -3154,6 +3160,12 @@
 					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseButton"
 					"SOUND_DELETED"					"P2Editor.RemoveButton"
 				}
+				"Animations"
+				{
+					"ANIM_IDLE"						"0"
+					"ANIM_EDITING_ACTIVATE"			"2"
+					"ANIM_EDITING_DEACTIVATE"			"3"
+				}
 			}
 			"SubType"
 			{
@@ -3175,6 +3187,12 @@
 					"SOUND_EDITING_ACTIVATE"		"P2Editor.ExpandButton"
 					"SOUND_EDITING_DEACTIVATE"		"P2Editor.CollapseButton"
 					"SOUND_DELETED"					"P2Editor.RemoveButton"
+				}
+				"Animations"
+				{
+					"ANIM_IDLE"						"0"
+					"ANIM_EDITING_ACTIVATE"			"2"
+					"ANIM_EDITING_DEACTIVATE"			"3"
 				}
 			}
 			"MovementHandle"	"HANDLE_36_DIRECTIONS"
