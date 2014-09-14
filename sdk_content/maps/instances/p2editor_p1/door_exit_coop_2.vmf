@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6432"
-	"mapversion" "233"
+	"mapversion" "234"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -20,7 +20,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "233"
+	"mapversion" "234"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -1317,7 +1317,7 @@ world
 		}
 		editor
 		{
-			"color" "151 172 0"
+			"color" "0 114 183"
 			"visgroupshown" "1"
 			"visgroupautoshown" "1"
 		}
