@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6432"
-	"mapversion" "286"
+	"mapversion" "288"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -68,7 +68,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "286"
+	"mapversion" "288"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -2417,6 +2417,7 @@ entity
 	"lforate" "0"
 	"lfotype" "0"
 	"message" "machines/doormove2.wav"
+	"null" "-----------------------"
 	"pitch" "100"
 	"pitchstart" "100"
 	"preset" "0"
@@ -2462,10 +2463,12 @@ entity
 	"mincpulevel" "0"
 	"mingpulevel" "0"
 	"minhealthdmg" "0"
+	"model" "models/npcs/monsters/monster_a.mdl"
 	"nodamageforces" "0"
 	"PerformanceMode" "0"
 	"physdamagescale" "0.1"
 	"pressuredelay" "0"
+	"renderamt" "255"
 	"rendercolor" "200 200 200"
 	"shadowcastdist" "0"
 	"shadowdepthnocache" "0"
@@ -2787,6 +2790,7 @@ entity
 	"PaintPower" "4"
 	"renderamt" "255"
 	"rendercolor" "200 200 200"
+	"rendermode" "10"
 	"skin" "0"
 	"SkinType" "0"
 	"targetname" "cube_dropper_box"
@@ -2804,6 +2808,7 @@ entity
 		"visgroupid" "17"
 		"visgroupshown" "1"
 		"visgroupautoshown" "1"
+		"comments" "Rendermode makes sure the player wont see the p2 cube for a split second."
 		"logicalpos" "[0 15000]"
 	}
 }
@@ -3274,6 +3279,7 @@ entity
 	{
 		"OnUser1" "cube_dropper_boxRunScriptCodep1_cube()0-1"
 		"OnUser2" "cube_dropper_boxRunScriptCodep1_ball()0-1"
+		"OnEntitySpawned" "cube_dropper_boxAddOutputrendermode 00.01-1"
 	}
 	"origin" "0 -16 -48"
 	editor
