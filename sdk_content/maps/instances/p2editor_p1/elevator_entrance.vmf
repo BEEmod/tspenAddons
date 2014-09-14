@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6432"
-	"mapversion" "920"
+	"mapversion" "921"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -38,7 +38,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "920"
+	"mapversion" "921"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -4987,82 +4987,6 @@ world
 		editor
 		{
 			"color" "0 178 171"
-			"visgroupshown" "1"
-			"visgroupautoshown" "1"
-		}
-	}
-	solid
-	{
-		"id" "158389"
-		side
-		{
-			"id" "28336"
-			"plane" "(-96 680 -1184) (-96 680 -1248) (-48 680 -1248)"
-			"material" "TOOLS/TOOLSNODRAW"
-			"uaxis" "[1 0 0 0] 0.25"
-			"vaxis" "[0 0 -1 0] 0.25"
-			"rotation" "0"
-			"lightmapscale" "16"
-			"smoothing_groups" "0"
-		}
-		side
-		{
-			"id" "28335"
-			"plane" "(-48 664 -1184) (-48 664 -1248) (-96 664 -1248)"
-			"material" "TOOLS/TOOLSNODRAW"
-			"uaxis" "[-1 0 0 0] 0.25"
-			"vaxis" "[0 0 -1 0] 0.25"
-			"rotation" "0"
-			"lightmapscale" "16"
-			"smoothing_groups" "0"
-		}
-		side
-		{
-			"id" "28334"
-			"plane" "(-96 664 -1184) (-96 664 -1248) (-96 680 -1248)"
-			"material" "TOOLS/TOOLSNODRAW"
-			"uaxis" "[0 1 0 -23.4286] 0.28"
-			"vaxis" "[0 0 -1 -15.8569] 0.28"
-			"rotation" "0"
-			"lightmapscale" "16"
-			"smoothing_groups" "0"
-		}
-		side
-		{
-			"id" "28333"
-			"plane" "(-48 680 -1184) (-48 680 -1248) (-48 664 -1248)"
-			"material" "TOOLS/TOOLSNODRAW"
-			"uaxis" "[0 1 0 -23.4286] 0.28"
-			"vaxis" "[0 0 -1 -15.8569] 0.28"
-			"rotation" "0"
-			"lightmapscale" "16"
-			"smoothing_groups" "0"
-		}
-		side
-		{
-			"id" "28332"
-			"plane" "(-48 680 -1248) (-96 680 -1248) (-96 664 -1248)"
-			"material" "TOOLS/TOOLSNODRAW"
-			"uaxis" "[-1 0 0 0] 0.25"
-			"vaxis" "[0 1 0 0] 0.25"
-			"rotation" "0"
-			"lightmapscale" "16"
-			"smoothing_groups" "0"
-		}
-		side
-		{
-			"id" "28331"
-			"plane" "(-96 680 -1184) (-48 680 -1184) (-48 664 -1184)"
-			"material" "TOOLS/TOOLSNODRAW"
-			"uaxis" "[1 0 0 0] 0.25"
-			"vaxis" "[0 1 0 0] 0.25"
-			"rotation" "0"
-			"lightmapscale" "16"
-			"smoothing_groups" "0"
-		}
-		editor
-		{
-			"color" "0 128 217"
 			"visgroupshown" "1"
 			"visgroupautoshown" "1"
 		}
@@ -12256,6 +12180,7 @@ entity
 	"classname" "ambient_generic"
 	"health" "10"
 	"message" "Portal.elevator_chime"
+	"null" "-----------------------"
 	"pitch" "100"
 	"pitchstart" "100"
 	"radius" "1250"
@@ -12278,6 +12203,7 @@ entity
 	"classname" "ambient_generic"
 	"health" "10"
 	"message" "World.JailbreakDoorOpen"
+	"null" "-----------------------"
 	"pitch" "100"
 	"pitchstart" "100"
 	"radius" "1250"
@@ -12300,6 +12226,7 @@ entity
 	"classname" "ambient_generic"
 	"health" "10"
 	"message" "Portal.elevator_start"
+	"null" "-----------------------"
 	"pitch" "100"
 	"pitchstart" "100"
 	"radius" "1250"
@@ -18617,6 +18544,7 @@ entity
 	"classname" "ambient_generic"
 	"health" "10"
 	"message" "cavejohnson.DLC2_multiverse_transition"
+	"null" "-----------------------"
 	"pitch" "100"
 	"pitchstart" "100"
 	"radius" "1250"
@@ -18827,8 +18755,8 @@ cameras
 	"activecamera" "0"
 	camera
 	{
-		"position" "[-1319.85 1188.21 487.782]"
-		"look" "[-1381.49 1197.31 497.875]"
+		"position" "[76.0025 622.389 -1040.56]"
+		"look" "[107.352 672.562 -1062.56]"
 	}
 	camera
 	{
