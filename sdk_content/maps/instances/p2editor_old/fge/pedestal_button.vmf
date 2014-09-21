@@ -1,0 +1,219 @@
+versioninfo
+{
+	"editorversion" "400"
+	"editorbuild" "6432"
+	"mapversion" "40"
+	"formatversion" "100"
+	"prefab" "0"
+}
+visgroups
+{
+}
+viewsettings
+{
+	"bSnapToGrid" "1"
+	"bShowGrid" "1"
+	"bShowLogicalGrid" "0"
+	"nGridSpacing" "32"
+	"bShow3DGrid" "0"
+}
+world
+{
+	"id" "1"
+	"mapversion" "40"
+	"classname" "worldspawn"
+	"detailmaterial" "detail/detailsprites"
+	"detailvbsp" "detail.vbsp"
+	"maxblobcount" "250"
+	"maxpropscreenwidth" "-1"
+	"skyname" "sky_day01_01"
+}
+entity
+{
+	"id" "147"
+	"classname" "infodecal"
+	"angles" "0 0 0"
+	"texture" "decals/decalstain001a"
+	"origin" "0 0 -64"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "306"
+	"classname" "infodecal"
+	"angles" "0 0 0"
+	"texture" "decals/decalstain001a"
+	"origin" "-64 0 0"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "36"
+	"classname" "func_detail"
+	"disableX360" "0"
+	"maxcpulevel" "0"
+	"maxgpulevel" "0"
+	"mincpulevel" "0"
+	"mingpulevel" "0"
+	solid
+	{
+		"id" "30"
+		side
+		{
+			"id" "1"
+			"plane" "(-31 -49 -55) (-65 -49 -55) (-65 49 -55)"
+			"material" "WOOD/UNDERGROUND_PLYWOOD_01A"
+			"uaxis" "[1 0 0 0] 0.25"
+			"vaxis" "[0 -1 0 0] 0.25"
+			"rotation" "0"
+			"lightmapscale" "16"
+			"smoothing_groups" "0"
+		}
+		side
+		{
+			"id" "2"
+			"plane" "(-31 49 -64) (-65 49 -64) (-65 -49 -64)"
+			"material" "METAL/UNDERGROUND_WALL_METAL004D"
+			"uaxis" "[1 0 0 0] 0.25"
+			"vaxis" "[0 -1 0 0] 0.25"
+			"rotation" "0"
+			"lightmapscale" "16"
+			"smoothing_groups" "0"
+		}
+		side
+		{
+			"id" "3"
+			"plane" "(-65 49 -64) (-31 49 -64) (-31 49 -55)"
+			"material" "METAL/UNDERGROUND_WALL_METAL004A"
+			"uaxis" "[1 0 0 361.111] 0.18"
+			"vaxis" "[0 0 -1 -305.556] 0.18"
+			"rotation" "0"
+			"lightmapscale" "16"
+			"smoothing_groups" "0"
+		}
+		side
+		{
+			"id" "4"
+			"plane" "(-31 -49 -64) (-65 -49 -64) (-65 -49 -55)"
+			"material" "METAL/UNDERGROUND_WALL_METAL004A"
+			"uaxis" "[1 0 0 361.111] 0.18"
+			"vaxis" "[0 0 -1 -305.556] 0.18"
+			"rotation" "0"
+			"lightmapscale" "16"
+			"smoothing_groups" "0"
+		}
+		side
+		{
+			"id" "5"
+			"plane" "(-31 49 -64) (-31 -49 -64) (-31 -49 -55)"
+			"material" "METAL/UNDERGROUND_WALL_METAL004A"
+			"uaxis" "[0 1 0 256] 0.18"
+			"vaxis" "[0 0 -1 -305.556] 0.18"
+			"rotation" "0"
+			"lightmapscale" "16"
+			"smoothing_groups" "0"
+		}
+		side
+		{
+			"id" "6"
+			"plane" "(-65 -49 -64) (-65 49 -64) (-65 49 -55)"
+			"material" "METAL/UNDERGROUND_WALL_METAL004A"
+			"uaxis" "[0 1 0 256] 0.18"
+			"vaxis" "[0 0 -1 -305.556] 0.18"
+			"rotation" "0"
+			"lightmapscale" "16"
+			"smoothing_groups" "0"
+		}
+		editor
+		{
+			"color" "0 180 0"
+			"visgroupshown" "1"
+			"visgroupautoshown" "1"
+		}
+	}
+	editor
+	{
+		"color" "0 180 0"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 500]"
+	}
+}
+entity
+{
+	"id" "25"
+	"classname" "func_instance_parms"
+	"parm1" "$timer_delay float 3"
+	"parm2" "$timer_sound integer 0"
+	"origin" "-48 -32 -32"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "6"
+	"classname" "prop_under_button"
+	"angles" "0 0 0"
+	"Delay" "1"
+	"istimer" "0"
+	"preventfastreset" "0"
+	"renderamt" "255"
+	"rendercolor" "255 255 255"
+	"skin" "0"
+	"solid" "1"
+	"targetname" "button"
+	connections
+	{
+		"OnPressed" "!selfFireUser20-1"
+		"OnPressed" "!selfFireUser10.25-1"
+		"OnUser1" "proxyProxyRelay0-1"
+		"OnUser2" "proxyProxyRelay0-1"
+	}
+	"origin" "-48 0 -55"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 500]"
+	}
+}
+entity
+{
+	"id" "22"
+	"classname" "func_instance_io_proxy"
+	"targetname" "proxy"
+	"origin" "-48 32 -32"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 1500]"
+	}
+}
+cameras
+{
+	"activecamera" "-1"
+}
+cordons
+{
+	"active" "0"
+}
