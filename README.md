@@ -9,3 +9,4 @@ Thanks to Skotty (High Energy Pellets, Bumbleballs and Catapult Cubes), Moth(Bum
 ##[Download Here!](http://forums.thinkingwithportals.com/downloads.php?view=detail&df_id=2833)
 
 ##[Documentation](http://teamspen210.github.io/tspenAddons)
+##[Material/Model Source](http://github.com/TeamSpen210/tSpenAddons-src/)
