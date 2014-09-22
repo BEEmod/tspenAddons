@@ -26,7 +26,8 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must ends with two \r.
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -36,6 +37,6 @@ Icon
 .Trashes
 
 # Portal 2 stuff
-.vmx
-.log
-.prt
+*.vmx
+*.log
+*.prt
