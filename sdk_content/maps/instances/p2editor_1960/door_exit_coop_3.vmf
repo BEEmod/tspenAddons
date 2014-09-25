@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6432"
-	"mapversion" "201"
+	"mapversion" "204"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -14,13 +14,13 @@ viewsettings
 	"bSnapToGrid" "1"
 	"bShowGrid" "1"
 	"bShowLogicalGrid" "0"
-	"nGridSpacing" "1"
+	"nGridSpacing" "2"
 	"bShow3DGrid" "0"
 }
 world
 {
 	"id" "1"
-	"mapversion" "201"
+	"mapversion" "204"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -1687,7 +1687,7 @@ entity
 	"origin" "64.01 -1.01 -112.5"
 	"spawnflags" "65"
 	"StartDisabled" "0"
-	"targetname" "AutoInstance1-$cleanser_name"
+	"targetname" "fizzler"
 	"UseScanline" "0"
 	"Visible" "1"
 	solid
@@ -2118,7 +2118,7 @@ entity
 	"id" "8442"
 	"classname" "func_instance"
 	"angles" "-0 0 0"
-	"file" "instances/p2editor_old/door_coop_exit_door.vmf"
+	"file" "instances/p2editor_1960/door_coop_exit_door.vmf"
 	"origin" "64 0 0"
 	editor
 	{
@@ -2178,7 +2178,7 @@ entity
 	"rendercolor" "255 255 255"
 	"targetname" "@exit_portal_chamber_side"
 	"width" "48"
-	"origin" "64 -1.75721e-006 -508"
+	"origin" "64 -1.75721e-006 -512"
 	editor
 	{
 		"color" "220 30 220"

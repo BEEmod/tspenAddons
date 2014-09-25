@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6432"
-	"mapversion" "185"
+	"mapversion" "186"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -32,7 +32,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "185"
+	"mapversion" "186"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -357,6 +357,10 @@ entity
 	{
 		"OnTrue" "@exit_doorFireUser20-1"
 		"OnFalse" "@exit_doorFireUser10-1"
+		"OnFalse" "@exit_portal_chamber_sideClose2-1"
+		"OnFalse" "@exit_portal_elevator_sideClose2-1"
+		"OnTrue" "@exit_portal_chamber_sideOpen0-1"
+		"OnTrue" "@exit_portal_elevator_sideOpen0-1"
 	}
 	"origin" "11.1408 -39.4732 -49.75"
 	editor
