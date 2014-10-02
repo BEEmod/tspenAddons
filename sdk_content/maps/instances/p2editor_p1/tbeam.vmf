@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6432"
-	"mapversion" "102"
+	"mapversion" "110"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -14,13 +14,13 @@ viewsettings
 	"bSnapToGrid" "1"
 	"bShowGrid" "1"
 	"bShowLogicalGrid" "0"
-	"nGridSpacing" "8"
+	"nGridSpacing" "4"
 	"bShow3DGrid" "0"
 }
 world
 {
 	"id" "1"
-	"mapversion" "102"
+	"mapversion" "110"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -29,12 +29,12 @@ world
 	"skyname" "sky_day01_01"
 	solid
 	{
-		"id" "4223"
+		"id" "4278"
 		side
 		{
-			"id" "539"
-			"plane" "(-64 64 1.5207e-005) (64 64 1.5207e-005) (64 -64 1.5207e-005)"
-			"material" "TOOLS/TOOLSSKIP"
+			"id" "328"
+			"plane" "(-60 60 -68) (60 60 -68) (60 -60 -68)"
+			"material" "TOOLS/TOOLSNODRAW"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
 			"rotation" "0"
@@ -43,10 +43,10 @@ world
 		}
 		side
 		{
-			"id" "540"
-			"plane" "(-64 -64 -192) (64 -64 -192) (64 64 -192)"
-			"material" "TOOLS/TOOLSSKIP"
-			"uaxis" "[1 0 0 0] 0.25"
+			"id" "329"
+			"plane" "(-60 -60 -72) (60 -60 -72) (60 60 -72)"
+			"material" "TOOLS/TOOLSNODRAW"
+			"uaxis" "[-1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
 			"rotation" "0"
 			"lightmapscale" "16"
@@ -54,51 +54,51 @@ world
 		}
 		side
 		{
-			"id" "541"
-			"plane" "(-64 64 1.5207e-005) (-64 -64 1.5207e-005) (-64 -64 -192)"
-			"material" "TOOLS/TOOLSSKIP"
+			"id" "330"
+			"plane" "(-60 60 -68) (-60 -60 -68) (-60 -60 -72)"
+			"material" "TOOLS/TOOLSNODRAW"
+			"uaxis" "[0 -1 0 0] 0.25"
+			"vaxis" "[0 0 -1 32] 0.25"
+			"rotation" "0"
+			"lightmapscale" "16"
+			"smoothing_groups" "0"
+		}
+		side
+		{
+			"id" "331"
+			"plane" "(60 60 -72) (60 -60 -72) (60 -60 -68)"
+			"material" "TOOLS/TOOLSNODRAW"
 			"uaxis" "[0 1 0 0] 0.25"
-			"vaxis" "[0 0 -1 0] 0.25"
+			"vaxis" "[0 0 -1 32] 0.25"
 			"rotation" "0"
 			"lightmapscale" "16"
 			"smoothing_groups" "0"
 		}
 		side
 		{
-			"id" "542"
-			"plane" "(64 64 -192) (64 -64 -192) (64 -64 1.5207e-005)"
-			"material" "TOOLS/TOOLSSKIP"
-			"uaxis" "[0 1 0 0] 0.25"
-			"vaxis" "[0 0 -1 0] 0.25"
+			"id" "332"
+			"plane" "(60 60 -68) (-60 60 -68) (-60 60 -72)"
+			"material" "TOOLS/TOOLSNODRAW"
+			"uaxis" "[-1 0 0 0] 0.25"
+			"vaxis" "[0 0 -1 32] 0.25"
 			"rotation" "0"
 			"lightmapscale" "16"
 			"smoothing_groups" "0"
 		}
 		side
 		{
-			"id" "543"
-			"plane" "(64 64 1.5207e-005) (-64 64 1.5207e-005) (-64 64 -192)"
-			"material" "TOOLS/TOOLSSKIP"
+			"id" "333"
+			"plane" "(60 -60 -72) (-60 -60 -72) (-60 -60 -68)"
+			"material" "TOOLS/TOOLSNODRAW"
 			"uaxis" "[1 0 0 0] 0.25"
-			"vaxis" "[0 0 -1 0] 0.25"
-			"rotation" "0"
-			"lightmapscale" "16"
-			"smoothing_groups" "0"
-		}
-		side
-		{
-			"id" "544"
-			"plane" "(64 -64 -192) (-64 -64 -192) (-64 -64 1.5207e-005)"
-			"material" "TOOLS/TOOLSSKIP"
-			"uaxis" "[1 0 0 0] 0.25"
-			"vaxis" "[0 0 -1 0] 0.25"
+			"vaxis" "[0 0 -1 32] 0.25"
 			"rotation" "0"
 			"lightmapscale" "16"
 			"smoothing_groups" "0"
 		}
 		editor
 		{
-			"color" "0 175 192"
+			"color" "0 234 227"
 			"visgroupshown" "1"
 			"visgroupautoshown" "1"
 		}
@@ -311,6 +311,8 @@ entity
 	{
 		"OnHitMax" "branch_toggle_polarityToggleTest0-1"
 		"OnChangedFromMax" "branch_toggle_polarityToggleTest0-1"
+		"OnHitMax" "branch_toggleTest0.01-1"
+		"OnChangedFromMax" "branch_toggleTest0.01-1"
 	}
 	"origin" "-16 16 -16"
 	editor
@@ -351,6 +353,7 @@ entity
 {
 	"id" "3621"
 	"classname" "func_clip_vphysics"
+	"origin" "0 0 -56"
 	"StartDisabled" "0"
 	solid
 	{
@@ -487,7 +490,7 @@ entity
 	"angles" "-90 0 0"
 	"disableautoreprojection" "1"
 	"linearForce" "250"
-	"model" "models/props/tractor_beam_emitter.mdl"
+	"model" "models/props_ingame/tractor_beam_128.mdl"
 	"renderamt" "255"
 	"rendercolor" "255 255 255"
 	"StartEnabled" "$start_enabled"
