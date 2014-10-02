@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6432"
-	"mapversion" "220"
+	"mapversion" "224"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -56,7 +56,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "220"
+	"mapversion" "224"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -6497,6 +6497,7 @@ entity
 		"OnMapSpawn" "@cube_makerForceSpawn1.51"
 		"OnMapSpawn" "c_franken*BecomeMonster1.511"
 		"OnMapSpawn" "environment_testchamberTrigger0-1"
+		"OnMapSpawn" "@glados_ballKill0-1"
 	}
 	"origin" "-64 -64 64"
 	editor
@@ -6639,8 +6640,8 @@ cameras
 	"activecamera" "0"
 	camera
 	{
-		"position" "[-286.682 66.8588 188.142]"
-		"look" "[-229.722 55.9918 163.282]"
+		"position" "[-37.322 7.43654 65.9967]"
+		"look" "[-57.0983 -52.0075 58.5206]"
 	}
 	camera
 	{
