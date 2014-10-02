@@ -43,6 +43,17 @@
 //      "SignArrow"      "signage/signage_overlay_arrow"
 //      "SignFaith"      "signage/signage_paint_jump"
 //      "SignFlingIn"    "signage/signage_paint_jump"
+//		
+//		"Sign1"    "BEE2/70s/signage_shape_dot"
+//      "Sign2"    "BEE2/70s/signage_shape_moon"
+//      "Sign3"    "BEE2/70s/signage_shape_triangle"
+//      "Sign4"    "BEE2/70s/signage_shape_cross"
+//      "Sign5"    "BEE2/70s/signage_shape_square"
+//      "Sign6"    "BEE2/70s/signage_shape_circle"
+//      "Sign7"    "BEE2/70s/signage_shape_sine"
+//      "Sign8"    "BEE2/70s/signage_shape_slash"
+//      "Sign9"    "BEE2/70s/signage_shape_star"
+//      "Sign10"   "BEE2/70s/signage_shape_wavy"
 //
 //      "FixGlass"              "0" // should be 1
 //      "FixPortalBump"         "0"
