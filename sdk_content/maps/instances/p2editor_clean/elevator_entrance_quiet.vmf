@@ -1,8 +1,8 @@
 versioninfo
 {
 	"editorversion" "400"
-	"editorbuild" "5685"
-	"mapversion" "889"
+	"editorbuild" "6432"
+	"mapversion" "891"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -38,7 +38,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "889"
+	"mapversion" "891"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -117,82 +117,6 @@ world
 		editor
 		{
 			"color" "0 152 221"
-			"visgroupshown" "1"
-			"visgroupautoshown" "1"
-		}
-	}
-	solid
-	{
-		"id" "124957"
-		side
-		{
-			"id" "24209"
-			"plane" "(-2560 2048 1536) (1024 2048 1536) (1024 -2048 1536)"
-			"material" "TOOLS/TOOLSSKIP"
-			"uaxis" "[1 0 0 0] 0.25"
-			"vaxis" "[0 -1 0 0] 0.25"
-			"rotation" "0"
-			"lightmapscale" "16"
-			"smoothing_groups" "0"
-		}
-		side
-		{
-			"id" "24210"
-			"plane" "(-2560 -2048 -1536) (1024 -2048 -1536) (1024 2048 -1536)"
-			"material" "TOOLS/TOOLSSKIP"
-			"uaxis" "[1 0 0 0] 0.25"
-			"vaxis" "[0 -1 0 0] 0.25"
-			"rotation" "0"
-			"lightmapscale" "16"
-			"smoothing_groups" "0"
-		}
-		side
-		{
-			"id" "24211"
-			"plane" "(-2560 2048 1536) (-2560 -2048 1536) (-2560 -2048 -1536)"
-			"material" "TOOLS/TOOLSSKIP"
-			"uaxis" "[0 1 0 0] 0.25"
-			"vaxis" "[0 0 -1 0] 0.25"
-			"rotation" "0"
-			"lightmapscale" "16"
-			"smoothing_groups" "0"
-		}
-		side
-		{
-			"id" "24212"
-			"plane" "(1024 2048 -1536) (1024 -2048 -1536) (1024 -2048 1536)"
-			"material" "TOOLS/TOOLSSKIP"
-			"uaxis" "[0 1 0 0] 0.25"
-			"vaxis" "[0 0 -1 0] 0.25"
-			"rotation" "0"
-			"lightmapscale" "16"
-			"smoothing_groups" "0"
-		}
-		side
-		{
-			"id" "24213"
-			"plane" "(1024 2048 1536) (-2560 2048 1536) (-2560 2048 -1536)"
-			"material" "TOOLS/TOOLSSKIP"
-			"uaxis" "[1 0 0 0] 0.25"
-			"vaxis" "[0 0 -1 0] 0.25"
-			"rotation" "0"
-			"lightmapscale" "16"
-			"smoothing_groups" "0"
-		}
-		side
-		{
-			"id" "24214"
-			"plane" "(1024 -2048 -1536) (-2560 -2048 -1536) (-2560 -2048 1536)"
-			"material" "TOOLS/TOOLSSKIP"
-			"uaxis" "[1 0 0 0] 0.25"
-			"vaxis" "[0 0 -1 0] 0.25"
-			"rotation" "0"
-			"lightmapscale" "16"
-			"smoothing_groups" "0"
-		}
-		editor
-		{
-			"color" "0 201 238"
 			"visgroupshown" "1"
 			"visgroupautoshown" "1"
 		}
@@ -20713,26 +20637,6 @@ entity
 }
 entity
 {
-	"id" "36316"
-	"classname" "logic_auto"
-	"file" "instances/p2editor_clean/global_ents.vmf"
-	"spawnflags" "1"
-	connections
-	{
-		"OnMapSpawn" "global_entsinstance:environment_testchamber;Trigger0-1"
-	}
-	"origin" "-1760 1200 568"
-	editor
-	{
-		"color" "220 220 220"
-		"groupid" "36312"
-		"visgroupshown" "1"
-		"visgroupautoshown" "1"
-		"logicalpos" "[0 500]"
-	}
-}
-entity
-{
 	"id" "93390"
 	"classname" "func_detail"
 	solid
@@ -24444,8 +24348,8 @@ cameras
 	"activecamera" "0"
 	camera
 	{
-		"position" "[495.612 1059.05 586.658]"
-		"look" "[479.995 1010.99 548.846]"
+		"position" "[750.886 -2834.53 1013.78]"
+		"look" "[735.685 -2786.61 975.619]"
 	}
 	camera
 	{

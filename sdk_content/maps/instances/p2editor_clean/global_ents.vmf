@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6432"
-	"mapversion" "230"
+	"mapversion" "232"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -56,7 +56,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "230"
+	"mapversion" "232"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -2893,8 +2893,8 @@ world
 entity
 {
 	"id" "7976"
-	"classname" "filter_activator_class"
-	"filterclass" "prop_energy_ball"
+	"classname" "filter_combineball_type"
+	"balltype" "3"
 	"Negated" "0"
 	"targetname" "@filter_pellet"
 	"origin" "-176 -16 16"
@@ -2969,6 +2969,7 @@ entity
 	"lforate" "0"
 	"lfotype" "0"
 	"message" "VFX.NeuroToxinLp"
+	"null" "-----------------------"
 	"pitch" "100"
 	"pitchstart" "100"
 	"preset" "0"
@@ -3280,6 +3281,7 @@ hidden
 		"classname" "ambient_generic"
 		"health" "10"
 		"message" "Sphere.BlipSmall"
+		"null" "-----------------------"
 		"pitch" "100"
 		"pitchstart" "100"
 		"radius" "1250"
@@ -4647,6 +4649,8 @@ entity
 	"PerformanceMode" "0"
 	"physdamagescale" "0.1"
 	"pressuredelay" "0"
+	"renderamt" "255"
+	"rendercolor" "255 255 255"
 	"shadowcastdist" "0"
 	"shadowdepthnocache" "0"
 	"skin" "0"
@@ -6454,6 +6458,7 @@ entity
 	"classname" "ambient_generic"
 	"health" "10"
 	"message" "music.pti_b1_001"
+	"null" "-----------------------"
 	"pitch" "100"
 	"pitchstart" "100"
 	"radius" "1250"
@@ -6697,8 +6702,8 @@ cameras
 	"activecamera" "0"
 	camera
 	{
-		"position" "[-163.922 3.27829 88.7318]"
-		"look" "[-171.96 -15.8512 29.1466]"
+		"position" "[-155.444 -15.7211 82.7064]"
+		"look" "[-155.444 -15.7211 19.6109]"
 	}
 	camera
 	{
