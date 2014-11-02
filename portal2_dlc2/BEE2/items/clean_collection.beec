@@ -4081,7 +4081,7 @@
 				"CONNECTION_STANDARD"
 				{
 					"Activate"		"instance:trigger;OnStartTouch"
-					"Deactivate"		"instance:trigger;OnEndTouchAll"
+					"Deactivate"	"instance:trigger;OnEndTouchAll"
 				}
 			}
 			"ConnectionPoints"
