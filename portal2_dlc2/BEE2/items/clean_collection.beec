@@ -1311,8 +1311,8 @@
 				}
 				"CONNECTION_HAZARD_MODEL"
 				{
-					"Activate"		"instance:mdl;FireUser2"
-					"Deactivate"	"instance:mdl;FireUser1"
+					"Activate"		"instance:isfiz;FireUser2"
+					"Deactivate"	"instance:isfiz;FireUser1"
 				}
 				"CONNECTION_HAZARD_BRUSH"
 				{
