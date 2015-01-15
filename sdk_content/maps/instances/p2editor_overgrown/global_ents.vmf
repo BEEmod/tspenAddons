@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6432"
-	"mapversion" "429"
+	"mapversion" "432"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -104,7 +104,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "429"
+	"mapversion" "432"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -3735,6 +3735,7 @@ entity
 {
 	"id" "17895"
 	"classname" "prop_physics"
+	"allowfunnel" "1"
 	"angles" "33.6831 226.299 34.3245"
 	"damagetoenablemotion" "0"
 	"Damagetype" "0"
@@ -3814,6 +3815,7 @@ entity
 {
 	"id" "17202"
 	"classname" "prop_physics"
+	"allowfunnel" "1"
 	"angles" "-66.2059 65.3693 -7.89132"
 	"damagetoenablemotion" "0"
 	"Damagetype" "0"
@@ -3924,6 +3926,7 @@ entity
 {
 	"id" "17342"
 	"classname" "prop_physics"
+	"allowfunnel" "1"
 	"angles" "0 0 -90"
 	"damagetoenablemotion" "0"
 	"Damagetype" "0"
@@ -4018,6 +4021,7 @@ entity
 {
 	"id" "17421"
 	"classname" "prop_physics"
+	"allowfunnel" "1"
 	"angles" "0 0 -90"
 	"damagetoenablemotion" "0"
 	"Damagetype" "0"
@@ -4075,6 +4079,7 @@ entity
 {
 	"id" "17444"
 	"classname" "prop_physics"
+	"allowfunnel" "1"
 	"angles" "0 60 -90"
 	"damagetoenablemotion" "0"
 	"Damagetype" "0"
@@ -4366,7 +4371,6 @@ entity
 	"pitchstart" "100"
 	"preset" "0"
 	"radius" "1250"
-	"SourceEntityName" "c_comp"
 	"spawnflags" "17"
 	"spindown" "0"
 	"spinup" "0"
@@ -5043,6 +5047,7 @@ hidden
 		"classname" "ambient_generic"
 		"health" "10"
 		"message" "Sphere.BlipSmall"
+		"null" "-----------------------"
 		"pitch" "100"
 		"pitchstart" "100"
 		"radius" "1250"
@@ -6400,35 +6405,9 @@ entity
 	"AllowSilentDissolve" "1"
 	"angles" "25 180 0"
 	"BoxSwitchSpeed" "400"
-	"damagetoenablemotion" "0"
-	"Damagetype" "0"
-	"disableflashlight" "0"
-	"disableshadowdepth" "0"
-	"disableshadows" "0"
-	"disableX360" "0"
-	"ExplodeDamage" "0"
-	"ExplodeRadius" "0"
-	"fademaxdist" "0"
-	"fademindist" "-1"
-	"fadescale" "1"
-	"forcetoenablemotion" "0"
-	"inertiaScale" "1.0"
-	"massScale" "0"
-	"maxcpulevel" "0"
-	"maxgpulevel" "0"
-	"mincpulevel" "0"
-	"mingpulevel" "0"
-	"minhealthdmg" "0"
-	"model" "models/props/reflection_cube.mdl"
-	"nodamageforces" "0"
-	"PerformanceMode" "0"
-	"physdamagescale" "0.1"
-	"pressuredelay" "0"
+	"model" "models/npcs/monsters/monster_a.mdl"
+	"renderamt" "255"
 	"rendercolor" "240 225 200"
-	"shadowcastdist" "0"
-	"shadowdepthnocache" "0"
-	"skin" "0"
-	"spawnflags" "256"
 	"StartAsBox" "1"
 	"targetname" "c_franken"
 	connections
@@ -8019,8 +7998,8 @@ cameras
 	"activecamera" "0"
 	camera
 	{
-		"position" "[-204.865 43.387 93.9053]"
-		"look" "[-198.708 72.3602 38.1974]"
+		"position" "[-57.1529 -18.0946 48.1781]"
+		"look" "[-57.5723 -78.3643 29.5207]"
 	}
 	camera
 	{

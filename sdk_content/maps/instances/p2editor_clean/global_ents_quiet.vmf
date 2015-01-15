@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6432"
-	"mapversion" "217"
+	"mapversion" "224"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -56,7 +56,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "217"
+	"mapversion" "224"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -4516,6 +4516,8 @@ entity
 	"PerformanceMode" "0"
 	"physdamagescale" "0.1"
 	"pressuredelay" "0"
+	"renderamt" "255"
+	"rendercolor" "255 255 255"
 	"shadowcastdist" "0"
 	"shadowdepthnocache" "0"
 	"skin" "0"
@@ -6232,21 +6234,25 @@ hidden
 		}
 	}
 }
-entity
+hidden
 {
-	"id" "3833"
-	"classname" "logic_choreographed_scene"
-	"busyactor" "1"
-	"onplayerdeath" "0"
-	"SceneFile" "scenes/npc/glados/sp_trust_fling_entry01.vcd"
-	"targetname" "glados_carefree"
-	"origin" "-193.068 114.894 8"
-	editor
+	entity
 	{
-		"color" "0 0 255"
-		"visgroupshown" "1"
-		"visgroupautoshown" "1"
-		"logicalpos" "[1500 5500]"
+		"id" "3833"
+		"classname" "logic_choreographed_scene"
+		"busyactor" "1"
+		"onplayerdeath" "0"
+		"SceneFile" "scenes/npc/glados/sp_trust_fling_entry01.vcd"
+		"targetname" "glados_carefree"
+		"origin" "-193.068 114.894 8"
+		editor
+		{
+			"color" "0 0 255"
+			"visgroupid" "17"
+			"visgroupshown" "0"
+			"visgroupautoshown" "1"
+			"logicalpos" "[1500 5500]"
+		}
 	}
 }
 hidden
@@ -6274,24 +6280,28 @@ hidden
 		}
 	}
 }
-entity
+hidden
 {
-	"id" "3887"
-	"classname" "logic_relay"
-	"spawnflags" "1"
-	"StartDisabled" "0"
-	"targetname" "@glados_faith_fly"
-	connections
+	entity
 	{
-		"OnTrigger" "glados_carefreeStart0-1"
-	}
-	"origin" "-216.528 122.297 8"
-	editor
-	{
-		"color" "220 30 220"
-		"visgroupshown" "1"
-		"visgroupautoshown" "1"
-		"logicalpos" "[1500 5500]"
+		"id" "3887"
+		"classname" "logic_relay"
+		"spawnflags" "1"
+		"StartDisabled" "0"
+		"targetname" "@glados_faith_fly"
+		connections
+		{
+			"OnTrigger" "glados_carefreeStart0-1"
+		}
+		"origin" "-216.528 122.297 8"
+		editor
+		{
+			"color" "220 30 220"
+			"visgroupid" "17"
+			"visgroupshown" "0"
+			"visgroupautoshown" "1"
+			"logicalpos" "[1500 5500]"
+		}
 	}
 }
 hidden
@@ -6486,6 +6496,8 @@ entity
 		"OnMapSpawn" "@portal_deflect_x_scriptRunScriptCodeinitialize(16);1-1"
 		"OnMapSpawn" "@cube_makerForceSpawn1.51"
 		"OnMapSpawn" "c_franken*BecomeMonster1.511"
+		"OnMapSpawn" "environment_testchamberTrigger0-1"
+		"OnMapSpawn" "@glados_ballKill0-1"
 	}
 	"origin" "-64 -64 64"
 	editor
@@ -6494,42 +6506,6 @@ entity
 		"visgroupshown" "1"
 		"visgroupautoshown" "1"
 		"logicalpos" "[0 0]"
-	}
-}
-entity
-{
-	"id" "400"
-	"classname" "func_instance_io_proxy"
-	"targetname" "proxy"
-	connections
-	{
-		"OnProxyRelay" "environment_testchamberTrigger0-1"
-		"OnProxyRelay" "environment_destroyedTrigger0-1"
-		"OnProxyRelay" "environment_btsTrigger0-1"
-		"OnProxyRelay" "environment_undergroundTrigger0-1"
-		"OnProxyRelay" "environment_minesTrigger0-1"
-		"OnProxyRelay" "environment_lakeTrigger0-1"
-		"OnProxyRelay" "environment_darknessTrigger0-1"
-		"OnProxyRelay" "environment_bottomless_pitTrigger0-1"
-		"OnProxyRelay" "environment_jailbreakTrigger0-1"
-		"OnProxyRelay" "environment_fanTrigger0-1"
-		"OnProxyRelay" "environment_wheatley_zTrigger0-1"
-		"OnProxyRelay" "environment_destroyed_bTrigger0-1"
-		"OnProxyRelay" "environment_glados_introTrigger0-1"
-		"OnProxyRelay" "environment_bottomless_pit_fallingTrigger0-1"
-		"OnProxyRelay" "environment_lake_bTrigger0-1"
-		"OnProxyRelay" "environment_act4_01Trigger0-1"
-		"OnProxyRelay" "environment_act4_02Trigger0-1"
-		"OnProxyRelay" "environment_act4_03Trigger0-1"
-		"OnProxyRelay" "environment_tuberideTrigger0-1"
-	}
-	"origin" "-48 16 96"
-	editor
-	{
-		"color" "220 30 220"
-		"visgroupshown" "1"
-		"visgroupautoshown" "1"
-		"logicalpos" "[0 1000]"
 	}
 }
 entity
@@ -6664,8 +6640,8 @@ cameras
 	"activecamera" "0"
 	camera
 	{
-		"position" "[12.9375 247.606 -38.8106]"
-		"look" "[26.5283 193.162 -67.65]"
+		"position" "[-37.322 7.43654 65.9967]"
+		"look" "[-57.0983 -52.0075 58.5206]"
 	}
 	camera
 	{

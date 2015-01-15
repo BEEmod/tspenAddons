@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6432"
-	"mapversion" "428"
+	"mapversion" "433"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -104,7 +104,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "428"
+	"mapversion" "433"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -3015,6 +3015,10 @@ entity
 	"spawnflags" "0"
 	"targetname" "@temp_standard_scr"
 	"Template01" "c_stan_clean"
+	connections
+	{
+		"OnUser1" "c_stan_clean*RunScriptCoderusty_cube()1.511"
+	}
 	"origin" "128 -96 32"
 	editor
 	{
@@ -3594,6 +3598,7 @@ entity
 		"visgroupid" "23"
 		"visgroupshown" "1"
 		"visgroupautoshown" "1"
+		"comments" "Creates occasional explosion sounds/shakes."
 		"logicalpos" "[0 2000]"
 	}
 }
@@ -4384,7 +4389,6 @@ entity
 	"pitchstart" "100"
 	"preset" "0"
 	"radius" "1250"
-	"SourceEntityName" "c_comp"
 	"spawnflags" "17"
 	"spindown" "0"
 	"spinup" "0"
@@ -5061,6 +5065,7 @@ hidden
 		"classname" "ambient_generic"
 		"health" "10"
 		"message" "Sphere.BlipSmall"
+		"null" "-----------------------"
 		"pitch" "100"
 		"pitchstart" "100"
 		"radius" "1250"
@@ -6391,12 +6396,14 @@ entity
 	"skin" "1"
 	"SkinType" "1"
 	"targetname" "c_reflect"
+	"vscripts" "pti_change_model.nut"
 	connections
 	{
 		"OnFizzled" "@respawn_objSetValue201"
 		"OnFizzled" "@respawn_reflectTrigger0-1"
 		"OnPlayerPickup" "@ann_mid_cubeFireUser101"
 		"OnFizzled" "@ann_mid_fizzlecubeFireUser101"
+		"OnUser4" "!selfRunScriptCoderusty_reflect()01"
 	}
 	"origin" "-16 -96 32"
 	editor
@@ -6416,36 +6423,9 @@ entity
 	"AllowSilentDissolve" "1"
 	"angles" "25 180 0"
 	"BoxSwitchSpeed" "400"
-	"damagetoenablemotion" "0"
-	"Damagetype" "0"
-	"disableflashlight" "0"
-	"disableshadowdepth" "0"
-	"disableshadows" "0"
-	"disableX360" "0"
-	"ExplodeDamage" "0"
-	"ExplodeRadius" "0"
-	"fademaxdist" "0"
-	"fademindist" "-1"
-	"fadescale" "1"
-	"forcetoenablemotion" "0"
-	"inertiaScale" "1.0"
-	"massScale" "0"
-	"maxcpulevel" "0"
-	"maxgpulevel" "0"
-	"mincpulevel" "0"
-	"mingpulevel" "0"
-	"minhealthdmg" "0"
-	"model" "models/props/reflection_cube.mdl"
-	"nodamageforces" "0"
-	"PerformanceMode" "0"
-	"physdamagescale" "0.1"
-	"pressuredelay" "0"
+	"model" "models/npcs/monsters/monster_a.mdl"
 	"renderamt" "255"
 	"rendercolor" "240 225 200"
-	"shadowcastdist" "0"
-	"shadowdepthnocache" "0"
-	"skin" "0"
-	"spawnflags" "256"
 	"StartAsBox" "1"
 	"targetname" "c_franken"
 	connections
@@ -6491,6 +6471,10 @@ entity
 	"spawnflags" "0"
 	"targetname" "@temp_reflect"
 	"Template01" "c_reflect"
+	connections
+	{
+		"OnMapSpawn" "c_reflect*FireUser401"
+	}
 	"origin" "-16 -96 32"
 	editor
 	{
@@ -8032,8 +8016,8 @@ cameras
 	"activecamera" "0"
 	camera
 	{
-		"position" "[-114.353 -55.4731 50.772]"
-		"look" "[-168.48 -80.0293 29.6075]"
+		"position" "[-75.8391 91.8574 151.088]"
+		"look" "[-31.2578 83.3542 107.26]"
 	}
 	camera
 	{
