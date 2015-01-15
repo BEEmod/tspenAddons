@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6432"
-	"mapversion" "232"
+	"mapversion" "233"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -56,7 +56,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "232"
+	"mapversion" "233"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -2905,55 +2905,6 @@ entity
 		"visgroupshown" "1"
 		"visgroupautoshown" "1"
 		"logicalpos" "[0 0]"
-	}
-}
-entity
-{
-	"id" "7623"
-	"classname" "filter_activator_class"
-	"filterclass" "RocketSentry_Missile"
-	"Negated" "Allow entities that match criteria"
-	"targetname" "@filter_rockets"
-	"origin" "-80 64 16"
-	editor
-	{
-		"color" "220 30 220"
-		"visgroupshown" "1"
-		"visgroupautoshown" "1"
-		"logicalpos" "[0 0]"
-	}
-}
-entity
-{
-	"id" "7625"
-	"classname" "point_template"
-	"spawnflags" "2"
-	"targetname" "@RocketSentry_Missile_Template"
-	"Template01" "@RocketSentry_Missile"
-	"origin" "-64 64 16"
-	editor
-	{
-		"color" "220 30 220"
-		"visgroupshown" "1"
-		"visgroupautoshown" "1"
-		"logicalpos" "[0 1000]"
-	}
-}
-entity
-{
-	"id" "7627"
-	"classname" "rocket_turret_projectile"
-	"angles" "0 0 0"
-	"renderamt" "255"
-	"rendercolor" "255 255 255"
-	"targetname" "@RocketSentry_Missile"
-	"origin" "-64 64 16"
-	editor
-	{
-		"color" "220 30 220"
-		"visgroupshown" "1"
-		"visgroupautoshown" "1"
-		"logicalpos" "[0 1500]"
 	}
 }
 entity
@@ -6702,8 +6653,8 @@ cameras
 	"activecamera" "0"
 	camera
 	{
-		"position" "[-155.444 -15.7211 82.7064]"
-		"look" "[-155.444 -15.7211 19.6109]"
+		"position" "[-112.266 23.4089 58.3569]"
+		"look" "[-74.7204 57.2151 20.5612]"
 	}
 	camera
 	{
