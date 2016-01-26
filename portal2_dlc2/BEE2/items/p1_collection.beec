@@ -1068,15 +1068,12 @@
 				"0"
 				{
 					"Name"				"instances/p2editor_p1/high_energy_pellet_emitter.vmf"
-					"EntityCount"		"20"
-					"BrushCount"		"20"
-					"BrushSideCount"	"20"
-					// packer_additem:materials/models/props/clean/combine_ball_catcher.mdl
-					// packer_additem:materials/models/props/ball_catcher_clean.vmt
-					// packer_additem:materials/models/props/ball_catcher_clean.vtf
-					// packer_additem:materials/models/props/ball_catcher_clean_exponent.vtf
-					// packer_additem:materials/models/props/ball_catcher_clean_lightwarp.vtf
-					// packer_additem:materials/models/props/ball_catcher_clean_normal.vtf
+					// packer_additem:materials/models/props/clean/combine_ball_emitter.mdl
+					// packer_additem:materials/models/props/ball_emitter_clean.vmt
+					// packer_additem:materials/models/props/ball_emitter_clean.vtf
+					// packer_additem:materials/models/props/ball_emitter_clean_exponent.vtf
+					// packer_additem:materials/models/props/ball_emitter_clean_lightwarp.vtf
+					// packer_additem:materials/models/props/ball_emitter_clean_normal.vtf
 
 					// packer_additem:models/effects/combineball.dx80.vtx
 					// packer_additem:models/effects/combineball.dx90.vtx
@@ -1103,6 +1100,9 @@
 					// packer_additem:sound/weapons/physcannon/energy_sing_flyby1.wav
 					// packer_additem:sound/weapons/physcannon/energy_sing_flyby2.wav
 					// packer_additem:sound/weapons/physcannon/energy_sing_loop4.wav
+					"EntityCount"		"20"
+					"BrushCount"		"20"
+					"BrushSideCount"	"20"
 				}
 			}
 			"TargetName"		"pe"
@@ -1233,9 +1233,6 @@
 				"0"
 				{
 					"Name"				"instances/p2editor_p1/high_energy_pellet_catcher.vmf"
-					"EntityCount"		"20"
-					"BrushCount"		"20"
-					"BrushSideCount"	"20"
 					// packer_additem:models/props/clean/combine_ball_catcher.mdl
 					// packer_additem:materials/models/props/ball_catcher_clean.vmt
 					// packer_additem:materials/models/props/ball_catcher_clean.vtf
@@ -1260,6 +1257,9 @@
 					// packer_additem:materials/effects/eball_finite_life.vmt
 					// packer_additem:materials/effects/eball_infinite_life.vmt
 					// packer_additem:materials/effects/comball/comball.vtf
+					"EntityCount"		"20"
+					"BrushCount"		"20"
+					"BrushSideCount"	"20"
 				}
 			}
 			"TargetName"		"pc"
