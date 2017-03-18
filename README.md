@@ -6,5 +6,5 @@ This includes my Refurbished Style, a hybrid of Clean and 1950s style similar to
 
 Thanks to Skotty (High Energy Pellets, Bumbleballs and Catapult Cubes), Moth(Bumbleballs), SoundLogic(Catapult Cubes) and PortalCombat (Sphere Cannon) for creating the original versions of some items, which I have made PTI compatible and restyled.
 
-##[Documentation](http://teamspen210.github.io/tspenAddons)
+##[Documentation](http://beemod.github.io/tspenAddons)
 ##[Material/Model Source](http://github.com/TeamSpen210/tSpenAddons-src/)
