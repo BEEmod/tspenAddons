@@ -1,4 +1,4 @@
-#TeamSpen210's BEE 2 Addons
+# TeamSpen210's BEE 2 Addons
 
 My collection of Items and Styles for the BEE2. All non-logic items are fully styled for all the default styles. It is compatible with Radelite's addons, providing styled versions for the Ratman Style. 
 
@@ -6,5 +6,5 @@ This includes my Refurbished Style, a hybrid of Clean and 1950s style similar to
 
 Thanks to Skotty (High Energy Pellets, Bumbleballs and Catapult Cubes), Moth(Bumbleballs), SoundLogic(Catapult Cubes) and PortalCombat (Sphere Cannon) for creating the original versions of some items, which I have made PTI compatible and restyled.
 
-##[Documentation](http://beemod.github.io/tspenAddons)
-##[Material/Model Source](http://github.com/TeamSpen210/tSpenAddons-src/)
+## [Documentation](http://beemod.github.io/tspenAddons)
+## [Material/Model Source](http://github.com/TeamSpen210/tSpenAddons-src/)
