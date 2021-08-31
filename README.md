@@ -1,3 +1,7 @@
+### Note, these addons were designed for an [older version of the BEE2](https://github.com/BEEmod/BEE2.2), and will not work with current versions.
+
+See [BEE2.4](https://github.com/BEEmod/BEE2.4) for the current version of the mod, which already includes many of the items from these addons. The remaining items are [currently in the process](https://github.com/BEEmod/BEE2-items/issues/95) of being ported, but this will not be done for a while.
+
 # TeamSpen210's BEE 2 Addons
 
 My collection of Items and Styles for the BEE2. All non-logic items are fully styled for all the default styles. It is compatible with Radelite's addons, providing styled versions for the Ratman Style. 
